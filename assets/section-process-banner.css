@@ -25,7 +25,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 25rem;
+  gap: 18rem;
 }
 
 .process-banner__step {
@@ -61,7 +61,7 @@
   }
   
   .process-banner__steps {
-    gap: 1rem;
+    gap: 2.7rem;
   }
   
   .process-banner__step-text {

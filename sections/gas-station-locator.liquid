@@ -5,15 +5,16 @@
     margin-top: {{ section.settings.margin_top | times: 0.75 | round: 0 }}px;
     /* margin-bottom: {{ section.settings.margin_bottom | times: 0.75 | round: 0 }}px; */
     padding: 65px 33px;
-    gap: 8px;
+    gap: 2.5rem;
   }
 
   @media screen and (min-width: 750px) {
     .gas-station-locator {
-      /* margin-top: {{ section.settings.margin_top }}px; */
-      /* margin-bottom: {{ section.settings.margin_bottom }}px; */
-    }
+    ;
+    /* margin-top: {{ section.settings.margin_top }}px; */
+    /* margin-bottom: {{ section.settings.margin_bottom }}px; */
   }
+}
 {%- endstyle -%}
 
 <div class="gas-station-locator">
@@ -24,8 +25,16 @@
     <p class="gas-station-locator__description">The best fuels on the market.</p>
     <button class="gas-station-locator__button" onclick="scrollToMap()">
       Gas station locator
-      <svg class="gas-station-locator__button-arrow" viewBox="0 0 16 16" fill="currentColor">
-        <path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <svg
+        class="gas-station-locator__button-arrow"
+        viewBox="0 0 16 16"
+        fill="currentColor">
+        <path
+          d="M6 12L10 8L6 4"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round" />
       </svg>
     </button>
   </div>
@@ -41,49 +50,64 @@
       </div>
     </div>
 
-    <!-- Location List -->
-    </div>
-    <div class="gas-station-locator__locations">
-      <div class="gas-station-locator__filter">
-        <select id="brand-filter" class="gas-station-locator__filter-select">
-          <option value="">All Brands</option>
-          {%- assign unique_brands = '' -%}
-          {%- for block in section.blocks -%}
-            {%- unless unique_brands contains block.settings.brand -%}
-              <option value="{{ block.settings.brand }}">{{ block.settings.brand }}</option>
-              {%- assign unique_brands = unique_brands | append: block.settings.brand | append: ',' -%}
-            {%- endunless -%}
-          {%- endfor -%}
-        </select>
-      </div>
-      
-      <div class="gas-station-locator__location-list" id="location-list">
+  <!-- Location List -->
+  </div>
+  
+  <div class="gas-station-locator__locations">
+    {% comment %} <div class="gas-station-locator__filter">
+      <select id="brand-filter" class="gas-station-locator__filter-select">
+        <option value="">All Brands</option>
+        {%- assign unique_brands = '' -%}
         {%- for block in section.blocks -%}
-          {%- if block.type == 'gas_station' -%}
-            <div class="gas-station-locator__location-item" 
-                 data-brand="{{ block.settings.brand | handle }}"
-                 data-lat="{{ block.settings.latitude }}"
-                 data-lng="{{ block.settings.longitude }}"
-                 data-station-id="{{ block.id }}"
-                 onclick="showLocationOnMap('{{ block.id }}', {{ block.settings.latitude }}, {{ block.settings.longitude }}, '{{ block.settings.name }}')">
-              <span class="gas-station-locator__location-name">{{ block.settings.name }}</span>
-            </div>
-          {%- endif -%}
+          {%- unless unique_brands contains block.settings.brand -%}
+            <option value="{{ block.settings.brand }}">{{ block.settings.brand }}</option>
+            {%- assign unique_brands = unique_brands | append: block.settings.brand | append: ',' -%}
+          {%- endunless -%}
         {%- endfor -%}
-      </div>
+      </select>
+    </div> {% endcomment %}
+
+    <div class="gas-station-locator__location-list" id="location-list">
+   <!-- Repsol Group Header (non-clickable) -->
+   <div class="gas-station-locator__group-headers">
+    <span class="">Galp & Repsol</span>
+  </div>
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'gas_station' -%}
+          <div
+            class="gas-station-locator__location-item"
+            data-brand="{{ block.settings.brand | handle }}"
+            data-lat="{{ block.settings.latitude }}"
+            data-lng="{{ block.settings.longitude }}"
+            data-station-id="{{ block.id }}"
+            onclick="showLocationOnMap('{{ block.id }}', {{ block.settings.latitude }}, {{ block.settings.longitude }}, '{{ block.settings.name }}')">
+            <span class="gas-station-locator__location-name">{{ block.settings.name }}</span>
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+      <!-- Galp Group Header (non-clickable) -->
+
+
+   
+
+
     </div>
+  </div>
 </div>
 
 <!-- Google Maps API -->
-<script src="https://maps.googleapis.com/maps/api/js?key={{ section.settings.google_maps_api_key }}&callback=initMap" async defer></script>
+<script
+  src="https://maps.googleapis.com/maps/api/js?key={{ section.settings.google_maps_api_key }}&callback=initMap"
+  async
+  defer></script>
 
 <script>
-let map;
-let markers = [];
-let infoWindow;
-
-// Station data from Liquid
-const stations = [
+  let map;
+  let markers = [];
+  let infoWindow;
+  
+  // Station data from Liquid
+  const stations = [
   {%- for block in section.blocks -%}
     {%- if block.type == 'gas_station' -%}
       {
@@ -100,9 +124,9 @@ const stations = [
       }{%- unless forloop.last -%},{%- endunless -%}
     {%- endif -%}
   {%- endfor -%}
-];
-
-function initMap() {
+  ];
+  
+  function initMap() {
   // Center on Portugal with wider view
   map = new google.maps.Map(document.getElementById('gas-station-map'), {
     center: { lat: 40.0, lng: -8 },
@@ -189,16 +213,16 @@ function initMap() {
       },
     ],
   });
-
+  
   infoWindow = new google.maps.InfoWindow();
   addMarkers();
-}
-
-function addMarkers() {
+  }
+  
+  function addMarkers() {
   // Clear existing markers
   markers.forEach(marker => marker.setMap(null));
   markers = [];
-
+  
   const selectedBrand = document.getElementById('brand-filter').value;
   
   stations.forEach(station => {
@@ -223,17 +247,17 @@ function addMarkers() {
           scaledSize: new google.maps.Size(40, 40)
         }
       });
-
+  
       marker.addListener('click', () => {
         showStationInfo(station);
       });
-
+  
       markers.push(marker);
     }
   });
-}
-
-function showLocationOnMap(stationId, lat, lng, name) {
+  }
+  
+  function showLocationOnMap(stationId, lat, lng, name) {
   // Center map on selected location
   map.setCenter({ lat: lat, lng: lng });
   map.setZoom(12);
@@ -249,9 +273,9 @@ function showLocationOnMap(stationId, lat, lng, name) {
   if (station) {
     showStationInfo(station);
   }
-}
-
-function showStationInfo(station) {
+  }
+  
+  function showStationInfo(station) {
   const content = `
     <div class="gas-station-info">
       <div class="gas-station-info__header">
@@ -302,17 +326,17 @@ function showStationInfo(station) {
   infoWindow.setContent(content);
   infoWindow.setPosition({ lat: station.latitude, lng: station.longitude });
   infoWindow.open(map);
-}
-
-function zoomIn() {
+  }
+  
+  function zoomIn() {
   map.setZoom(map.getZoom() + 1);
-}
-
-function zoomOut() {
+  }
+  
+  function zoomOut() {
   map.setZoom(map.getZoom() - 1);
-}
-
-function getServiceIcons(services) {
+  }
+  
+  function getServiceIcons(services) {
   const serviceMap = {
     'fuel': {
       icon: `<svg viewBox="0 0 24 24" fill="currentColor">
@@ -399,10 +423,10 @@ function getServiceIcons(services) {
       name: 'WC'
     }
   };
-
+  
   const servicesArray = services.toLowerCase().split(',').map(s => s.trim());
   let iconsHtml = '';
-
+  
   servicesArray.forEach(service => {
     for (const [key, value] of Object.entries(serviceMap)) {
       if (service.includes(key)) {
@@ -415,18 +439,18 @@ function getServiceIcons(services) {
       }
     }
   });
-
+  
   return iconsHtml;
-}
-
-function scrollToMap() {
+  }
+  
+  function scrollToMap() {
   document.querySelector('.gas-station-locator__map-panel').scrollIntoView({ 
     behavior: 'smooth' 
   });
-}
-
-// Filter functionality
-document.addEventListener('DOMContentLoaded', function() {
+  }
+  
+  // Filter functionality
+  document.addEventListener('DOMContentLoaded', function() {
   const brandFilter = document.getElementById('brand-filter');
   
   brandFilter.addEventListener('change', function() {
@@ -447,322 +471,303 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
   }
-});
+  });
 </script>
 
 {% schema %}
-{
-  "name": "Gas Station Locator",
-  "tag": "section",
-  "class": "section",
-  "settings": [
-    {
-      "type": "header",
-      "content": "Left Panel Content"
-    },
-    {
-      "type": "inline_richtext",
-      "id": "main_heading",
-      "label": "Main Heading",
-      "default": "Find the nearest Gas Station"
-    },
-    {
-      "type": "textarea",
-      "id": "description",
-      "label": "Description",
-      "default": "The best fuels on the market"
-    },
-    {
-      "type": "text",
-      "id": "button_text",
-      "label": "Button Text",
-      "default": "Gas station locator"
-    },
-    {
-      "type": "header",
-      "content": "Google Maps Settings"
-    },
-    {
-      "type": "text",
-      "id": "google_maps_api_key",
-      "label": "Google Maps API Key",
-      "info": "Enter your Google Maps API key to enable map functionality"
-    },
-    {
-      "type": "header",
-      "content": "t:sections.all.spacing"
-    },
-    {
-      "type": "range",
-      "id": "margin_top",
-      "min": 0,
-      "max": 100,
-      "step": 4,
-      "unit": "px",
-      "label": "t:sections.gas-station-locator.settings.margin_top.label",
-      "default": 0
-    },
-    {
-      "type": "range",
-      "id": "margin_bottom",
-      "min": 0,
-      "max": 100,
-      "step": 4,
-      "unit": "px",
-      "label": "t:sections.gas-station-locator.settings.margin_bottom.label",
-      "default": 0
-    }
-  ],
-  "blocks": [
-    {
-      "type": "gas_station",
-      "name": "Gas Station",
-      "settings": [
-        {
-          "type": "text",
-          "id": "name",
-          "label": "Station Name",
-          "default": "New Station"
-        },
-        {
-          "type": "text",
-          "id": "brand",
-          "label": "Brand (e.g., Repsol, Galp, EVESA)",
-          "default": "EVESA"
-        },
-        {
-          "type": "text",
-          "id": "address",
-          "label": "Address",
-          "default": "123 Main St, City, Portugal"
-        },
-        {
-          "type": "text",
-          "id": "latitude",
-          "label": "Latitude",
-          "info": "e.g., 38.7223"
-        },
-        {
-          "type": "text",
-          "id": "longitude",
-          "label": "Longitude",
-          "info": "e.g., -9.1393"
-        },
-        {
-          "type": "text",
-          "id": "hours",
-          "label": "Opening Hours",
-          "default": "24/7"
-        },
-        {
-          "type": "text",
-          "id": "phone",
-          "label": "Phone Number",
-          "default": "+351 XXX XXX XXX"
-        },
-        {
-          "type": "text",
-          "id": "services",
-          "label": "Services (comma-separated)",
-          "default": "Fuel, Gas, Convenience Store"
-        },
-        {
-          "type": "checkbox",
-          "id": "is_open",
-          "label": "Currently Open",
-          "default": true
-        }
-      ]
-    }
-  ],
-  "presets": [
-    {
-      "name": "Gas Station Locator",
-      "blocks": [
-        {
-          "type": "gas_station",
-          "settings": {
-            "name": "Galp",
-            "brand": "Galp",
-            "address": "Rua Central, 123, Lisbon, Portugal",
-            "latitude": "38.7223",
-            "longitude": "-9.1393",
-            "hours": "24/7",
-            "phone": "+351 21 123 4567",
-            "services": "Fuel, Gas, Convenience Store, Car Wash, Coffee",
-            "is_open": true
+  {
+    "name": "Gas Station Locator",
+    "tag": "section",
+    "class": "section",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Left Panel Content"
+      },
+      {
+        "type": "inline_richtext",
+        "id": "main_heading",
+        "label": "Main Heading",
+        "default": "Find the nearest Gas Station"
+      },
+      {
+        "type": "textarea",
+        "id": "description",
+        "label": "Description",
+        "default": "The best fuels on the market"
+      },
+      {
+        "type": "text",
+        "id": "button_text",
+        "label": "Button Text",
+        "default": "Gas station locator"
+      }, {
+        "type": "header",
+        "content": "Google Maps Settings"
+      }, {
+        "type": "text",
+        "id": "google_maps_api_key",
+        "label": "Google Maps API Key",
+        "info": "Enter your Google Maps API key to enable map functionality"
+      }, {
+        "type": "header",
+        "content": "t:sections.all.spacing"
+      }, {
+        "type": "range",
+        "id": "margin_top",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "label": "t:sections.gas-station-locator.settings.margin_top.label",
+        "default": 0
+      }, {
+        "type": "range",
+        "id": "margin_bottom",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "label": "t:sections.gas-station-locator.settings.margin_bottom.label",
+        "default": 0
+      }
+    ],
+    "blocks": [
+      {
+        "type": "gas_station",
+        "name": "Gas Station",
+        "settings": [
+          {
+            "type": "text",
+            "id": "name",
+            "label": "Station Name",
+            "default": "New Station"
+          },
+          {
+            "type": "text",
+            "id": "brand",
+            "label": "Brand (e.g., Repsol, Galp, EVESA)",
+            "default": "EVESA"
+          },
+          {
+            "type": "text",
+            "id": "address",
+            "label": "Address",
+            "default": "123 Main St, City, Portugal"
+          },
+          {
+            "type": "text",
+            "id": "latitude",
+            "label": "Latitude",
+            "info": "e.g., 38.7223"
+          }, {
+            "type": "text",
+            "id": "longitude",
+            "label": "Longitude",
+            "info": "e.g., -9.1393"
+          }, {
+            "type": "text",
+            "id": "hours",
+            "label": "Opening Hours",
+            "default": "24/7"
+          }, {
+            "type": "text",
+            "id": "phone",
+            "label": "Phone Number",
+            "default": "+351 XXX XXX XXX"
+          }, {
+            "type": "text",
+            "id": "services",
+            "label": "Services (comma-separated)",
+            "default": "Fuel, Gas, Convenience Store"
+          }, {
+            "type": "checkbox",
+            "id": "is_open",
+            "label": "Currently Open",
+            "default": true
           }
-        },
-        {
-          "type": "gas_station",
-          "settings": {
-            "name": "Gandarela",
-            "brand": "EVESA",
-            "address": "Avenida Norte, 456, Porto, Portugal",
-            "latitude": "41.1579",
-            "longitude": "-8.6291",
-            "hours": "6:00 AM - 10:00 PM",
-            "phone": "+351 22 987 6543",
-            "services": "Fuel, Gas, Convenience Store",
-            "is_open": true
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Gas Station Locator",
+        "blocks": [
+          {
+            "type": "gas_station",
+            "settings": {
+              "name": "Galp",
+              "brand": "Galp",
+              // "address": "Rua Central, 123, Lisbon, Portugal",
+              // "latitude": "38.7223",
+              // "longitude": "-9.1393",
+              // "hours": "24/7",
+              // "phone": "+351 21 123 4567",
+              // "services": "Fuel, Gas, Convenience Store, Car Wash, Coffee",
+              // "is_open": true
+            }
+          },
+          {
+            "type": "gas_station",
+            "settings": {
+              "name": "Gandarela",
+              "brand": "EVESA",
+              "address": "Avenida Norte, 456, Porto, Portugal",
+              "latitude": "41.1579",
+              "longitude": "-8.6291",
+              "hours": "6:00 AM - 10:00 PM",
+              "phone": "+351 22 987 6543",
+              "services": "Fuel, Gas, Convenience Store",
+              "is_open": true
+            }
+          },
+          {
+            "type": "gas_station",
+            "settings": {
+              "name": "Repsol",
+              "brand": "Repsol",
+            //   "address": "Estrada Sul, 789, Faro, Portugal",
+            //   "latitude": "37.0194",
+            //   "longitude": "-7.9322",
+            //   "hours": "24/7",
+            //   "phone": "+351 289 123 456",
+            //   "services": "Fuel, Gas, Convenience Store, Car Wash",
+            //   "is_open": true
+            }
+          },
+          {
+            "type": "gas_station",
+            "settings": {
+              "name": "Alvor",
+              "brand": "EVESA",
+              "address": "Rua Oeste, 321, Coimbra, Portugal",
+              "latitude": "40.2033",
+              "longitude": "-8.4103",
+              "hours": "7:00 AM - 11:00 PM",
+              "phone": "+351 239 456 789",
+              "services": "Fuel, Gas, Convenience Store, Coffee",
+              "is_open": false
+            }
+          }, {
+            "type": "gas_station",
+            "settings": {
+              "name": "Fall",
+              "brand": "EVESA",
+              "address": "Rua Fall, 456, Braga, Portugal",
+              "latitude": "41.5518",
+              "longitude": "-8.4229",
+              "hours": "24/7",
+              "phone": "+351 253 123 456",
+              "services": "Fuel, Gas, Convenience Store",
+              "is_open": true
+            }
+          }, {
+            "type": "gas_station",
+            "settings": {
+              "name": "Valega",
+              "brand": "EVESA",
+              "address": "Estrada Valega, 789, Aveiro, Portugal",
+              "latitude": "40.6405",
+              "longitude": "-8.6538",
+              "hours": "6:00 AM - 10:00 PM",
+              "phone": "+351 234 567 890",
+              "services": "Fuel, Gas, Convenience Store, Car Wash",
+              "is_open": true
+            }
+          }, {
+            "type": "gas_station",
+            "settings": {
+              "name": "Frazão",
+              "brand": "EVESA",
+              "address": "Rua Frazão, 123, Paredes, Portugal",
+              "latitude": "41.2048",
+              "longitude": "-8.3333",
+              "hours": "24/7",
+              "phone": "+351 255 123 456",
+              "services": "Fuel, Gas, Convenience Store",
+              "is_open": true
+            }
+          }, {
+            "type": "gas_station",
+            "settings": {
+              "name": "Paços de Ferreira",
+              "brand": "EVESA",
+              "address": "Avenida Principal, 456, Paços de Ferreira, Portugal",
+              "latitude": "41.2768",
+              "longitude": "-8.3761",
+              "hours": "6:00 AM - 10:00 PM",
+              "phone": "+351 255 987 654",
+              "services": "Fuel, Gas, Convenience Store, Car Wash",
+              "is_open": true
+            }
+          }, {
+            "type": "gas_station",
+            "settings": {
+              "name": "Marco de Canavezes",
+              "brand": "EVESA",
+              "address": "Rua Central, 789, Marco de Canavezes, Portugal",
+              "latitude": "41.1833",
+              "longitude": "-8.1500",
+              "hours": "24/7",
+              "phone": "+351 255 456 789",
+              "services": "Fuel, Gas, Convenience Store, Coffee",
+              "is_open": true
+            }
+          }, {
+            "type": "gas_station",
+            "settings": {
+              "name": "Between the Rivers",
+              "brand": "EVESA",
+              "address": "Estrada Entre Rios, 321, Portugal",
+              "latitude": "40.6405",
+              "longitude": "-8.6538",
+              "hours": "7:00 AM - 11:00 PM",
+              "phone": "+351 234 789 012",
+              "services": "Fuel, Gas, Convenience Store",
+              "is_open": false
+            }
+          }, {
+            "type": "gas_station",
+            "settings": {
+              "name": "Pedorido",
+              "brand": "EVESA",
+              "address": "Rua Pedorido, 654, Portugal",
+              "latitude": "40.6405",
+              "longitude": "-8.6538",
+              "hours": "24/7",
+              "phone": "+351 234 345 678",
+              "services": "Fuel, Gas, Convenience Store, Car Wash",
+              "is_open": true
+            }
+          }, {
+            "type": "gas_station",
+            "settings": {
+              "name": "Lourosa",
+              "brand": "EVESA",
+              "address": "Avenida Lourosa, 987, Portugal",
+              "latitude": "40.9843",
+              "longitude": "-8.5514",
+              "hours": "6:00 AM - 10:00 PM",
+              "phone": "+351 256 123 456",
+              "services": "Fuel, Gas, Convenience Store, Coffee",
+              "is_open": true
+            }
+          }, {
+            "type": "gas_station",
+            "settings": {
+              "name": "Valongo",
+              "brand": "EVESA",
+              "address": "Rua Valongo, 147, Portugal",
+              "latitude": "41.1947",
+              "longitude": "-8.5000",
+              "hours": "24/7",
+              "phone": "+351 224 567 890",
+              "services": "Fuel, Gas, Convenience Store, Car Wash",
+              "is_open": true
+            }
           }
-        },
-        {
-          "type": "gas_station",
-          "settings": {
-            "name": "Repsol",
-            "brand": "Repsol",
-            "address": "Estrada Sul, 789, Faro, Portugal",
-            "latitude": "37.0194",
-            "longitude": "-7.9322",
-            "hours": "24/7",
-            "phone": "+351 289 123 456",
-            "services": "Fuel, Gas, Convenience Store, Car Wash",
-            "is_open": true
-          }
-        },
-        {
-          "type": "gas_station",
-          "settings": {
-            "name": "Alvor",
-            "brand": "EVESA",
-            "address": "Rua Oeste, 321, Coimbra, Portugal",
-            "latitude": "40.2033",
-            "longitude": "-8.4103",
-            "hours": "7:00 AM - 11:00 PM",
-            "phone": "+351 239 456 789",
-            "services": "Fuel, Gas, Convenience Store, Coffee",
-            "is_open": false
-          }
-        },
-        {
-          "type": "gas_station",
-          "settings": {
-            "name": "Fall",
-            "brand": "EVESA",
-            "address": "Rua Fall, 456, Braga, Portugal",
-            "latitude": "41.5518",
-            "longitude": "-8.4229",
-            "hours": "24/7",
-            "phone": "+351 253 123 456",
-            "services": "Fuel, Gas, Convenience Store",
-            "is_open": true
-          }
-        },
-        {
-          "type": "gas_station",
-          "settings": {
-            "name": "Valega",
-            "brand": "EVESA",
-            "address": "Estrada Valega, 789, Aveiro, Portugal",
-            "latitude": "40.6405",
-            "longitude": "-8.6538",
-            "hours": "6:00 AM - 10:00 PM",
-            "phone": "+351 234 567 890",
-            "services": "Fuel, Gas, Convenience Store, Car Wash",
-            "is_open": true
-          }
-        },
-        {
-          "type": "gas_station",
-          "settings": {
-            "name": "Frazão",
-            "brand": "EVESA",
-            "address": "Rua Frazão, 123, Paredes, Portugal",
-            "latitude": "41.2048",
-            "longitude": "-8.3333",
-            "hours": "24/7",
-            "phone": "+351 255 123 456",
-            "services": "Fuel, Gas, Convenience Store",
-            "is_open": true
-          }
-        },
-        {
-          "type": "gas_station",
-          "settings": {
-            "name": "Paços de Ferreira",
-            "brand": "EVESA",
-            "address": "Avenida Principal, 456, Paços de Ferreira, Portugal",
-            "latitude": "41.2768",
-            "longitude": "-8.3761",
-            "hours": "6:00 AM - 10:00 PM",
-            "phone": "+351 255 987 654",
-            "services": "Fuel, Gas, Convenience Store, Car Wash",
-            "is_open": true
-          }
-        },
-        {
-          "type": "gas_station",
-          "settings": {
-            "name": "Marco de Canavezes",
-            "brand": "EVESA",
-            "address": "Rua Central, 789, Marco de Canavezes, Portugal",
-            "latitude": "41.1833",
-            "longitude": "-8.1500",
-            "hours": "24/7",
-            "phone": "+351 255 456 789",
-            "services": "Fuel, Gas, Convenience Store, Coffee",
-            "is_open": true
-          }
-        },
-        {
-          "type": "gas_station",
-          "settings": {
-            "name": "Between the Rivers",
-            "brand": "EVESA",
-            "address": "Estrada Entre Rios, 321, Portugal",
-            "latitude": "40.6405",
-            "longitude": "-8.6538",
-            "hours": "7:00 AM - 11:00 PM",
-            "phone": "+351 234 789 012",
-            "services": "Fuel, Gas, Convenience Store",
-            "is_open": false
-          }
-        },
-        {
-          "type": "gas_station",
-          "settings": {
-            "name": "Pedorido",
-            "brand": "EVESA",
-            "address": "Rua Pedorido, 654, Portugal",
-            "latitude": "40.6405",
-            "longitude": "-8.6538",
-            "hours": "24/7",
-            "phone": "+351 234 345 678",
-            "services": "Fuel, Gas, Convenience Store, Car Wash",
-            "is_open": true
-          }
-        },
-        {
-          "type": "gas_station",
-          "settings": {
-            "name": "Lourosa",
-            "brand": "EVESA",
-            "address": "Avenida Lourosa, 987, Portugal",
-            "latitude": "40.9843",
-            "longitude": "-8.5514",
-            "hours": "6:00 AM - 10:00 PM",
-            "phone": "+351 256 123 456",
-            "services": "Fuel, Gas, Convenience Store, Coffee",
-            "is_open": true
-          }
-        },
-        {
-          "type": "gas_station",
-          "settings": {
-            "name": "Valongo",
-            "brand": "EVESA",
-            "address": "Rua Valongo, 147, Portugal",
-            "latitude": "41.1947",
-            "longitude": "-8.5000",
-            "hours": "24/7",
-            "phone": "+351 224 567 890",
-            "services": "Fuel, Gas, Convenience Store, Car Wash",
-            "is_open": true
-          }
-        }
-      ]
-    }
-  ]
-}
+        ]
+      }
+    ]
+  }
 {% endschema %}

@@ -238,15 +238,16 @@
       "blocks": {
         "station_1": {
           "type": "gas_station",
+          "disabled": true,
           "settings": {
             "name": "Galp",
             "brand": "Galp",
-            "address": "Rua Central, 123, Lisbon, Portugal",
-            "latitude": "38.7223",
-            "longitude": "-9.1393",
-            "hours": "24/7",
-            "phone": "+351 21 123 4567",
-            "services": "Fuel, Convenience Store, Bottle, Coffee, Car Wash",
+            "address": "",
+            "latitude": "",
+            "longitude": "",
+            "hours": "",
+            "phone": "",
+            "services": "",
             "is_open": true
           }
         },
@@ -266,15 +267,16 @@
         },
         "station_3": {
           "type": "gas_station",
+          "disabled": true,
           "settings": {
             "name": "Repsol",
             "brand": "Repsol",
-            "address": "Estrada Sul, 789, Faro, Portugal",
-            "latitude": "37.0194",
-            "longitude": "-7.9322",
-            "hours": "24/7",
-            "phone": "+351 289 123 456",
-            "services": "Fuel, Convenience Store, Bottle, Coffee, Car Wash",
+            "address": "",
+            "latitude": "",
+            "longitude": "",
+            "hours": "",
+            "phone": "",
+            "services": "",
             "is_open": true
           }
         },
@@ -317,21 +319,6 @@
             "hours": "6:00 AM - 10:00 PM",
             "phone": "+351 234 567 890",
             "services": "Fuel, Convenience Store, Bottle, Coffee, Car Wash",
-            "is_open": true
-          }
-        },
-        "gas_station_MczifD": {
-          "type": "gas_station",
-          "disabled": true,
-          "settings": {
-            "name": "New Station",
-            "brand": "EVESA",
-            "address": "123 Main St, City, Portugal",
-            "latitude": "",
-            "longitude": "",
-            "hours": "24/7",
-            "phone": "+351 XXX XXX XXX",
-            "services": "Fuel, Gas, Convenience Store",
             "is_open": true
           }
         },
@@ -391,23 +378,8 @@
             "is_open": true
           }
         },
-        "gas_station_UVBChn": {
-          "type": "gas_station",
-          "settings": {
-            "name": "New Station",
-            "brand": "EVESA",
-            "address": "123 Main St, City, Portugal",
-            "latitude": "",
-            "longitude": "",
-            "hours": "24/7",
-            "phone": "+351 XXX XXX XXX",
-            "services": "Fuel, Gas, Convenience Store",
-            "is_open": true
-          }
-        },
         "station_11": {
           "type": "gas_station",
-          "disabled": true,
           "settings": {
             "name": "Pedorido",
             "brand": "EVESA",
@@ -456,12 +428,10 @@
         "station_4",
         "station_5",
         "station_6",
-        "gas_station_MczifD",
         "station_7",
         "station_8",
         "station_9",
         "station_10",
-        "gas_station_UVBChn",
         "station_11",
         "station_12",
         "station_13"
@@ -601,7 +571,7 @@
         "products_to_show": 8,
         "title": "Buy Gas Cylinders Online: Receive at Your Home",
         "heading_size": "h1",
-        "description": "<p>Choose your gas bottle and order now</p><p><a href=\"https://www.repsol.pt/particulares/casa/garrafas-de-gas/comprar-online/propano-45kg/\"><br/><br/></a></p>",
+        "description": "<p>Choose your gas bottle and order now</p>",
         "show_description": false,
         "description_style": "body",
         "columns_desktop": 4,
@@ -772,7 +742,7 @@
       "type": "contact-form",
       "name": "Contact Form",
       "settings": {
-        "heading": "We are passionate about what we do;             it is a true source of pride for us.",
+        "heading": "We are passionate about what we do           it is a true source of pride for us.",
         "subtitle": "Devesa Combustíveis is a leading fuel management company with over 10 years of experience in the market. Our work is based on our passion and the pursuit of improving customer satisfaction.",
         "address": "R da Recta de Gomil 152 4595-144 Pacos ferreira",
         "phone": "+351 923 080 048, +351 255 405 289",

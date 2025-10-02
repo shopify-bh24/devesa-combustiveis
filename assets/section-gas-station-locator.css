@@ -68,8 +68,8 @@
   align-items: center;
   background: var(--gradient-orange);
   color: #ffffff;
-  padding: 0.6rem 2.5rem;
-  border-radius: 12px;
+  padding: 0.85rem 2.5rem;
+  border-radius: 30px;
   border: none;
   text-decoration: none;
   font-weight: 700;
@@ -227,7 +227,35 @@
 .gas-station-locator__location-list {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 1.5rem;
+}
+
+/* Group Header Styles */
+.gas-station-locator__group-headers {
+  padding: 2px 10px;
+  font-weight: 700;
+  font-size: large;
+  /* background-color: #e7e7e7; */
+  /* border: 1px solid #f0f0f0; */
+  /* border-radius: 5px; */
+  /* display: flex; */
+  /* align-items: center; */
+  /* cursor: pointer; /* Clickable for Repsol */
+  /* font-weight: 600;
+  color: #333333;
+  transition: all 0.3s ease; */ 
+}
+
+.gas-station-locator__group-header:hover {
+  background-color: #f8f9fa;
+  border-color: var(--color-accent-orange);
+  transform: translateX(4px);
+}
+
+.gas-station-locator__group-name {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #000000;
 }
 
 .gas-station-locator__location-item {

@@ -38,7 +38,7 @@
 @media screen and (min-width: 750px) {
   .more-stories__grid {
     grid-template-columns: repeat(4, 1fr);
-    gap: 8px;
+    gap: 2.5rem;
   }
 }
 
@@ -98,8 +98,14 @@
   color: #ffffff;
   line-height: 1.6;
   margin: 0 0 2rem 0;
-  flex-grow: 1;
+  /* flex-grow: 1; */
   opacity: 0.9;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .story-card__button {

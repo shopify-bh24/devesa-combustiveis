@@ -68,7 +68,7 @@
 @media screen and (min-width: 1440px) {
   .featured-content__grid {
     grid-template-columns: repeat(5, 1fr);
-    gap: 8px;
+    gap: 2.5rem;
   }
 }
 

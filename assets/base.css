@@ -891,20 +891,22 @@ summary::-webkit-details-marker {
   margin-bottom: 2rem;
   padding: 0;
   list-style: none;
-  column-gap: var(--grid-mobile-horizontal-spacing);
+  column-gap: 2.5rem;
   row-gap: var(--grid-mobile-vertical-spacing);
 }
 
 @media screen and (min-width: 750px) {
   .grid {
-    column-gap: var(--grid-desktop-horizontal-spacing);
-    row-gap: var(--grid-desktop-vertical-spacing);
+    column-gap: 2.5rem;
+    row-gap: 2.5rem;
   }
 }
 
 .grid:last-child {
   margin-bottom: 0;
   padding: 0 10px;
+  gap: 2,5rem
+  ;
 }
 
 .grid__item {
@@ -1010,8 +1012,8 @@ summary::-webkit-details-marker {
   }
 
   .grid--4-col-desktop .grid__item {
-    width: calc(25% - var(--grid-desktop-horizontal-spacing) * 3 / 4);
-    max-width: calc(25% - var(--grid-desktop-horizontal-spacing) * 3 / 4);
+    width: 22%;
+    /* max-width: calc(25% - var(--grid-desktop-horizontal-spacing) * 3 / 4); */
   }
 
   .grid--3-col-desktop .grid__item {
@@ -1214,8 +1216,8 @@ button.shopify-payment-button__button--unbranded {
 .shopify-challenge__button,
 .customer button,
 button.shopify-payment-button__button--unbranded {
-  min-width: calc(12rem + var(--buttons-border-width) * 2);
-  min-height: calc(4.5rem + var(--buttons-border-width) * 2);
+  /* min-width: calc(12rem + var(--buttons-border-width) * 2);
+  min-height: calc(4.5rem + var(--buttons-border-width) * 2); */
 }
 
 .button,
@@ -2980,7 +2982,7 @@ details-disclosure > details {
 }
 
 .gradient {
-  background: #ffffff;
+  background: #0f162d;
   background-attachment: fixed;
 }
 

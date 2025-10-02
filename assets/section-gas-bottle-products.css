@@ -84,7 +84,13 @@
   color: #ffffff;
   line-height: 1.6;
   margin: 0 0 1.5rem 0;
-  flex-grow: 1;
+  /* flex-grow: 1; */
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .gas-bottle-card__use-cases {
@@ -193,6 +199,7 @@
   box-shadow: 0 4px 15px rgba(68, 116, 195, 0.3);
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  padding: 12px 0;
 }
 
 .gas-bottle-collection .button::before {
