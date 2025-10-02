@@ -322,6 +322,7 @@
         },
         "gas_station_MczifD": {
           "type": "gas_station",
+          "disabled": true,
           "settings": {
             "name": "New Station",
             "brand": "EVESA",
@@ -390,8 +391,23 @@
             "is_open": true
           }
         },
+        "gas_station_UVBChn": {
+          "type": "gas_station",
+          "settings": {
+            "name": "New Station",
+            "brand": "EVESA",
+            "address": "123 Main St, City, Portugal",
+            "latitude": "",
+            "longitude": "",
+            "hours": "24/7",
+            "phone": "+351 XXX XXX XXX",
+            "services": "Fuel, Gas, Convenience Store",
+            "is_open": true
+          }
+        },
         "station_11": {
           "type": "gas_station",
+          "disabled": true,
           "settings": {
             "name": "Pedorido",
             "brand": "EVESA",
@@ -445,6 +461,7 @@
         "station_8",
         "station_9",
         "station_10",
+        "gas_station_UVBChn",
         "station_11",
         "station_12",
         "station_13"
@@ -758,7 +775,7 @@
         "heading": "We are passionate about what we do;             it is a true source of pride for us.",
         "subtitle": "Devesa Combustíveis is a leading fuel management company with over 10 years of experience in the market. Our work is based on our passion and the pursuit of improving customer satisfaction.",
         "address": "R da Recta de Gomil 152 4595-144 Pacos ferreira",
-        "phone": "+351 923 080 048 +351 255 405 289",
+        "phone": "+351 923 080 048, +351 255 405 289",
         "color_scheme": "background-1",
         "background_image": "shopify://shop_images/istockphoto-2160041157-612x612.jpg",
         "background_opacity": 0,
