@@ -370,8 +370,8 @@
             "name": "Between the Rivers",
             "brand": "EVESA",
             "address": "Place of Portela PT, R. da Torre, 4575-416 Portela",
-            "latitude": "40.6405",
-            "longitude": "-8.6538",
+            "latitude": "40.7500",
+            "longitude": "-8.5500",
             "hours": "Every day 06:30 - 22:00",
             "phone": "+351 255 612 576",
             "services": "Fuel, Convenience Store, Bottle, Coffee, Car Wash",
@@ -384,8 +384,8 @@
             "name": "Pedorido",
             "brand": "EVESA",
             "address": "Industrial Zone Z0470613 PT, 4550-336 Pedorido",
-            "latitude": "40.6405",
-            "longitude": "-8.6538",
+            "latitude": "40.8500",
+            "longitude": "-8.4500",
             "hours": "Every day 6:30 - 21:00",
             "phone": "+351 255 762 630",
             "services": "Fuel, Convenience Store, Bottle, Coffee, WC",
@@ -512,7 +512,7 @@
           "type": "blog_card",
           "settings": {
             "image": "shopify://shop_images/download_14.png",
-            "title": "Into the deep: the ground-breaking technology transforming gas production at Ormen Lange",
+            "title": "<p><strong>Into the deep:</strong> The ground-breaking technology transforming gas production at Ormen Lange</p>",
             "description": "The world's deepest subsea compression system, located at a record distance from the shore, will boost energy supplies from a Norwegian gas field to homes and businesses across Europe.",
             "button_text": "Read more",
             "button_link": "#"
@@ -522,7 +522,7 @@
           "type": "blog_card",
           "settings": {
             "image": "shopify://shop_images/download_10.jpg",
-            "title": "Following the Northern Lights: inside a pioneering project",
+            "title": "<p><strong>Northern Lights:</strong> Inside a pioneering project</p>",
             "description": "Innovation and collaboration created the world's first commercial carbon transport and storage service in Norway. So how does it work?",
             "button_text": "Read more",
             "button_link": "#"
@@ -532,7 +532,7 @@
           "type": "blog_card",
           "settings": {
             "image": "shopify://shop_images/download_8.jpg",
-            "title": "LNG Canada: a new frontier in global gas supply",
+            "title": "<p><strong>LNG:</strong> A new frontier in global gas supply</p>",
             "description": "The largest private-sector investment in Canada's history and the country's first liquefied natural gas (LNG) export facility, LNG Canada is helping to meet the world's growing demand for a critical fuel in the energy transition.",
             "button_text": "Read more",
             "button_link": "#"
@@ -542,7 +542,7 @@
           "type": "blog_card",
           "settings": {
             "image": "shopify://shop_images/download_6.jpg",
-            "title": "Whale: Setting new standards for deep water",
+            "title": "<p><strong>Whale: </strong>Setting new standards for deep water</p>",
             "description": "The most efficient of Shell's oil and gas platforms in the Gulf of America, Whale joins our leading deep-water portfolio to help deliver the secure energy the world needs today.",
             "button_text": "Read more",
             "button_link": "#"
@@ -559,6 +559,8 @@
         "heading": "Latest News & Insights",
         "description": "Stay updated with the latest developments in energy technology and innovation",
         "color_scheme": "background-1",
+        "highlight_color": "#ff6b35",
+        "highlight_font_size": 1.1,
         "padding_top": 60,
         "padding_bottom": 100
       }
@@ -742,7 +744,7 @@
       "type": "contact-form",
       "name": "Contact Form",
       "settings": {
-        "heading": "We are passionate about what we do           it is a true source of pride for us.",
+        "heading": "We take great pride in our work, and our passion drives everything we do.",
         "subtitle": "Devesa Combustíveis is a leading fuel management company with over 10 years of experience in the market. Our work is based on our passion and the pursuit of improving customer satisfaction.",
         "address": "R da Recta de Gomil 152 4595-144 Pacos ferreira",
         "phone": "+351 923 080 048, +351 255 405 289",

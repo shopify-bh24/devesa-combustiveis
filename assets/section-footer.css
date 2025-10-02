@@ -153,7 +153,7 @@
 }
 
 .footer__utility-link:hover {
-  color: ##ff8c42;
+  color: #ff8c42;
 }
 
 .footer__cookie-preferences {
@@ -167,7 +167,7 @@
   right: 2rem;
   width: 50px;
   height: 50px;
-  background-color: #333333;
+  background-color: #e55a2b;
   border: none;
   border-radius: 8px;
   color: #ffffff;

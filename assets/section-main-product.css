@@ -1301,9 +1301,10 @@ a.product__text {
   /* arbitrary offset value based on average theme spacing and header height */
   --viewport-offset: 400px;
   --constrained-min-height: 300px;
-  --constrained-height: max(var(--constrained-min-height), calc(100vh - var(--viewport-offset)));
-  margin-right: auto;
-  margin-left: auto;
+  /* --constrained-height: max(var(--constrained-min-height), calc(100vh - var(--viewport-offset))); */
+  --constrained-height: 115rem;
+  /* margin-right: auto; */
+  /* margin-left: auto; */
 }
 
 .product-media-container.constrain-height.media-fit-contain {
@@ -1316,7 +1317,8 @@ a.product__text {
 }
 
 .product-media-container.constrain-height .media {
-  padding-top: min(var(--constrained-height), var(--ratio-percent));
+  /* padding-top: min(var(--constrained-height), var(--ratio-percent)); */
+  padding-top: 70%;
 }
 
 @media screen and (max-width: 749px) {

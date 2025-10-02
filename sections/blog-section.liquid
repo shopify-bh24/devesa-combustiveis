@@ -73,7 +73,15 @@
 
                 <div class="blog-card__content">
                   {%- if block.settings.title != blank -%}
-                    <h3 class="blog-card__title">{{ block.settings.title | escape }}</h3>
+                    {% comment %} <h3 class="blog-card__title">
+                      {%- assign title_parts = block.settings.title | split: ':' -%}
+                      {%- if title_parts.size < 2 -%}
+                        <span class="blog-card__title-highlight" style="color: {{ section.settings.highlight_color | default: '#ff6b35' }}; font-size: {{ section.settings.highlight_font_size | default: '1.1' }}em;">{{ title_parts[0] }}</span>: {{ title_parts[1] }}
+                      {%- else -%}
+                        {{ block.settings.title | escape }}
+                      {%- endif -%}
+                    </h3> {% endcomment %}
+                    <div class="blog-card__title">{{ block.settings.title }}</div>
                   {%- endif -%}
 
                   {%- if block.settings.description != blank -%}
@@ -98,7 +106,7 @@
                 name="previous"
                 aria-label="{{ 'general.slider.previous_slide' | t }}"
               >
-                {% render 'icon-caret' %}
+                {% comment %} {% render 'icon-caret' %} {% endcomment %}
               </button>
               <button
                 type="button"
@@ -106,7 +114,7 @@
                 name="next"
                 aria-label="{{ 'general.slider.next_slide' | t }}"
               >
-                {% render 'icon-caret' %}
+                {% comment %} {% render 'icon-caret' %} {% endcomment %}
               </button>
             </div>
           {%- endif -%}
@@ -139,7 +147,15 @@
 
               <div class="blog-card__content">
                 {%- if block.settings.title != blank -%}
-                  <h3 class="blog-card__title">{{ block.settings.title | escape }}</h3>
+                  <div class="blog-card__title">
+                    {% comment %} {%- assign title_parts = block.settings.title | split: ': ' -%}
+                    {%- if title_parts.size > 1 -%}
+                      <span class="blog-card__title-highlight" style="color: {{ section.settings.highlight_color | default: '#ff6b35' }}; font-size: {{ section.settings.highlight_font_size | default: '1.1' }}em;">{{ title_parts[0] }}</span>: {{ title_parts[1] }}
+                    {%- else -%}
+                      {{ block.settings.title | escape }}
+                    {%- endif -%} {% endcomment %}
+                    {{ block.settings.title }}
+                  </div>
                 {%- endif -%}
 
                 {%- if block.settings.description != blank -%}
@@ -207,6 +223,28 @@
     },
     {
       "type": "header",
+      "content": "Title Highlight Settings"
+    },
+    {
+      "type": "color",
+      "id": "highlight_color",
+      "label": "Highlight Color",
+      "default": "#ff6b35",
+      "info": "Color for the word before the colon in blog titles"
+    },
+    {
+      "type": "range",
+      "id": "highlight_font_size",
+      "min": 0.8,
+      "max": 2.0,
+      "step": 0.1,
+      "unit": "em",
+      "label": "Highlight Font Size",
+      "default": 1.1,
+      "info": "Font size multiplier for the highlighted word"
+    },
+    {
+      "type": "header",
       "content": "Section padding"
     },
     {
@@ -242,9 +280,8 @@
           "label": "Image"
         },
         {
-          "type": "text",
+          "type": "richtext",
           "id": "title",
-          "default": "Blog Post Title",
           "label": "Title"
         },
         {
@@ -270,37 +307,7 @@
   "max_blocks": 20,
   "presets": [
     {
-      "name": "Blog Section",
-      "blocks": [
-        {
-          "type": "blog_card",
-          "settings": {
-            "title": "Into the deep: the ground-breaking technology transforming gas production",
-            "description": "The world's deepest subsea compression system, located at a record distance from the shore, will boost energy supplies from a Norwegian gas field to homes and businesses across Europe."
-          }
-        },
-        {
-          "type": "blog_card",
-          "settings": {
-            "title": "Following the Northern Lights: inside a pioneering project",
-            "description": "Innovation and collaboration created the world's first commercial carbon transport and storage service in Norway. So how does it work?"
-          }
-        },
-        {
-          "type": "blog_card",
-          "settings": {
-            "title": "LNG Canada: a new frontier in global gas supply",
-            "description": "The largest private-sector investment in Canada's history and the country's first liquefied natural gas (LNG) export facility, LNG Canada is helping to meet the world's growing demand for a critical fuel in the energy transition."
-          }
-        },
-        {
-          "type": "blog_card",
-          "settings": {
-            "title": "Whale: Setting new standards for deep water",
-            "description": "The most efficient of Shell's oil and gas platforms in the Gulf of America, Whale joins our leading deep-water portfolio to help deliver the secure energy the world needs today."
-          }
-        }
-      ]
+      "name": "Blog Section"
     }
   ]
 }
