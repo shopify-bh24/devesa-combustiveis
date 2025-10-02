@@ -63,8 +63,10 @@
   }
 }
 
-.collection__description > * {
+.collection__description>* {
   margin: 0;
+  font-size: 1.3rem;
+  padding: 0 20px;
 }
 
 .collection__title.title-wrapper {
@@ -73,6 +75,9 @@
 
 .collection__title .title:not(:only-child) {
   margin-bottom: 1rem;
+  font-size: 4rem !important;
+  font-weight: 700;
+  padding: 0 20px;
 }
 
 @media screen and (min-width: 990px) {

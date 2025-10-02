@@ -1,0 +1,282 @@
+/* About BP Corporate Section Styling */
+.about-bp-corporate {
+  background-color: #14191f;
+  color: #ffffff;
+  padding: 6rem 0;
+}
+
+.about-bp-corporate__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4rem;
+}
+
+@media screen and (min-width: 990px) {
+  .about-bp-corporate__container {
+    grid-template-columns: 2fr 1fr;
+    gap: 6rem;
+    align-items: start;
+  }
+}
+
+/* Mission Section */
+.about-bp-corporate__mission {
+  grid-column: 1 / -1;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.about-bp-corporate__title {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 1.5rem 0;
+  line-height: 1.2;
+}
+
+.about-bp-corporate__description {
+  font-size: 1.2rem;
+  color: #cccccc;
+  margin: 0 0 2rem 0;
+  line-height: 1.6;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Values Section */
+.about-bp-corporate__values {
+  grid-column: 1;
+}
+
+.about-bp-corporate__subtitle {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0 0 2rem 0;
+  line-height: 1.3;
+}
+
+.about-bp-corporate__values-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+@media screen and (min-width: 750px) {
+  .about-bp-corporate__values-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.about-bp-corporate__value {
+  background-color: #2a2a2a;
+  padding: 2rem;
+  border-radius: 12px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid #404040;
+}
+
+.about-bp-corporate__value:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+}
+
+.about-bp-corporate__value-icon {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 1.5rem auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ff6b35;
+  border-radius: 50%;
+  color: #ffffff;
+}
+
+.about-bp-corporate__value-icon svg {
+  width: 30px;
+  height: 30px;
+}
+
+.about-bp-corporate__value-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0 0 1rem 0;
+  line-height: 1.3;
+}
+
+.about-bp-corporate__value-description {
+  font-size: 1rem;
+  color: #cccccc;
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* Sustainability Section */
+.about-bp-corporate__sustainability {
+  grid-column: 2;
+  background-color: #2a2a2a;
+  padding: 3rem;
+  border-radius: 12px;
+  border: 1px solid #404040;
+  text-align: center;
+}
+
+@media screen and (max-width: 989px) {
+  .about-bp-corporate__sustainability {
+    grid-column: 1;
+    margin-top: 2rem;
+  }
+}
+
+.about-bp-corporate__sustainability-description {
+  font-size: 1.1rem;
+  color: #cccccc;
+  margin: 0 0 2rem 0;
+  line-height: 1.6;
+}
+
+/* Buttons */
+.about-bp-corporate__button {
+  display: inline-block;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-decoration: none;
+  text-align: center;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: 2px solid transparent;
+}
+
+.about-bp-corporate__button--primary {
+  background-color: #ff6b35;
+  color: #ffffff;
+  border-color: #ff6b35;
+}
+
+.about-bp-corporate__button--primary:hover {
+  background-color: #e55a2b;
+  border-color: #e55a2b;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 107, 53, 0.3);
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.about-bp-corporate__button--secondary {
+  background-color: transparent;
+  color: #ff6b35;
+  border-color: #ff6b35;
+}
+
+.about-bp-corporate__button--secondary:hover {
+  background-color: #ff6b35;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 107, 53, 0.3);
+  text-decoration: none;
+}
+
+.about-bp-corporate__button:active {
+  transform: translateY(0);
+}
+
+/* Dark theme support */
+.color-scheme-1 .about-bp-corporate {
+  background-color: #1a1a1a;
+  color: #ffffff;
+}
+
+.color-scheme-1 .about-bp-corporate__title,
+.color-scheme-1 .about-bp-corporate__subtitle {
+  color: #ffffff;
+}
+
+.color-scheme-1 .about-bp-corporate__description,
+.color-scheme-1 .about-bp-corporate__sustainability-description {
+  color: #cccccc;
+}
+
+.color-scheme-1 .about-bp-corporate__value {
+  background-color: #2a2a2a;
+  border-color: #404040;
+}
+
+.color-scheme-1 .about-bp-corporate__value-title {
+  color: #ffffff;
+}
+
+.color-scheme-1 .about-bp-corporate__value-description {
+  color: #cccccc;
+}
+
+.color-scheme-1 .about-bp-corporate__sustainability {
+  background-color: #2a2a2a;
+  border-color: #404040;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 749px) {
+  .about-bp-corporate {
+    padding: 4rem 0;
+  }
+  
+  .about-bp-corporate__container {
+    gap: 3rem;
+  }
+  
+  .about-bp-corporate__title {
+    font-size: 2.5rem;
+  }
+  
+  .about-bp-corporate__subtitle {
+    font-size: 1.8rem;
+  }
+  
+  .about-bp-corporate__description {
+    font-size: 1.1rem;
+  }
+  
+  .about-bp-corporate__values-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .about-bp-corporate__value {
+    padding: 1.5rem;
+  }
+  
+  .about-bp-corporate__sustainability {
+    padding: 2rem;
+  }
+  
+  .about-bp-corporate__button {
+    padding: 0.875rem 1.5rem;
+    font-size: 1rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .about-bp-corporate__title {
+    font-size: 2rem;
+  }
+  
+  .about-bp-corporate__subtitle {
+    font-size: 1.5rem;
+  }
+  
+  .about-bp-corporate__value {
+    padding: 1.25rem;
+  }
+  
+  .about-bp-corporate__sustainability {
+    padding: 1.5rem;
+  }
+}

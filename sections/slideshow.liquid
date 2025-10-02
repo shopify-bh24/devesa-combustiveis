@@ -81,18 +81,18 @@
       </button>
 
       {%- if section.settings.auto_rotate -%}
-        <button
+        {% comment %} <button
           type="button"
           class="slideshow__autoplay slider-button{% if section.settings.auto_rotate == false %} slideshow__autoplay--paused{% endif %}"
           aria-label="{{ 'sections.slideshow.pause_slideshow' | t }}"
-        >
-          <span class="svg-wrapper">
+        > {% endcomment %}
+          {% comment %} <span class="svg-wrapper">
             {{- 'icon-pause.svg' | inline_asset_content -}}
           </span>
           <span class="svg-wrapper">
             {{- 'icon-play.svg' | inline_asset_content -}}
           </span>
-        </button>
+        </button> {% endcomment %}
       {%- endif -%}
     </div>
   {%- endif -%}
@@ -159,7 +159,15 @@
           {%- endif -%}
         </div>
         <div class="slideshow__text-wrapper banner__content banner__content--{{ block.settings.box_align }} page-width{% if block.settings.show_text_box == false %} banner--desktop-transparent{% endif %}{% if settings.animations_reveal_on_scroll and forloop.index == 1 %} scroll-trigger animate--slide-in{% endif %}">
-          <div class="slideshow__text banner__box content-container content-container--full-width-mobile color-{{ block.settings.color_scheme }} gradient slideshow__text--{{ block.settings.text_alignment }} slideshow__text-mobile--{{ block.settings.text_alignment_mobile }}">
+          
+        <div class="slideshow__text-wrapper banner__content page-width">
+  <div class="slideshow__text">
+    <img src="{{ section.settings.slide_logo_img  | img_url: 'master' }}" width="60%" height="60%" alt="Devesa Logo" class="banner-logo">
+  </div>
+</div>
+
+        
+        {% comment %} <div class="slideshow__text banner__box content-container content-container--full-width-mobile color-{{ block.settings.color_scheme }} gradient slideshow__text--{{ block.settings.text_alignment }} slideshow__text-mobile--{{ block.settings.text_alignment_mobile }}">
             {%- if block.settings.heading != blank -%}
               <h2 class="banner__heading inline-richtext {{ block.settings.heading_size }}">
                 {{ block.settings.heading }}
@@ -170,8 +178,8 @@
                 <p>{{ block.settings.subheading }}</p>
               </div>
             {%- endif -%}
-            {%- if block.settings.button_label != blank -%}
-              <div class="banner__buttons">
+            {% comment %} {%- if block.settings.button_label != blank -%}
+              {% comment %} <div class="banner__buttons">
                 <a
                   {% if block.settings.link %}
                     href="{{ block.settings.link }}"
@@ -182,13 +190,16 @@
                 >
                   {{- block.settings.button_label | escape -}}
                 </a>
-              </div>
-            {%- endif -%}
-          </div>
+              </div> {% endcomment %}
+            {%- endif -%} 
+          {% endcomment %}
+          </div> {% endcomment %}
         </div>
       </div>
     {%- endfor -%}
   </div>
+
+  
 
   {%- if section.blocks.size > 1 and section.settings.auto_rotate == false -%}
     <div class="slideshow__controls slider-buttons{% if section.settings.show_text_below %} slideshow__controls--border-radius-mobile{% endif %}">
@@ -240,18 +251,18 @@
       </button>
 
       {%- if section.settings.auto_rotate -%}
-        <button
+        {% comment %} <button
           type="button"
           class="slideshow__autoplay slider-button{% if section.settings.auto_rotate == false %} slideshow__autoplay--paused{% endif %}"
           aria-label="{{ 'sections.slideshow.pause_slideshow' | t }}"
-        >
-          <span class="svg-wrapper">
+        > {% endcomment %}
+          {% comment %} <span class="svg-wrapper">
             {{- 'icon-pause.svg' | inline_asset_content -}}
           </span>
           <span class="svg-wrapper">
             {{- 'icon-play.svg' | inline_asset_content -}}
           </span>
-        </button>
+        </button> {% endcomment %}
       {%- endif -%}
     </div>
   {%- endif -%}
@@ -285,6 +296,11 @@
       ],
       "default": "full_bleed",
       "label": "t:sections.slideshow.settings.layout.label"
+    },
+    {
+      "type": "image_picker",
+      "id": "slide_logo_img",
+      "label": "Sllide Logo Img"
     },
     {
       "type": "select",

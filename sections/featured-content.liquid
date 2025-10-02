@@ -1,0 +1,190 @@
+{{ 'section-featured-content.css' | asset_url | stylesheet_tag }}
+
+<div class="featured-content{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
+  {%- if section.settings.heading != blank -%}
+    <div class="featured-content__header">
+      <h2 class="featured-content__title {{ section.settings.heading_size }}">
+        {{ section.settings.heading }}
+      </h2>
+    </div>
+  {%- endif -%}
+
+  <div class="featured-content__grid">
+    {%- for block in section.blocks -%}
+      <div class="featured-content__card" {{ block.shopify_attributes }}>
+        {%- if block.settings.image != blank -%}
+          <div class="featured-content__card-image">
+            {%- liquid
+              assign height = block.settings.image.width | divided_by: block.settings.image.aspect_ratio | round
+              assign sizes = '(min-width: 1200px) 25vw, (min-width: 750px) 50vw, 100vw'
+              assign widths = '375, 550, 750, 1100, 1500, 1780, 2000, 3000, 3840'
+            -%}
+            {{
+              block.settings.image
+              | image_url: width: 3840
+              | image_tag: loading: 'lazy', height: height, sizes: sizes, widths: widths
+            }}
+          </div>
+        {%- endif -%}
+        
+        <div class="featured-content__card-content">
+          {%- if block.settings.title != blank -%}
+            <h3 class="featured-content__card-title">
+              {{ block.settings.title }}
+            </h3>
+          {%- endif -%}
+          
+          {%- if block.settings.description != blank -%}
+            <p class="featured-content__card-description">
+              {{ block.settings.description }}
+            </p>
+          {%- endif -%}
+          
+          {%- if block.settings.button_label != blank and block.settings.button_link != blank -%}
+            <a href="{{ block.settings.button_link }}" class="featured-content__card-button">
+              {{ block.settings.button_label }}
+              <span class="featured-content__card-arrow">→</span>
+            </a>
+          {%- endif -%}
+        </div>
+      </div>
+    {%- endfor -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Featured Content",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Settings"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "default": "Featured Content",
+      "label": "Section Heading"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "options": [
+        {
+          "value": "h2",
+          "label": "Small"
+        },
+        {
+          "value": "h1",
+          "label": "Medium"
+        },
+        {
+          "value": "h0",
+          "label": "Large"
+        },
+        {
+          "value": "hxl",
+          "label": "Extra Large"
+        }
+      ],
+      "default": "h1",
+      "label": "Heading Size"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color Scheme",
+      "default": "scheme-1"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "content_card",
+      "name": "Content Card",
+      "limit": 5,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Card Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "default": "Card Title",
+          "label": "Card Title"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "default": "Card description text goes here.",
+          "label": "Card Description"
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "default": "Read more",
+          "label": "Button Label"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured Content",
+      "blocks": [
+        {
+          "type": "content_card",
+          "settings": {
+            "title": "Fuels",
+            "description": "Our strategy is to deliver more value with less emissions.",
+            "button_label": "Read more →"
+          }
+        },
+        {
+          "type": "content_card",
+          "settings": {
+            "title": "Gas",
+            "description": "Shell's target is to become a net-zero emissions energy business by 2050.",
+            "button_label": "Read more →"
+          }
+        },
+        {
+          "type": "content_card",
+          "settings": {
+            "title": "Convenience Store",
+            "description": "Explore career opportunities at Shell.",
+            "button_label": "Read more →"
+          }
+        },
+        {
+          "type": "content_card",
+          "settings": {
+            "title": "Cafeteria",
+            "description": "The people, ideas, and innovations powering progress at Shell.",
+            "button_label": "Read more →"
+          }
+        },
+        {
+          "type": "content_card",
+          "settings": {
+            "title": "Washing",
+            "description": "The people, ideas, and innovations powering progress at Shell.",
+            "button_label": "Read more →"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

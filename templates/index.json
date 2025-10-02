@@ -35,36 +35,94 @@
         "heading",
         "button"
       ],
+      "disabled": true,
       "settings": {
         "image_overlay_opacity": 40,
         "image_height": "large",
-        "desktop_content_position": "bottom-center",
-        "show_text_box": false,
         "image_behavior": "none",
+        "desktop_content_position": "bottom-center",
         "desktop_content_alignment": "center",
+        "show_text_box": false,
         "color_scheme": "scheme-3",
-        "mobile_content_alignment": "center",
         "stack_images_on_mobile": false,
+        "mobile_content_alignment": "center",
         "show_text_below": false
+      }
+    },
+    "slideshow_J9jf8W": {
+      "type": "slideshow",
+      "blocks": {
+        "slide_GGcccR": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/download_3.webp",
+            "image_overlay_opacity": 10,
+            "heading": "Image slide",
+            "heading_size": "h1",
+            "subheading": "Tell your brand's story through images",
+            "button_label": "Button label",
+            "link": "",
+            "button_style_secondary": false,
+            "show_text_box": true,
+            "box_align": "middle-center",
+            "text_alignment": "center",
+            "text_alignment_mobile": "center",
+            "color_scheme": ""
+          }
+        },
+        "slide_nhrxyd": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/download_4.webp",
+            "image_overlay_opacity": 20,
+            "heading": "Image slide",
+            "heading_size": "h1",
+            "subheading": "Tell your brand's story through images",
+            "button_label": "Button label",
+            "link": "",
+            "button_style_secondary": false,
+            "show_text_box": true,
+            "box_align": "middle-center",
+            "text_alignment": "center",
+            "text_alignment_mobile": "center",
+            "color_scheme": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_GGcccR",
+        "slide_nhrxyd"
+      ],
+      "name": "t:sections.slideshow.presets.name",
+      "settings": {
+        "layout": "full_bleed",
+        "slide_logo_img": "shopify://shop_images/download_1.png",
+        "slide_height": "large",
+        "slider_visual": "counter",
+        "auto_rotate": true,
+        "change_slides_speed": 3,
+        "image_behavior": "none",
+        "show_text_below": true,
+        "accessibility_info": "Slideshow about our brand"
       }
     },
     "featured_collection": {
       "type": "featured-collection",
+      "disabled": true,
       "settings": {
+        "collection": "all",
+        "products_to_show": 8,
         "title": "Featured products",
         "heading_size": "h2",
         "description": "",
         "show_description": false,
         "description_style": "body",
-        "collection": "all",
-        "products_to_show": 8,
         "columns_desktop": 4,
-        "color_scheme": "scheme-1",
+        "enable_desktop_slider": false,
         "full_width": false,
         "show_view_all": true,
         "view_all_style": "solid",
-        "enable_desktop_slider": false,
-        "swipe_on_mobile": false,
+        "color_scheme": "scheme-1",
         "image_ratio": "adapt",
         "image_shape": "default",
         "show_secondary_image": true,
@@ -72,13 +130,661 @@
         "show_rating": false,
         "quick_add": "none",
         "columns_mobile": "2",
+        "swipe_on_mobile": false,
         "padding_top": 44,
         "padding_bottom": 36
+      }
+    },
+    "process_banner": {
+      "type": "process-banner",
+      "blocks": {
+        "step_1": {
+          "type": "process_step",
+          "settings": {
+            "step_text": "𝓦𝓐𝓢𝓗"
+          }
+        },
+        "step_2": {
+          "type": "process_step",
+          "settings": {
+            "step_text": "𝓒𝓛𝓔𝓐𝓝"
+          }
+        },
+        "step_3": {
+          "type": "process_step",
+          "settings": {
+            "step_text": "𝓢𝓔𝓐𝓛"
+          }
+        }
+      },
+      "block_order": [
+        "step_1",
+        "step_2",
+        "step_3"
+      ],
+      "settings": {
+        "color_scheme": "scheme-1"
+      }
+    },
+    "featured_content": {
+      "type": "featured-content",
+      "blocks": {
+        "content_card_1": {
+          "type": "content_card",
+          "settings": {
+            "image": "shopify://shop_images/download1.jpg",
+            "title": "Repsol",
+            "description": "Repsol Fuels",
+            "button_label": "Read more →",
+            "button_link": ""
+          }
+        },
+        "content_card_2": {
+          "type": "content_card",
+          "settings": {
+            "image": "shopify://shop_images/download2.jpg",
+            "title": "Gás",
+            "description": "Garrafas de gás",
+            "button_label": "Read more →",
+            "button_link": ""
+          }
+        },
+        "content_card_3": {
+          "type": "content_card",
+          "settings": {
+            "image": "shopify://shop_images/download3.jpg",
+            "title": "Consumíveis auto",
+            "description": "Loja de Conveniencia",
+            "button_label": "Read more →",
+            "button_link": ""
+          }
+        },
+        "content_card_4": {
+          "type": "content_card",
+          "settings": {
+            "image": "shopify://shop_images/download4.jpg",
+            "title": "Cafeteria",
+            "description": "Bebidas e snacks",
+            "button_label": "Read more →",
+            "button_link": ""
+          }
+        },
+        "content_card_5": {
+          "type": "content_card",
+          "settings": {
+            "image": "shopify://shop_images/download5.jpg",
+            "title": "Lavagem",
+            "description": "Interiores e exteriores",
+            "button_label": "Read more →",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "content_card_1",
+        "content_card_2",
+        "content_card_3",
+        "content_card_4",
+        "content_card_5"
+      ],
+      "settings": {
+        "heading": "Featured Content",
+        "heading_size": "h1",
+        "color_scheme": "scheme-1"
+      }
+    },
+    "gas_station_locator": {
+      "type": "gas-station-locator",
+      "blocks": {
+        "station_1": {
+          "type": "gas_station",
+          "settings": {
+            "name": "Galp",
+            "brand": "Galp",
+            "address": "Rua Central, 123, Lisbon, Portugal",
+            "latitude": "38.7223",
+            "longitude": "-9.1393",
+            "hours": "24/7",
+            "phone": "+351 21 123 4567",
+            "services": "Fuel, Convenience Store, Bottle, Coffee, Car Wash",
+            "is_open": true
+          }
+        },
+        "station_2": {
+          "type": "gas_station",
+          "settings": {
+            "name": "Gandarela",
+            "brand": "EVESA",
+            "address": "Avenida Norte, 456, Porto, Portugal",
+            "latitude": "41.1579",
+            "longitude": "-8.6291",
+            "hours": "6:00 AM - 10:00 PM",
+            "phone": "+351 22 987 6543",
+            "services": "Fuel, Convenience Store, Bottle, Coffee, Car Wash",
+            "is_open": true
+          }
+        },
+        "station_3": {
+          "type": "gas_station",
+          "settings": {
+            "name": "Repsol",
+            "brand": "Repsol",
+            "address": "Estrada Sul, 789, Faro, Portugal",
+            "latitude": "37.0194",
+            "longitude": "-7.9322",
+            "hours": "24/7",
+            "phone": "+351 289 123 456",
+            "services": "Fuel, Convenience Store, Bottle, Coffee, Car Wash",
+            "is_open": true
+          }
+        },
+        "station_4": {
+          "type": "gas_station",
+          "settings": {
+            "name": "Alvor",
+            "brand": "EVESA",
+            "address": "Rua Oeste, 321, Coimbra, Portugal",
+            "latitude": "40.2033",
+            "longitude": "-8.4103",
+            "hours": "7:00 AM - 11:00 PM",
+            "phone": "+351 239 456 789",
+            "services": "Fuel, Convenience Store, Bottle, Coffee, Car Wash",
+            "is_open": false
+          }
+        },
+        "station_5": {
+          "type": "gas_station",
+          "settings": {
+            "name": "Fall",
+            "brand": "EVESA",
+            "address": "Rua Fall, 456, Braga, Portugal",
+            "latitude": "41.5518",
+            "longitude": "-8.4229",
+            "hours": "24/7",
+            "phone": "+351 253 123 456",
+            "services": "Fuel, Convenience Store, Bottle, Coffee, Car Wash",
+            "is_open": true
+          }
+        },
+        "station_6": {
+          "type": "gas_station",
+          "settings": {
+            "name": "Valega",
+            "brand": "EVESA",
+            "address": "Estrada Valega, 789, Aveiro, Portugal",
+            "latitude": "40.6405",
+            "longitude": "-8.6538",
+            "hours": "6:00 AM - 10:00 PM",
+            "phone": "+351 234 567 890",
+            "services": "Fuel, Convenience Store, Bottle, Coffee, Car Wash",
+            "is_open": true
+          }
+        },
+        "gas_station_MczifD": {
+          "type": "gas_station",
+          "settings": {
+            "name": "New Station",
+            "brand": "EVESA",
+            "address": "123 Main St, City, Portugal",
+            "latitude": "",
+            "longitude": "",
+            "hours": "24/7",
+            "phone": "+351 XXX XXX XXX",
+            "services": "Fuel, Gas, Convenience Store",
+            "is_open": true
+          }
+        },
+        "station_7": {
+          "type": "gas_station",
+          "settings": {
+            "name": "Frazão",
+            "brand": "EVESA",
+            "address": "R. da Recta de Gomil 136 4595, Frazão",
+            "latitude": "41.2048",
+            "longitude": "-8.3333",
+            "hours": "Every day 24 hours",
+            "phone": "+351 255 873 179",
+            "services": "Fuel, Convenience Store, Bottle, Coffee, Paw",
+            "is_open": true
+          }
+        },
+        "station_8": {
+          "type": "gas_station",
+          "settings": {
+            "name": "Paços de Ferreira",
+            "brand": "EVESA",
+            "address": "Avenida Principal, 456, Paços de Ferreira, Portugal",
+            "latitude": "41.2768",
+            "longitude": "-8.3761",
+            "hours": "6:00 AM - 10:00 PM",
+            "phone": "+351 255 987 654",
+            "services": "Fuel, Convenience Store, Bottle, Coffee, Car Wash",
+            "is_open": true
+          }
+        },
+        "station_9": {
+          "type": "gas_station",
+          "settings": {
+            "name": "Marco de Canavezes",
+            "brand": "EVESA",
+            "address": "Rua Central, 789, Marco de Canavezes, Portugal",
+            "latitude": "41.1833",
+            "longitude": "-8.1500",
+            "hours": "24/7",
+            "phone": "+351 255 456 789",
+            "services": "Fuel, Convenience Store, Bottle, Coffee, Car Wash",
+            "is_open": true
+          }
+        },
+        "station_10": {
+          "type": "gas_station",
+          "settings": {
+            "name": "Between the Rivers",
+            "brand": "EVESA",
+            "address": "Place of Portela PT, R. da Torre, 4575-416 Portela",
+            "latitude": "40.6405",
+            "longitude": "-8.6538",
+            "hours": "Every day 06:30 - 22:00",
+            "phone": "+351 255 612 576",
+            "services": "Fuel, Convenience Store, Bottle, Coffee, Car Wash",
+            "is_open": true
+          }
+        },
+        "station_11": {
+          "type": "gas_station",
+          "settings": {
+            "name": "Pedorido",
+            "brand": "EVESA",
+            "address": "Industrial Zone Z0470613 PT, 4550-336 Pedorido",
+            "latitude": "40.6405",
+            "longitude": "-8.6538",
+            "hours": "Every day 6:30 - 21:00",
+            "phone": "+351 255 762 630",
+            "services": "Fuel, Convenience Store, Bottle, Coffee, WC",
+            "is_open": true
+          }
+        },
+        "station_12": {
+          "type": "gas_station",
+          "settings": {
+            "name": "Lourosa",
+            "brand": "EVESA",
+            "address": "R. Areal 1053, 4520-605 Santa Maria da Feira",
+            "latitude": "40.9843",
+            "longitude": "-8.5514",
+            "hours": "Every day 07:00 - 23:00",
+            "phone": "+351 255 873 179",
+            "services": "Fuel, Convenience Store, Bottle, Coffee, Fan",
+            "is_open": true
+          }
+        },
+        "station_13": {
+          "type": "gas_station",
+          "settings": {
+            "name": "Valongo",
+            "brand": "EVESA",
+            "address": "Fonseca Dias Street, 4440-652 Valongo",
+            "latitude": "41.1947",
+            "longitude": "-8.5000",
+            "hours": "Every day 24 hours",
+            "phone": "+351 255 873 179",
+            "services": "Fuel, Convenience Store, Bottle, Coffee, Flower",
+            "is_open": true
+          }
+        }
+      },
+      "block_order": [
+        "station_1",
+        "station_2",
+        "station_3",
+        "station_4",
+        "station_5",
+        "station_6",
+        "gas_station_MczifD",
+        "station_7",
+        "station_8",
+        "station_9",
+        "station_10",
+        "station_11",
+        "station_12",
+        "station_13"
+      ],
+      "settings": {
+        "main_heading": "Find the nearest Gas Station",
+        "description": "The best fuels on the market.",
+        "button_text": "Gas station locator",
+        "google_maps_api_key": "AIzaSyBC2obUJwfbdLzQpPodAMLSiRfXQRykOe8",
+        "margin_top": 0,
+        "margin_bottom": 80
+      }
+    },
+    "news_blog_LtJY44": {
+      "type": "news-blog",
+      "blocks": {
+        "blog_post_dkRGMQ": {
+          "type": "blog_post",
+          "settings": {
+            "image": "shopify://shop_images/download_2.jpg",
+            "title": "Charging vehicles without contracts",
+            "description": "What changes in the way you charge your vehicle at public charging stations.",
+            "button_text": "Learn more",
+            "button_link": ""
+          }
+        },
+        "blog_post_pHnKrc": {
+          "type": "blog_post",
+          "settings": {
+            "image": "shopify://shop_images/download_11.jpg",
+            "title": "Blog Post Title",
+            "description": "Brief description of the blog post content.",
+            "button_text": "Learn more",
+            "button_link": ""
+          }
+        },
+        "blog_post_jdqYFb": {
+          "type": "blog_post",
+          "settings": {
+            "image": "shopify://shop_images/download_8.jpg",
+            "title": "Contracted power: complete guide",
+            "description": "Choose the ideal power for your electricity supply contract.",
+            "button_text": "Learn more",
+            "button_link": ""
+          }
+        },
+        "blog_post_eaL9N7": {
+          "type": "blog_post",
+          "settings": {
+            "image": "shopify://shop_images/download_3.jpg",
+            "title": "Support and incentives for renewable energy",
+            "description": "See if you can take advantage of these supports and improve your comfort.",
+            "button_text": "Learn more",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "blog_post_dkRGMQ",
+        "blog_post_pHnKrc",
+        "blog_post_jdqYFb",
+        "blog_post_eaL9N7"
+      ],
+      "disabled": true,
+      "custom_css": [],
+      "name": "News from our blog",
+      "settings": {
+        "heading": "News from our blog",
+        "color_scheme": "background-1",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "blog_section": {
+      "type": "blog-section",
+      "blocks": {
+        "blog_card_1": {
+          "type": "blog_card",
+          "settings": {
+            "image": "shopify://shop_images/download_14.png",
+            "title": "Into the deep: the ground-breaking technology transforming gas production at Ormen Lange",
+            "description": "The world's deepest subsea compression system, located at a record distance from the shore, will boost energy supplies from a Norwegian gas field to homes and businesses across Europe.",
+            "button_text": "Read more",
+            "button_link": "#"
+          }
+        },
+        "blog_card_2": {
+          "type": "blog_card",
+          "settings": {
+            "image": "shopify://shop_images/download_10.jpg",
+            "title": "Following the Northern Lights: inside a pioneering project",
+            "description": "Innovation and collaboration created the world's first commercial carbon transport and storage service in Norway. So how does it work?",
+            "button_text": "Read more",
+            "button_link": "#"
+          }
+        },
+        "blog_card_3": {
+          "type": "blog_card",
+          "settings": {
+            "image": "shopify://shop_images/download_8.jpg",
+            "title": "LNG Canada: a new frontier in global gas supply",
+            "description": "The largest private-sector investment in Canada's history and the country's first liquefied natural gas (LNG) export facility, LNG Canada is helping to meet the world's growing demand for a critical fuel in the energy transition.",
+            "button_text": "Read more",
+            "button_link": "#"
+          }
+        },
+        "blog_card_4": {
+          "type": "blog_card",
+          "settings": {
+            "image": "shopify://shop_images/download_6.jpg",
+            "title": "Whale: Setting new standards for deep water",
+            "description": "The most efficient of Shell's oil and gas platforms in the Gulf of America, Whale joins our leading deep-water portfolio to help deliver the secure energy the world needs today.",
+            "button_text": "Read more",
+            "button_link": "#"
+          }
+        }
+      },
+      "block_order": [
+        "blog_card_1",
+        "blog_card_2",
+        "blog_card_3",
+        "blog_card_4"
+      ],
+      "settings": {
+        "heading": "Latest News & Insights",
+        "description": "Stay updated with the latest developments in energy technology and innovation",
+        "color_scheme": "background-1",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "featured_collection_ydnrpx": {
+      "type": "featured-collection",
+      "name": "t:sections.featured-collection.presets.name",
+      "settings": {
+        "collection": "garrafas-de-gas",
+        "products_to_show": 8,
+        "title": "Buy Gas Cylinders Online: Receive at Your Home",
+        "heading_size": "h1",
+        "description": "<p>Choose your gas bottle and order now</p><p><a href=\"https://www.repsol.pt/particulares/casa/garrafas-de-gas/comprar-online/propano-45kg/\"><br/><br/></a></p>",
+        "show_description": false,
+        "description_style": "body",
+        "columns_desktop": 4,
+        "enable_desktop_slider": false,
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "color_scheme": "scheme-3",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "none",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "more_stories": {
+      "type": "more-stories",
+      "blocks": {
+        "story_card_1": {
+          "type": "story_card",
+          "settings": {
+            "image": "shopify://shop_images/download_11.jpg",
+            "title": "From the gas fields to the global market",
+            "description": "How extraordinary engineering and growing demand for LNG helped put a remote corner of Canada on the global energy map.",
+            "button_text": "Read more",
+            "button_link": "#"
+          }
+        },
+        "story_card_2": {
+          "type": "story_card",
+          "settings": {
+            "image": "shopify://shop_images/download_7.jpg",
+            "title": "The forest holds the knowledge of our ancestors",
+            "description": "At Shell, we embedded a commitment to contribute to sustainable development into our strategy. What does that mean in practice?",
+            "button_text": "Read more",
+            "button_link": "#"
+          }
+        },
+        "story_card_3": {
+          "type": "story_card",
+          "settings": {
+            "image": "shopify://shop_images/download_1_b32a1fb0-f509-421e-9aff-1c27c8ac7d5c.jpg",
+            "title": "What does it take to design a vast and complex offshore oil and gas facility?",
+            "description": "How innovation, resilience, and collaboration fuelled a deep-water comeback for Gato do Mato in Brazil.",
+            "button_text": "Read more",
+            "button_link": "#"
+          }
+        },
+        "story_card_4": {
+          "type": "story_card",
+          "settings": {
+            "image": "shopify://shop_images/download_9.jpg",
+            "title": "Platforms for change",
+            "description": "Marking International Women's Day, the first woman to work offshore for Shell in the USA, along with two of the most recent, share their experiences of life at sea.",
+            "button_text": "Read more",
+            "button_link": "#"
+          }
+        },
+        "story_card_5": {
+          "type": "story_card",
+          "settings": {
+            "image": "shopify://shop_images/download.jpg",
+            "title": "Penguins: Next generation platform starts production in the UK North Sea",
+            "description": "More compact and efficient than its predecessor, Penguins will deliver secure energy from one of the North Sea's most iconic oil and gas fields.",
+            "button_text": "Read more",
+            "button_link": "#"
+          }
+        },
+        "story_card_6": {
+          "type": "story_card",
+          "settings": {
+            "image": "shopify://shop_images/download_12.jpg",
+            "title": "Getting more out of a Norwegian gas field",
+            "description": "A pioneering project is set to increase the amount of gas recovered from a field which supplies energy across Europe.",
+            "button_text": "Read more",
+            "button_link": "#"
+          }
+        },
+        "story_card_7": {
+          "type": "story_card",
+          "settings": {
+            "image": "shopify://shop_images/download_3.jpg",
+            "title": "A sea change for oil and gas workers",
+            "description": "As the global energy transition gathers pace, oil and gas workers are discovering their skills and expertise are in high demand for the future.",
+            "button_text": "Read more",
+            "button_link": "#"
+          }
+        },
+        "story_card_8": {
+          "type": "story_card",
+          "settings": {
+            "image": "shopify://shop_images/download_2.jpg",
+            "title": "On repeat: cutting costs and emissions in the Gulf of Mexico",
+            "description": "Whale is the second of three planned oil and gas platforms with a similar design operated by Shell.",
+            "button_text": "Read more",
+            "button_link": "#"
+          }
+        },
+        "story_card_9": {
+          "type": "story_card",
+          "settings": {
+            "image": "shopify://shop_images/download1.jpg",
+            "title": "Producing gas with renewables – come rain or shine",
+            "description": "Timi off the coast of Malaysia is Shell's first gas production platform to be powered by both wind and solar energy.",
+            "button_text": "Read more",
+            "button_link": "#"
+          }
+        },
+        "story_card_10": {
+          "type": "story_card",
+          "settings": {
+            "image": "shopify://shop_images/download_5.webp",
+            "title": "Empowering people with disabilities is good business sense",
+            "description": "People with disabilities bring many qualities to businesses: their resilience, ability to solve problems and appetite for new ways to do things are just some.",
+            "button_text": "Read more",
+            "button_link": "#"
+          }
+        },
+        "story_card_11": {
+          "type": "story_card",
+          "settings": {
+            "image": "shopify://shop_images/download_1.jpg",
+            "title": "Faster energy innovation with digital and AI",
+            "description": "From batteries to carbon capture to lower-carbon fuels, digital technologies are helping scientists accelerate the development of new materials for the energy transition.",
+            "button_text": "Read more",
+            "button_link": "#"
+          }
+        },
+        "story_card_12": {
+          "type": "story_card",
+          "settings": {
+            "image": "shopify://shop_images/download_4.jpg",
+            "title": "Farming offers fertile ground for biomethane growth",
+            "description": "Europe is increasing production of biomethane, a renewable natural gas which comes from the breakdown of organic materials including waste.",
+            "button_text": "Read more",
+            "button_link": "#"
+          }
+        }
+      },
+      "block_order": [
+        "story_card_1",
+        "story_card_2",
+        "story_card_3",
+        "story_card_4",
+        "story_card_5",
+        "story_card_6",
+        "story_card_7",
+        "story_card_8",
+        "story_card_9",
+        "story_card_10",
+        "story_card_11",
+        "story_card_12"
+      ],
+      "settings": {
+        "heading": "More stories",
+        "description": "",
+        "color_scheme": "background-1",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "contact_form_37fJ6L": {
+      "type": "contact-form",
+      "name": "Contact Form",
+      "settings": {
+        "heading": "We are passionate about what we do;   it is a true source of pride for us.",
+        "subtitle": "Devesa Combustíveis is a leading fuel management company with over 10 years of experience in the market. Our work is based on our passion and the pursuit of improving customer satisfaction.",
+        "address": "R da Recta de Gomil 152 4595-144 Pacos ferreira",
+        "phone": "+351 923 080 048 +351 255 405 289",
+        "color_scheme": "background-1",
+        "background_image": "shopify://shop_images/istockphoto-2160041157-612x612.jpg",
+        "background_opacity": 0,
+        "enable_grid_effect": false,
+        "grid_style": "dots",
+        "grid_size": 35,
+        "enable_animation": true,
+        "animation_type": "slide-up",
+        "animation_duration": 0.6,
+        "animation_delay": 0.2,
+        "padding_top": 60,
+        "padding_bottom": 60
       }
     }
   },
   "order": [
     "image_banner",
-    "featured_collection"
+    "slideshow_J9jf8W",
+    "featured_collection",
+    "process_banner",
+    "featured_content",
+    "gas_station_locator",
+    "news_blog_LtJY44",
+    "blog_section",
+    "featured_collection_ydnrpx",
+    "more_stories",
+    "contact_form_37fJ6L"
   ]
 }

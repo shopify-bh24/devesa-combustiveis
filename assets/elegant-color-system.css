@@ -1,0 +1,302 @@
+/* ========================================
+   ELEGANT COLOR PALETTE SYSTEM
+   ======================================== */
+
+:root {
+  /* Primary Colors */
+  --color-primary-dark: #0a1128;      /* Deep navy blue */
+  --color-primary-medium: #1d232a;    /* Medium navy */
+  --color-primary-light: #242833;    /* Light navy */
+  
+  /* Secondary Colors */
+  --color-secondary-dark: #14191f;    /* Dark charcoal */
+  --color-secondary-medium: #2a2a2a; /* Medium charcoal */
+  --color-secondary-light: #404040;  /* Light charcoal */
+  
+  /* Accent Colors */
+  --color-accent-orange: #ff6b35;    /* Primary orange */
+  --color-accent-orange-light: #ff8c42; /* Light orange */
+  --color-accent-orange-dark: #e55a2b;  /* Dark orange */
+  --color-accent-blue: #1e3a8a;      /* Primary blue */
+  --color-accent-blue-light: #3b82f6; /* Light blue */
+  --color-accent-blue-dark: #1e40af;  /* Dark blue */
+  
+  /* Neutral Colors */
+  --color-white: #ffffff;
+  --color-gray-light: #f8f9fa;
+  --color-gray-medium: #cccccc;
+  --color-gray-dark: #666666;
+  --color-black: #000000;
+  
+  /* Text Colors */
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #cccccc;
+  --color-text-muted: #9ca3af;
+  --color-text-dark: #1a1a1a;
+  
+  /* Background Gradients */
+  --gradient-primary: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary-medium) 100%);
+  --gradient-secondary: linear-gradient(135deg, var(--color-secondary-dark) 0%, var(--color-secondary-medium) 100%);
+  --gradient-orange: linear-gradient(135deg, var(--color-accent-orange) 0%, var(--color-accent-orange-light) 50%, var(--color-accent-orange) 100%);
+  --gradient-blue: linear-gradient(135deg, var(--color-accent-blue) 0%, var(--color-accent-blue-light) 50%, var(--color-accent-blue) 100%);
+  
+  /* Shadow Colors */
+  --shadow-primary: rgba(10, 17, 40, 0.3);
+  --shadow-secondary: rgba(42, 42, 42, 0.3);
+  --shadow-orange: rgba(255, 107, 53, 0.3);
+  --shadow-blue: rgba(30, 58, 138, 0.3);
+  
+  /* Border Colors */
+  --border-primary: var(--color-white);
+  --border-secondary: var(--color-gray-medium);
+  --border-accent: var(--color-accent-orange);
+}
+
+/* ========================================
+   GLOBAL COLOR APPLICATIONS
+   ======================================== */
+
+/* Global Font Family */
+* {
+  font-family: 'Heebo', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif !important;
+}
+
+/* Dark theme as default */
+body {
+  background-color: var(--color-primary-dark);
+  color: var(--color-text-primary);
+  font-family: 'Heebo', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif !important;
+}
+
+/* Section backgrounds */
+.section {
+  background-color: var(--color-primary-dark);
+}
+
+/* Header styling */
+.header {
+  background-color: var(--color-primary-medium);
+  border-bottom: 1px solid var(--color-secondary-light);
+}
+
+/* Footer styling */
+.footer {
+  background-color: #273154 !important;
+  color: var(--color-text-primary);
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Heebo', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif !important;
+}
+
+p, span, div, a, button, input, textarea, select {
+  font-family: 'Heebo', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif !important;
+}
+
+/* Button styling */
+.btn-primary {
+  background: var(--gradient-orange);
+  color: var(--color-white);
+  border: none;
+  box-shadow: 0 8px 25px var(--shadow-orange);
+  font-family: 'Heebo', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif !important;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, var(--color-accent-orange-dark) 0%, var(--color-accent-orange) 50%, var(--color-accent-orange-dark) 100%);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 35px var(--shadow-orange);
+}
+
+.btn-secondary {
+  background: var(--gradient-blue);
+  color: var(--color-white);
+  border: none;
+  box-shadow: 0 8px 25px var(--shadow-blue);
+  font-family: 'Heebo', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif !important;
+}
+
+.btn-secondary:hover {
+  background: linear-gradient(135deg, var(--color-accent-blue-dark) 0%, var(--color-accent-blue-light) 50%, var(--color-accent-blue-dark) 100%);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 35px var(--shadow-blue);
+}
+
+/* Card styling */
+.card {
+  background-color: var(--color-secondary-medium);
+  border: 1px solid var(--color-secondary-light);
+  color: var(--color-text-primary);
+  font-family: 'Heebo', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif !important;
+}
+
+.card:hover {
+  box-shadow: 0 8px 30px var(--shadow-secondary);
+  transform: translateY(-2px);
+}
+
+/* Form styling */
+.form-input {
+  background-color: var(--color-secondary-medium);
+  border: 1px solid var(--border-primary);
+  color: var(--color-text-primary);
+  font-family: 'Heebo', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif !important;
+}
+
+.form-input:focus {
+  border-color: var(--border-primary);
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.1);
+}
+
+.form-input::placeholder {
+  color: var(--color-text-muted);
+}
+
+/* Link styling */
+a {
+  color: var(--color-accent-orange);
+  transition: color 0.3s ease;
+  font-family: 'Heebo', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif !important;
+}
+
+a:hover {
+  color: var(--color-accent-orange-light);
+}
+
+/* Text styling */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--color-text-primary);
+}
+
+p {
+  color: var(--color-text-secondary);
+}
+
+/* ========================================
+   SECTION-SPECIFIC COLOR OVERRIDES
+   ======================================== */
+
+/* Featured Content Section */
+.featured-content {
+  background-color: var(--color-primary-dark);
+}
+
+.featured-content__card {
+  background-color: var(--color-secondary-medium);
+  border: 1px solid var(--color-secondary-light);
+}
+
+.featured-content__card:hover {
+  box-shadow: 0 8px 30px var(--shadow-secondary);
+}
+
+/* Gas Station Locator */
+.gas-station-locator__info-panel {
+  background-color: var(--color-primary-dark);
+}
+
+.gas-station-locator__map-panel {
+  background-color: var(--color-gray-light);
+}
+
+.gas-station-locator__locations {
+  background-color: var(--color-secondary-medium);
+}
+
+/* Contact Form */
+.contact-form {
+  background-color: var(--color-primary-light);
+}
+
+.contact-form__form-panel {
+  background-color: var(--color-secondary-medium);
+}
+
+/* Blog Section */
+.blog-section {
+  background-color: rgb(255, 255, 255);
+}
+
+.blog-section__card {
+  background-color: var(--color-secondary-medium);
+  border: 1px solid var(--color-secondary-light);
+}
+
+/* About Corporate */
+.about-corporate {
+  background-color: var(--color-primary-dark);
+}
+
+.about-corporate__value {
+  background-color: var(--color-secondary-medium);
+  border: 1px solid var(--color-secondary-light);
+}
+
+/* News Blog */
+.news-blog {
+  background-color: var(--color-primary-dark);
+}
+
+.news-blog__post {
+  background-color: var(--color-white);
+  color: var(--color-text-dark);
+}
+
+/* More Stories */
+.more-stories {
+  background-color: var(--color-primary-dark);
+}
+
+.more-stories__card {
+  background-color: var(--color-secondary-medium);
+  border: 1px solid var(--color-secondary-light);
+}
+
+/* Process Banner */
+.process-banner {
+  background-color: #273050;
+  color: var(--color-text-primary);
+}
+
+/* Featured Collection */
+.featured-collection {
+  background-color: var(--color-white);
+  color: var(--color-text-dark);
+}
+
+/* ========================================
+   RESPONSIVE COLOR ADJUSTMENTS
+   ======================================== */
+
+@media screen and (max-width: 749px) {
+  :root {
+    --shadow-primary: rgba(10, 17, 40, 0.2);
+    --shadow-secondary: rgba(42, 42, 42, 0.2);
+    --shadow-orange: rgba(255, 107, 53, 0.2);
+    --shadow-blue: rgba(30, 58, 138, 0.2);
+  }
+}
+
+/* ========================================
+   ACCESSIBILITY IMPROVEMENTS
+   ======================================== */
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  :root {
+    --color-text-primary: #ffffff;
+    --color-text-secondary: #ffffff;
+    --border-primary: #ffffff;
+    --border-secondary: #ffffff;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .btn-primary:hover,
+  .btn-secondary:hover,
+  .card:hover {
+    transform: none;
+  }
+}

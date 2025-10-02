@@ -1,0 +1,260 @@
+{{ 'section-more-stories.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="more-stories color-{{ section.settings.color_scheme }} section-{{ section.id }}-padding">
+  <div class="page-width">
+    {%- if section.settings.heading != blank -%}
+      <div class="more-stories__header">
+        <h2 class="more-stories__title">{{ section.settings.heading | escape }}</h2>
+        {%- if section.settings.description != blank -%}
+          <p class="more-stories__description">{{ section.settings.description }}</p>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    <div class="more-stories__grid">
+      {%- for block in section.blocks -%}
+        <div class="story-card" {{ block.shopify_attributes }}>
+          {%- if block.settings.image != blank -%}
+            <div class="story-card__image">
+              <img
+                srcset="
+                  {%- if block.settings.image.width >= 165 -%}{{ block.settings.image | image_url: width: 165 }} 165w,{%- endif -%}
+                  {%- if block.settings.image.width >= 360 -%}{{ block.settings.image | image_url: width: 360 }} 360w,{%- endif -%}
+                  {%- if block.settings.image.width >= 533 -%}{{ block.settings.image | image_url: width: 533 }} 533w,{%- endif -%}
+                  {%- if block.settings.image.width >= 720 -%}{{ block.settings.image | image_url: width: 720 }} 720w,{%- endif -%}
+                  {%- if block.settings.image.width >= 940 -%}{{ block.settings.image | image_url: width: 940 }} 940w,{%- endif -%}
+                  {%- if block.settings.image.width >= 1066 -%}{{ block.settings.image | image_url: width: 1066 }} 1066w,{%- endif -%}
+                  {{ block.settings.image | image_url }} {{ block.settings.image.width }}w
+                "
+                src="{{ block.settings.image | image_url: width: 533 }}"
+                sizes="(min-width: 990px) calc((100vw - 130px) / 4), (min-width: 750px) calc((100vw - 120px) / 2), calc((100vw - 35px) / 1)"
+                alt="{{ block.settings.image.alt | escape }}"
+                loading="lazy"
+                width="{{ block.settings.image.width }}"
+                height="{{ block.settings.image.height }}"
+              >
+            </div>
+          {%- endif -%}
+
+          <div class="story-card__content">
+            {%- if block.settings.title != blank -%}
+              <h3 class="story-card__title">{{ block.settings.title | escape }}</h3>
+            {%- endif -%}
+
+            {%- if block.settings.description != blank -%}
+              <p class="story-card__description">{{ block.settings.description }}</p>
+            {%- endif -%}
+
+            {%- if block.settings.button_text != blank and block.settings.button_link != blank -%}
+              <a href="{{ block.settings.button_link }}" class="story-card__button">
+                {{ block.settings.button_text | escape }} →
+              </a>
+            {%- endif -%}
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "More Stories",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "default": "More stories",
+      "label": "Heading"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description"
+    },
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "options": [
+        {
+          "value": "background-1",
+          "label": "Background 1"
+        },
+        {
+          "value": "background-2",
+          "label": "Background 2"
+        },
+        {
+          "value": "inverse",
+          "label": "Inverse"
+        }
+      ],
+      "default": "background-1",
+      "label": "Color scheme"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 36
+    }
+  ],
+  "blocks": [
+    {
+      "type": "story_card",
+      "name": "Story Card",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "default": "Story Title",
+          "label": "Title"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "default": "Write a compelling description for your story that will engage readers and encourage them to read more.",
+          "label": "Description"
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "default": "Read more",
+          "label": "Button Text"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "More Stories",
+      "blocks": [
+        {
+          "type": "story_card",
+          "settings": {
+            "title": "From the gas fields to the global market",
+            "description": "How extraordinary engineering and growing demand for LNG helped put a remote corner of Canada on the global energy map."
+          }
+        },
+        {
+          "type": "story_card",
+          "settings": {
+            "title": "The forest holds the knowledge of our ancestors",
+            "description": "At Shell, we embedded a commitment to contribute to sustainable development into our strategy. What does that mean in practice?"
+          }
+        },
+        {
+          "type": "story_card",
+          "settings": {
+            "title": "What does it take to design a vast and complex offshore oil and gas facility?",
+            "description": "How innovation, resilience, and collaboration fuelled a deep-water comeback for Gato do Mato in Brazil."
+          }
+        },
+        {
+          "type": "story_card",
+          "settings": {
+            "title": "Platforms for change",
+            "description": "Marking International Women's Day, the first woman to work offshore for Shell in the USA, along with two of the most recent, share their experiences of life at sea."
+          }
+        },
+        {
+          "type": "story_card",
+          "settings": {
+            "title": "Penguins: Next generation platform starts production in the UK North Sea",
+            "description": "More compact and efficient than its predecessor, Penguins will deliver secure energy from one of the North Sea's most iconic oil and gas fields."
+          }
+        },
+        {
+          "type": "story_card",
+          "settings": {
+            "title": "Getting more out of a Norwegian gas field",
+            "description": "A pioneering project is set to increase the amount of gas recovered from a field which supplies energy across Europe."
+          }
+        },
+        {
+          "type": "story_card",
+          "settings": {
+            "title": "A sea change for oil and gas workers",
+            "description": "As the global energy transition gathers pace, oil and gas workers are discovering their skills and expertise are in high demand for the future."
+          }
+        },
+        {
+          "type": "story_card",
+          "settings": {
+            "title": "On repeat: cutting costs and emissions in the Gulf of Mexico",
+            "description": "Whale is the second of three planned oil and gas platforms with a similar design operated by Shell."
+          }
+        },
+        {
+          "type": "story_card",
+          "settings": {
+            "title": "Producing gas with renewables – come rain or shine",
+            "description": "Timi off the coast of Malaysia is Shell's first gas production platform to be powered by both wind and solar energy."
+          }
+        },
+        {
+          "type": "story_card",
+          "settings": {
+            "title": "Empowering people with disabilities is good business sense",
+            "description": "People with disabilities bring many qualities to businesses: their resilience, ability to solve problems and appetite for new ways to do things are just some."
+          }
+        },
+        {
+          "type": "story_card",
+          "settings": {
+            "title": "Faster energy innovation with digital and AI",
+            "description": "From batteries to carbon capture to lower-carbon fuels, digital technologies are helping scientists accelerate the development of new materials for the energy transition."
+          }
+        },
+        {
+          "type": "story_card",
+          "settings": {
+            "title": "Farming offers fertile ground for biomethane growth",
+            "description": "Europe is increasing production of biomethane, a renewable natural gas which comes from the breakdown of organic materials including waste."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

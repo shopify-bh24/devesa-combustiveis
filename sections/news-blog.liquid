@@ -1,0 +1,371 @@
+{{ 'section-news-blog.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="news-blog color-{{ section.settings.color_scheme }} section-{{ section.id }}-padding">
+  <div class="page-width">
+    <div class="news-blog__container">
+      <!-- Section Header -->
+      <div class="news-blog__header">
+        {%- if section.settings.heading != blank -%}
+          <h2 class="news-blog__title">{{ section.settings.heading | escape }}</h2>
+        {%- endif -%}
+        
+        <!-- Navigation Arrows -->
+        <div class="news-blog__navigation">
+          <button class="news-blog__nav-button news-blog__nav-button--prev" aria-label="Previous posts">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="15,18 9,12 15,6"></polyline>
+            </svg>
+          </button>
+          <button class="news-blog__nav-button news-blog__nav-button--next" aria-label="Next posts">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="9,18 15,12 9,6"></polyline>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Blog Posts Slider -->
+      <div class="news-blog__slider">
+        <div class="news-blog__posts" id="news-blog-posts">
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'blog_post' -%}
+              <div class="news-blog__post" {{ block.shopify_attributes }}>
+                {%- if block.settings.image != blank -%}
+                  <div class="news-blog__post-image">
+                    <img src="{{ block.settings.image | image_url: width: 400 }}" 
+                         alt="{{ block.settings.title | escape }}" 
+                         class="news-blog__image" 
+                         loading="lazy">
+                  </div>
+                {%- endif -%}
+                
+                <div class="news-blog__post-content">
+                  {%- if block.settings.title != blank -%}
+                    <h3 class="news-blog__post-title">{{ block.settings.title | escape }}</h3>
+                  {%- endif -%}
+                  
+                  {%- if block.settings.description != blank -%}
+                    <p class="news-blog__post-description">{{ block.settings.description }}</p>
+                  {%- endif -%}
+                  
+                  {%- if block.settings.button_text != blank and block.settings.button_link != blank -%}
+                    <a href="{{ block.settings.button_link }}" class="news-blog__post-button">
+                      {{ block.settings.button_text | escape }}
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="9,18 15,12 9,6"></polyline>
+                      </svg>
+                    </a>
+                  {%- endif -%}
+                </div>
+              </div>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const postsContainer = document.getElementById('news-blog-posts');
+  const prevButton = document.querySelector('.news-blog__nav-button--prev');
+  const nextButton = document.querySelector('.news-blog__nav-button--next');
+  
+  if (!postsContainer || !prevButton || !nextButton) return;
+  
+  let currentIndex = 0;
+  const posts = postsContainer.querySelectorAll('.news-blog__post');
+  let postsPerView = getPostsPerView();
+  let maxIndex = Math.max(0, posts.length - postsPerView);
+  
+  function getPostsPerView() {
+    if (window.innerWidth >= 990) return 3;
+    if (window.innerWidth >= 750) return 2;
+    return 1;
+  }
+  
+  function updateSlider() {
+    const cardWidth = posts[0] ? posts[0].offsetWidth + 32 : 332; // 32px for gap
+    const translateX = -currentIndex * cardWidth;
+    postsContainer.style.transform = `translateX(${translateX}px)`;
+    
+    // Update button states
+    prevButton.disabled = currentIndex === 0;
+    nextButton.disabled = currentIndex >= maxIndex;
+    
+    // Add visual feedback
+    prevButton.style.opacity = currentIndex === 0 ? '0.5' : '1';
+    nextButton.style.opacity = currentIndex >= maxIndex ? '0.5' : '1';
+  }
+  
+  function handleResize() {
+    const newPostsPerView = getPostsPerView();
+    if (newPostsPerView !== postsPerView) {
+      postsPerView = newPostsPerView;
+      maxIndex = Math.max(0, posts.length - postsPerView);
+      currentIndex = Math.min(currentIndex, maxIndex);
+      updateSlider();
+    }
+  }
+  
+  function slideToNext() {
+    if (currentIndex < maxIndex) {
+      currentIndex++;
+      updateSlider();
+    }
+  }
+  
+  function slideToPrev() {
+    if (currentIndex > 0) {
+      currentIndex--;
+      updateSlider();
+    }
+  }
+  
+  // Event listeners
+  prevButton.addEventListener('click', slideToPrev);
+  nextButton.addEventListener('click', slideToNext);
+  
+  // Touch/swipe support
+  let startX = 0;
+  let isDragging = false;
+  
+  postsContainer.addEventListener('touchstart', (e) => {
+    startX = e.touches[0].clientX;
+    isDragging = true;
+  });
+  
+  postsContainer.addEventListener('touchmove', (e) => {
+    if (!isDragging) return;
+    e.preventDefault();
+  });
+  
+  postsContainer.addEventListener('touchend', (e) => {
+    if (!isDragging) return;
+    isDragging = false;
+    
+    const endX = e.changedTouches[0].clientX;
+    const diffX = startX - endX;
+    
+    if (Math.abs(diffX) > 50) { // Minimum swipe distance
+      if (diffX > 0) {
+        slideToNext();
+      } else {
+        slideToPrev();
+      }
+    }
+  });
+  
+  // Keyboard navigation
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') {
+      slideToPrev();
+    } else if (e.key === 'ArrowRight') {
+      slideToNext();
+    }
+  });
+  
+  // Auto-slide (optional)
+  let autoSlideInterval;
+  
+  function startAutoSlide() {
+    autoSlideInterval = setInterval(() => {
+      if (currentIndex < maxIndex) {
+        slideToNext();
+      } else {
+        currentIndex = 0;
+        updateSlider();
+      }
+    }, 5000); // Auto-slide every 5 seconds
+  }
+  
+  function stopAutoSlide() {
+    if (autoSlideInterval) {
+      clearInterval(autoSlideInterval);
+    }
+  }
+  
+  // Start auto-slide on hover out, stop on hover
+  postsContainer.addEventListener('mouseenter', stopAutoSlide);
+  postsContainer.addEventListener('mouseleave', startAutoSlide);
+  
+  // Initialize
+  window.addEventListener('resize', handleResize);
+  updateSlider();
+  
+  // Start auto-slide after 3 seconds
+  setTimeout(startAutoSlide, 3000);
+});
+</script>
+
+{% schema %}
+{
+  "name": "News from our blog",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "default": "News from our blog",
+      "label": "Heading"
+    },
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "options": [
+        {
+          "value": "background-1",
+          "label": "Background 1"
+        },
+        {
+          "value": "background-2",
+          "label": "Background 2"
+        },
+        {
+          "value": "inverse",
+          "label": "Inverse"
+        }
+      ],
+      "default": "background-1",
+      "label": "Color scheme"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 60
+    }
+  ],
+  "blocks": [
+    {
+      "type": "blog_post",
+      "name": "Blog Post",
+      "limit": 20,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Post Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "default": "Blog Post Title",
+          "label": "Post Title"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "default": "Brief description of the blog post content.",
+          "label": "Post Description"
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "default": "Learn more",
+          "label": "Button Text"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button Link"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 20,
+  "presets": [
+    {
+      "name": "News from our blog",
+      "blocks": [
+        {
+          "type": "blog_post",
+          "settings": {
+            "title": "Charging vehicles without contracts",
+            "description": "What changes in the way you charge your vehicle at public charging stations.",
+            "button_text": "Learn more"
+          }
+        },
+        {
+          "type": "blog_post",
+          "settings": {
+            "title": "Support and incentives for renewable energy",
+            "description": "See if you can take advantage of these supports and improve your comfort.",
+            "button_text": "Learn more"
+          }
+        },
+        {
+          "type": "blog_post",
+          "settings": {
+            "title": "Contracted power: complete guide",
+            "description": "Choose the ideal power for your electricity supply contract.",
+            "button_text": "Learn more"
+          }
+        },
+        {
+          "type": "blog_post",
+          "settings": {
+            "title": "Is it worth having solar panels in Portugal?",
+            "description": "Analyze carefully the benefits and costs of solar energy in Portugal.",
+            "button_text": "Learn more"
+          }
+        },
+        {
+          "type": "blog_post",
+          "settings": {
+            "title": "Electric vehicle charging at home",
+            "description": "Everything you need to know about installing a home charging station.",
+            "button_text": "Learn more"
+          }
+        },
+        {
+          "type": "blog_post",
+          "settings": {
+            "title": "Energy efficiency tips for your home",
+            "description": "Simple ways to reduce your energy consumption and save money.",
+            "button_text": "Learn more"
+          }
+        },
+        {
+          "type": "blog_post",
+          "settings": {
+            "title": "The future of renewable energy",
+            "description": "Exploring the latest trends and innovations in clean energy technology.",
+            "button_text": "Learn more"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

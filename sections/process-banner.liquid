@@ -1,0 +1,79 @@
+{{ 'section-process-banner.css' | asset_url | stylesheet_tag }}
+
+<div class="process-banner{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
+  <div class="process-banner__container">
+    <div class="process-banner__steps">
+      {%- for block in section.blocks -%}
+        <div class="process-banner__step" {{ block.shopify_attributes }}>
+          <span class="process-banner__step-text">{{ block.settings.step_text }}</span>
+        </div>
+        {%- unless forloop.last -%}
+          <div class="process-banner__separator"></div>
+        {%- endunless -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Process Banner",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Settings"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color Scheme",
+      "default": "scheme-1"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "process_step",
+      "name": "Process Step",
+      "limit": 5,
+      "settings": [
+        {
+          "type": "text",
+          "id": "step_text",
+          "default": "STEP",
+          "label": "Step Text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Process Banner",
+      "blocks": [
+        {
+          "type": "process_step",
+          "settings": {
+            "step_text": "𝓦𝓐𝓢𝓗"
+          }
+        },
+        {
+          "type": "process_step",
+          "settings": {
+            "step_text": "𝓬𝓵𝓮𝓪𝓷"
+          }
+        },
+        {
+          "type": "process_step",
+          "settings": {
+            "step_text": "𝓢𝓔𝓐𝓛"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

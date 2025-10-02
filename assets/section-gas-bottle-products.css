@@ -1,0 +1,267 @@
+/* Gas Bottle Product Card Styling */
+.gas-bottle-collection {
+  /* background-color: #ffffff !important; */
+  /* color: #333333; */
+}
+
+/* .gas-bottle-collection .collection__title .title {
+  color: #333333;
+} */
+
+/* .gas-bottle-collection .collection__description {
+  color: #666666;
+} */
+
+/* Gas bottle card styling */
+.gas-bottle-card {
+  background-color: #2a2a2a;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.gas-bottle-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+.gas-bottle-card__image {
+  width: 100%;
+  height: 250px;
+  overflow: hidden;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  border-radius: 12px 12px 0 0;
+}
+
+.gas-bottle-card__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.gas-bottle-card:hover .gas-bottle-card__image img {
+  transform: scale(1.05);
+}
+
+.gas-bottle-card__content {
+  padding: 2rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: #273154;
+}
+
+.gas-bottle-card__title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0 0 1rem 0;
+  line-height: 1.3;
+}
+
+.gas-bottle-card__title a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.gas-bottle-card__title a:hover {
+  color: #cccccc;
+}
+
+.gas-bottle-card__description {
+  font-size: 1.1rem;
+  color: #ffffff;
+  line-height: 1.6;
+  margin: 0 0 1.5rem 0;
+  flex-grow: 1;
+}
+
+.gas-bottle-card__use-cases {
+  margin-bottom: 2rem;
+}
+
+.gas-bottle-card__use-cases-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0 0 1rem 0;
+}
+
+.gas-bottle-card__use-cases-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.gas-bottle-card__use-case {
+  display: flex;
+  align-items: center;
+  font-size: 0.95rem;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
+}
+
+.gas-bottle-card__use-case:last-child {
+  margin-bottom: 0;
+}
+
+.gas-bottle-card__check-icon {
+  width: 16px;
+  height: 16px;
+  color: #28a745;
+  margin-right: 0.75rem;
+  flex-shrink: 0;
+}
+
+.gas-bottle-card__button {
+  background: linear-gradient(135deg, #151618, #4474c3, #000000);
+  color: #ffffff;
+  border: none;
+  padding: 0.875rem 1.5rem;
+  border-radius: 8px;
+  font-size: 2rem;
+  font-weight: 500;
+  text-decoration: none;
+  text-align: center;
+  transition: all 0.3s ease;
+  display: inline-block;
+  width: 100%;
+  box-sizing: border-box;
+  cursor: pointer;
+  margin-top: auto;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(30, 58, 138, 0.3);
+}
+
+.gas-bottle-card__button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.gas-bottle-card__button:hover::before {
+  left: 100%;
+}
+
+.gas-bottle-card__button:hover {
+  background: linear-gradient(135deg, #1e40af 0%, #60a5fa 50%, #2563eb 100%);
+  transform: translateY(-2px);
+  color: #ffffff;
+  text-decoration: none;
+  box-shadow: 0 6px 20px rgba(30, 58, 138, 0.4);
+}
+
+.gas-bottle-card__button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 10px rgba(30, 58, 138, 0.3);
+}
+
+/* View All Button Styling */
+.gas-bottle-collection .button {
+  background: var(--gradient-orange);
+  color: #ffffff;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 5rem;
+  font-size: 1.6rem;
+  font-weight: 600;
+  text-decoration: none;
+  text-align: center;
+  transition: all 0.3s ease;
+  display: flex;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(68, 116, 195, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.gas-bottle-collection .button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.gas-bottle-collection .button:hover::before {
+  left: 100%;
+}
+
+.gas-bottle-collection .button:hover {
+  background: linear-gradient(135deg,var(--color-accent-orange-dark) 0%,var(--color-accent-orange) 50%,var(--color-accent-orange-dark) 100%);
+  transform: translateY(-2px);
+  color: #ffffff;
+  text-decoration: none;
+  box-shadow: 0 6px 20px rgba(68, 116, 195, 0.4);
+}
+
+.gas-bottle-collection .button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 10px rgba(68, 116, 195, 0.3);
+}
+
+/* View All Button Container */
+.gas-bottle-collection .collection__view-all {
+  text-align: center;
+  margin-top: 3rem;
+}
+
+.gas-bottle-collection .collection__view-all a {
+  display: inline-block;
+  width: 300px;
+  font-size: 2.1rem;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 749px) {
+  .gas-bottle-card__content {
+    padding: 1.5rem;
+  }
+
+  .gas-bottle-card__image {
+    height: 200px;
+    padding: 1.5rem;
+  }
+
+  .gas-bottle-card__title {
+    font-size: 1.25rem;
+  }
+
+  .gas-bottle-card__description {
+    font-size: 1.3rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .gas-bottle-card__content {
+    padding: 1.25rem;
+  }
+
+  .gas-bottle-card__image {
+    height: 180px;
+    padding: 1rem;
+  }
+}

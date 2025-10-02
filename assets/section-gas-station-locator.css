@@ -1,0 +1,475 @@
+/* Gas Station Locator Section */
+.gas-station-locator {
+  display: flex;
+  flex-direction: column;
+  min-height: 600px;
+  background-color: #ffffff;
+}
+
+@media screen and (min-width: 750px) {
+  .gas-station-locator {
+    flex-direction: row;
+    margin: auto;
+    max-width: 1259px;
+  }
+}
+
+/* Left Panel - Information */
+.gas-station-locator__info-panel {
+  background-color: #273050;
+  color: #fff;
+  padding: 4rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  box-shadow: 5px 0 15px #0003;
+  position: relative;
+  z-index: 1;
+  width: 27%;
+  align-items: center;
+  text-align: center;
+  border-radius: 15px;
+}
+
+@media screen and (max-width: 749px) {
+  .gas-station-locator__info-panel {
+    flex: 0 0 auto;
+    padding: 3rem 2rem;
+    border-radius: 0;
+    box-shadow: none;
+  }
+}
+
+.gas-station-locator__brand {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+  color: #ffffff;
+}
+
+.gas-station-locator__heading {
+  font-size: 4rem;
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+  color: #ffffff;
+}
+
+.gas-station-locator__description {
+  font-size: 1.3rem;
+  line-height: 1.6;
+  margin-bottom: 2.5rem;
+  color: #ffffff;
+}
+
+.gas-station-locator__button {
+  display: inline-flex;
+  align-items: center;
+  background: var(--gradient-orange);
+  color: #ffffff;
+  padding: 0.6rem 2.5rem;
+  border-radius: 12px;
+  border: none;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  /* box-shadow: 0 8px 25px rgba(255, 107, 53, 0.3); */
+  position: relative;
+  overflow: hidden;
+}
+
+.gas-station-locator__button:hover {
+  background: linear-gradient(135deg, var(--color-accent-orange-dark) 0%, var(--color-accent-orange) 50%, var(--color-accent-orange-dark) 100%);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 35px var(--shadow-orange);
+}
+
+.gas-station-locator__button:active {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px var(--shadow-orange);
+}
+
+/* Shimmer effect for button */
+.gas-station-locator__button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.6s ease;
+  z-index: 1;
+}
+
+.gas-station-locator__button:hover::before {
+  left: 100%;
+}
+
+.gas-station-locator__button-arrow {
+  width: 16px;
+  height: 16px;
+  margin-left: 0.8rem;
+  fill: currentColor;
+  transition: transform 0.3s ease;
+  position: relative;
+  z-index: 2;
+}
+
+.gas-station-locator__button:hover .gas-station-locator__button-arrow {
+  transform: translateX(3px);
+}
+
+/* Right Panel - Map and Locations */
+.gas-station-locator__map-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+@media screen and (min-width: 750px) {
+  .gas-station-locator__map-panel {
+    flex-direction: row;
+  }
+}
+
+/* Map Container */
+.gas-station-locator__map-container {
+  flex: 1;
+  position: relative;
+  background-color: #e0e0e0;
+  border-radius: 15px;
+}
+
+.gas-station-locator__map {
+  width: 100%;
+  height: 100%;
+  min-height: 400px;
+  border-radius: 10px;
+}
+
+@media screen and (min-width: 750px) {
+  .gas-station-locator__map {
+    /* height: auto; */
+    min-height: 600px;
+  }
+}
+
+.gas-station-locator__map-controls {
+  position: absolute;
+  bottom: 28px;
+  left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.gas-station-locator__zoom-btn {
+  width: 40px;
+  height: 40px;
+  background-color: #ffffff;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+}
+
+.gas-station-locator__zoom-btn:hover {
+  background-color: #f0f0f0;
+}
+
+/* Location List */
+.gas-station-locator__locations {
+  flex: 0 0 235px;
+  background-color: #fafbfc0f;
+  padding: 1.5rem;
+  overflow-y: auto;
+  border: 1px solid #f1ebeb;
+  border-radius: 15px;
+}
+
+@media screen and (max-width: 749px) {
+  .gas-station-locator__locations {
+    flex: 0 0 auto;
+    height: 300px;
+    border-left: none;
+    border-top: 1px solid #f0f0f0;
+  }
+}
+
+.gas-station-locator__filter {
+  margin-bottom: 1.5rem;
+  display: none;
+}
+
+.gas-station-locator__filter-select {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  background-color: #ffffff;
+  color: #333333;
+  cursor: pointer;
+}
+
+.gas-station-locator__location-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.gas-station-locator__location-item {
+  padding: 2px 10px;
+  background-color: #ffffff;
+  border: 1px solid #f0f0f0;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+}
+
+.gas-station-locator__location-item:hover {
+  background-color: #f8f9fa;
+  border-color: var(--color-accent-orange);
+  transform: translateX(4px);
+}
+
+.gas-station-locator__location-item.active {
+  background-color: #ffffff;
+  border-color: #eeeeee;
+  border-left: 4px solid #ffffff;
+}
+
+.gas-station-locator__location-name {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #000000;
+}
+
+.gas-station-locator__location-item.active .gas-station-locator__location-name {
+  color: #373737;
+  font-weight: 600;
+}
+
+/* Info Window Styles */
+.gas-station-info {
+  background-color: var(--color-primary-dark);
+  border-radius: 8px;
+  max-width: 350px;
+  min-width: 300px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  overflow: visible;
+  position: relative;
+}
+
+/* Remove Google Maps info window border and background */
+.gm-style-iw {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+
+.gm-style-iw-c {
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.gm-style-iw-d {
+  background: transparent !important;
+  border: none !important;
+  overflow: visible !important;
+}
+
+/* Override Google Maps inline overflow styles */
+.gm-style-iw-d[style*="overflow"] {
+  overflow: visible !important;
+}
+
+.gm-style-iw-c[style*="overflow"] {
+  overflow: visible !important;
+}
+
+.gm-style-iw[style*="overflow"] {
+  overflow: visible !important;
+}
+
+.gas-station-info__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 1.5rem 1rem 1.5rem;
+  border-bottom: 1px solid #1a2340;
+}
+
+.gas-station-info__title {
+  margin: 0;
+  color: #ffffff;
+  font-size: 1.8rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.gas-station-info__close {
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 2rem;
+  font-weight: 300;
+  cursor: pointer;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background-color 0.3s ease;
+}
+
+.gas-station-info__close:hover {
+  background-color: #1a2340;
+}
+
+.gas-station-info__content {
+  padding: 1rem 1.5rem 1.5rem 1.5rem;
+  overflow: visible;
+}
+
+.gas-station-info__detail {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  gap: 1rem;
+}
+
+.gas-station-info__detail:last-child {
+  margin-bottom: 0;
+}
+
+.gas-station-info__icon {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0.2rem;
+}
+
+.gas-station-info__icon svg {
+  width: 100%;
+  height: 100%;
+  fill: #ffffff;
+}
+
+.gas-station-info__text {
+  flex: 1;
+}
+
+.gas-station-info__value {
+  color: #ffffff;
+  font-size: 1.1rem;
+  line-height: 1.4;
+  word-wrap: break-word;
+}
+
+.gas-station-info__services {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #1a2340;
+}
+
+.gas-station-info__service-icon {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.gas-station-info__service-icon:hover {
+  transform: scale(1.1);
+}
+
+.gas-station-info__service-icon svg {
+  width: 100%;
+  height: 100%;
+  fill: #ffffff;
+}
+
+/* Scrollbar styles removed - no overflow scrolling */
+
+/* Mobile Responsive */
+@media screen and (max-width: 768px) {
+  .gas-station-locator__info-panel {
+    display: none !important;
+  }
+}
+
+@media screen and (max-width: 749px) {
+  .gas-station-locator {
+    min-height: auto;
+  }
+
+  .gas-station-locator__info-panel {
+    order: 2;
+    display: none !important;
+  }
+
+  .gas-station-locator__map-panel {
+    order: 1;
+  }
+
+  .gas-station-locator__heading {
+    font-size: 2.5rem;
+  }
+
+  .gas-station-locator__map {
+    min-height: 430px;
+  }
+
+  .gas-station-locator__location-list {
+    gap: 0.1rem;
+  }
+  .gas-station-locator__map-controls {
+    bottom: 38px;
+    /* right: 10px; */
+  }
+
+  .gas-station-locator__zoom-btn {
+    width: 35px;
+    height: 35px;
+    font-size: 16px;
+  }
+}
+
+/* Animation for scroll reveal */
+.scroll-trigger.animate--fade-in {
+  opacity: 0;
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.scroll-trigger.animate--fade-in.animate {
+  opacity: 1;
+  transform: translateY(0);
+}
