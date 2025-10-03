@@ -236,21 +236,6 @@
     "gas_station_locator": {
       "type": "gas-station-locator",
       "blocks": {
-        "station_1": {
-          "type": "gas_station",
-          "disabled": true,
-          "settings": {
-            "name": "Galp",
-            "brand": "Galp",
-            "address": "",
-            "latitude": "",
-            "longitude": "",
-            "hours": "",
-            "phone": "",
-            "services": "",
-            "is_open": true
-          }
-        },
         "station_2": {
           "type": "gas_station",
           "settings": {
@@ -262,21 +247,6 @@
             "hours": "6:00 AM - 10:00 PM",
             "phone": "+351 22 987 6543",
             "services": "Fuel, Convenience Store, Bottle, Coffee, Car Wash",
-            "is_open": true
-          }
-        },
-        "station_3": {
-          "type": "gas_station",
-          "disabled": true,
-          "settings": {
-            "name": "Repsol",
-            "brand": "Repsol",
-            "address": "",
-            "latitude": "",
-            "longitude": "",
-            "hours": "",
-            "phone": "",
-            "services": "",
             "is_open": true
           }
         },
@@ -422,9 +392,7 @@
         }
       },
       "block_order": [
-        "station_1",
         "station_2",
-        "station_3",
         "station_4",
         "station_5",
         "station_6",
