@@ -37,6 +37,10 @@
         padding-bottom: {{ section.settings.padding_bottom }}px;
       }
     }
+
+    .product-description p {
+      color: #656565;
+    }
   {%- endstyle -%}
 
   <script src="{{ 'product-info.js' | asset_url }}" defer="defer"></script>
@@ -84,6 +88,20 @@
           class="product__info-container{% if section.settings.enable_sticky_info %} product__column-sticky{% endif %}"
         >
           {%- assign product_form_id = 'product-form-' | append: section.id -%}
+
+          <!-- Default Rating Display -->
+          <div class="product__rating" style="margin-bottom: 1rem;">
+            <div class="product__review-summary" style="display: flex; align-items: center; gap: 8px;">
+              <div class="star-rating" style="display: flex; gap: 2px;">
+                <span style="color: #ffc107; font-size: 30px;">★</span>
+                <span style="color: #ffc107; font-size: 30px;">★</span>
+                <span style="color: #ffc107; font-size: 30px;">★</span>
+                <span style="color: #ffc107; font-size: 30px;">★</span>
+                <span style="color: #ffc107; font-size: 30px;">★</span>
+              </div>
+              <span style="font-size: 14px; color: #666; font-family: 'Heebo', sans-serif;">55 reviews</span>
+            </div>
+          </div>
 
           {%- for block in section.blocks -%}
             {%- case block.type -%}
@@ -193,7 +211,7 @@
                 </p>
               {%- when 'description' -%}
                 {%- if product.description != blank -%}
-                  <div class="product__description rte quick-add-hidden" {{ block.shopify_attributes }}>
+                  <div class="product-description" {{ block.shopify_attributes }}>
                     {{ product.description }}
                   </div>
                 {%- endif -%}
@@ -601,7 +619,8 @@
                                         quick_add: quick_add,
                                         section_id: section.id,
                                         horizontal_class: true,
-                                        horizontal_quick_add: true
+                                        horizontal_quick_add: true,
+                                        show_rating: true
                                       %}
                                     </li>
                                     {%- assign skip_card_product_styles = true -%}

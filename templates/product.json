@@ -48,12 +48,6 @@
         "description": {
           "type": "description",
           "settings": {}
-        },
-        "share": {
-          "type": "share",
-          "settings": {
-            "share_label": "Share"
-          }
         }
       },
       "block_order": [
@@ -63,8 +57,7 @@
         "variant_picker",
         "quantity_selector",
         "buy_buttons",
-        "description",
-        "share"
+        "description"
       ],
       "settings": {
         "enable_sticky_info": true,
@@ -79,7 +72,7 @@
         "hide_variants": true,
         "enable_video_looping": false,
         "padding_top": 36,
-        "padding_bottom": 12
+        "padding_bottom": 100
       }
     },
     "related-products": {
@@ -89,7 +82,7 @@
         "heading_size": "h2",
         "products_to_show": 4,
         "columns_desktop": 4,
-        "columns_mobile": "2",
+        "columns_mobile": "1",
         "color_scheme": "scheme-1",
         "image_ratio": "square",
         "image_shape": "default",
@@ -97,12 +90,27 @@
         "show_vendor": false,
         "show_rating": false,
         "padding_top": 36,
-        "padding_bottom": 28
+        "padding_bottom": 100
+      }
+    },
+    "contact_section_wixA9c": {
+      "type": "contact-section",
+      "name": "Contact Section",
+      "settings": {
+        "heading": "We are here for you!",
+        "subtitle": "Do you have any questions about the product?",
+        "service_title": "DocMed customer service",
+        "phone": "+351 923 080 048, +351 255 405 289",
+        "chat_text": "Our team is also available via chat.",
+        "color_scheme": "background-1",
+        "padding_top": 100,
+        "padding_bottom": 100
       }
     }
   },
   "order": [
     "main",
-    "related-products"
+    "related-products",
+    "contact_section_wixA9c"
   ]
 }

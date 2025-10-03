@@ -20,13 +20,13 @@
   Usage:
   {% render 'card-product', show_vendor: section.settings.show_vendor %}
 {% endcomment %}
-{%- unless skip_styles -%}
+        {%- unless skip_styles -%}
   {{ 'component-rating.css' | asset_url | stylesheet_tag }}
   {{ 'component-volume-pricing.css' | asset_url | stylesheet_tag }}
-
   {{ 'component-price.css' | asset_url | stylesheet_tag }}
   {{ 'quick-order-list.css' | asset_url | stylesheet_tag }}
   {{ 'quantity-popover.css' | asset_url | stylesheet_tag }}
+  {{ 'card-product-modern.css' | asset_url | stylesheet_tag }}
 {%- endunless -%}
 {%- if card_product and card_product != empty -%}
   {%- liquid
@@ -168,7 +168,7 @@
 
             <span class="caption-large light">{{ block.settings.description | escape }}</span>
 
-            {%- if show_rating and card_product.metafields.reviews.rating.value != blank -%}
+            {%- if show_rating -%}
               {% liquid
                 assign rating_decimal = 0
                 assign decimal = card_product.metafields.reviews.rating.value.rating | modulo: 1
@@ -178,33 +178,28 @@
                   assign rating_decimal = 1
                 endif
               %}
-              <div
-                class="rating"
-                role="img"
-                aria-label="{{ 'accessibility.star_reviews_info' | t: rating_value: card_product.metafields.reviews.rating.value, rating_max: card_product.metafields.reviews.rating.value.scale_max }}"
-              >
-                <span
-                  aria-hidden="true"
-                  class="rating-star"
-                  style="--rating: {{ card_product.metafields.reviews.rating.value.rating | floor }}; --rating-max: {{ card_product.metafields.reviews.rating.value.scale_max }}; --rating-decimal: {{ rating_decimal }};"
-                ></span>
+              <!-- Simple 5-star rating for all products -->
+              <div class="rating-stars simple-rating">
+                <span style="color: #ffc107; font-size: 16px;">★</span>
+                <span style="color: #ffc107; font-size: 16px;">★</span>
+                <span style="color: #ffc107; font-size: 16px;">★</span>
+                <span style="color: #ffc107; font-size: 16px;">★</span>
+                <span style="color: #ffc107; font-size: 16px;">★</span>
               </div>
-              <p class="rating-text caption">
-                <span aria-hidden="true">
-                  {{- card_product.metafields.reviews.rating.value }} /
-                  {{ card_product.metafields.reviews.rating.value.scale_max -}}
-                </span>
-              </p>
               <p class="rating-count caption">
-                <span aria-hidden="true">({{ card_product.metafields.reviews.rating_count }})</span>
-                <span class="visually-hidden">
-                  {{- card_product.metafields.reviews.rating_count }}
-                  {{ 'accessibility.total_reviews' | t -}}
-                </span>
+                <span aria-hidden="true">{{ card_product.metafields.reviews.rating_count | default: '0' }} reviews</span>
               </p>
             {%- endif -%}
 
             {% render 'price', product: card_product, price_class: '', show_compare_at_price: true %}
+            
+            <!-- SKU Field -->
+            {%- if card_product.selected_or_first_available_variant.sku != blank -%}
+              <div class="card__information-sku">
+                SKU: {{ card_product.selected_or_first_available_variant.sku }}
+              </div>
+            {%- endif -%}
+            
             {%- if card_product.quantity_price_breaks_configured? -%}
               {% if card_product.variants_count == 1 and quick_add == 'bulk' %}
                 {% liquid
@@ -299,7 +294,7 @@
             -%}
             {%- if card_product.variants_count > 1 or qty_rules -%}
               <modal-opener data-modal="#QuickAdd-{{ card_product.id }}">
-                <button
+                {% comment %} <button
                   id="{{ product_form_id }}-submit"
                   type="submit"
                   name="add"
@@ -315,7 +310,7 @@
                     </span>
                   {%- endif -%}
                   {%- render 'loading-spinner' -%}
-                </button>
+                </button> {% endcomment %}
               </modal-opener>
               <quick-add-modal id="QuickAdd-{{ card_product.id }}" class="quick-add-modal">
                 <div
