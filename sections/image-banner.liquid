@@ -362,6 +362,39 @@
   ],
   "blocks": [
     {
+      "type": "text",
+      "name": "t:sections.image-banner.blocks.text.name",
+      "limit": 5,
+      "settings": [
+        {
+          "type": "inline_richtext",
+          "id": "text",
+          "default": "t:sections.image-banner.blocks.text.settings.text.default",
+          "label": "t:sections.image-banner.blocks.text.settings.text.label"
+        },
+        {
+          "type": "select",
+          "id": "text_style",
+          "options": [
+            {
+              "value": "body",
+              "label": "t:sections.image-banner.blocks.text.settings.text_style.options__1.label"
+            },
+            {
+              "value": "subtitle",
+              "label": "t:sections.image-banner.blocks.text.settings.text_style.options__2.label"
+            },
+            {
+              "value": "caption-with-letter-spacing",
+              "label": "t:sections.image-banner.blocks.text.settings.text_style.options__3.label"
+            }
+          ],
+          "default": "body",
+          "label": "t:sections.image-banner.blocks.text.settings.text_style.label"
+        }
+      ]
+    },
+    {
       "type": "heading",
       "name": "t:sections.image-banner.blocks.heading.name",
       "limit": 1,
@@ -402,39 +435,7 @@
         }
       ]
     },
-    {
-      "type": "text",
-      "name": "t:sections.image-banner.blocks.text.name",
-      "limit": 5,
-      "settings": [
-        {
-          "type": "inline_richtext",
-          "id": "text",
-          "default": "t:sections.image-banner.blocks.text.settings.text.default",
-          "label": "t:sections.image-banner.blocks.text.settings.text.label"
-        },
-        {
-          "type": "select",
-          "id": "text_style",
-          "options": [
-            {
-              "value": "body",
-              "label": "t:sections.image-banner.blocks.text.settings.text_style.options__1.label"
-            },
-            {
-              "value": "subtitle",
-              "label": "t:sections.image-banner.blocks.text.settings.text_style.options__2.label"
-            },
-            {
-              "value": "caption-with-letter-spacing",
-              "label": "t:sections.image-banner.blocks.text.settings.text_style.options__3.label"
-            }
-          ],
-          "default": "body",
-          "label": "t:sections.image-banner.blocks.text.settings.text_style.label"
-        }
-      ]
-    },
+   
     {
       "type": "buttons",
       "name": "t:sections.image-banner.blocks.buttons.name",
@@ -505,3 +506,123 @@
   ]
 }
 {% endschema %}
+
+<script>
+  // Enhanced scroll to gas station locator functionality with flexible animation
+  function scrollToGasStationLocator() {
+    // Try multiple selectors to find the section
+    const gasStationSection = document.getElementById('gas-station-locator-section') || 
+                              document.querySelector('.gas-station-locator') ||
+                              document.querySelector('[class*="gas-station"]');
+    
+    console.log('Gas station section found:', gasStationSection); // Debug log
+    
+    if (gasStationSection) {
+      // Calculate offset for better positioning
+      const header = document.querySelector('sticky-header') || 
+                     document.querySelector('header') || 
+                     document.querySelector('.header');
+      const headerHeight = header ? header.offsetHeight : 0;
+      const extraOffset = 80; // Additional spacing from top for breathing room
+      
+      const targetPosition = gasStationSection.getBoundingClientRect().top + window.pageYOffset - headerHeight - extraOffset;
+      
+      console.log('Scrolling to position:', targetPosition); // Debug log
+      
+      // Smooth flexible scroll with easing
+      smoothScrollTo(targetPosition, 1200); // 1200ms = 1.2 seconds for smooth animation
+      
+      // Add a subtle highlight effect to draw attention
+      setTimeout(() => {
+        gasStationSection.style.transition = 'all 0.8s cubic-bezier(0.4, 0.0, 0.2, 1)';
+        gasStationSection.style.boxShadow = '0 0 60px rgba(255, 107, 53, 0.5), 0 0 120px rgba(255, 107, 53, 0.2)';
+        gasStationSection.style.transform = 'scale(1.01)';
+        
+        setTimeout(() => {
+          gasStationSection.style.boxShadow = '';
+          gasStationSection.style.transform = 'scale(1)';
+        }, 2500);
+      }, 800);
+    } else {
+      console.error('Gas station locator section not found!'); // Debug log
+    }
+  }
+  
+  // Custom smooth scroll function with flexible easing
+  function smoothScrollTo(targetPosition, duration) {
+    const startPosition = window.pageYOffset;
+    const distance = targetPosition - startPosition;
+    let startTime = null;
+    
+    // Easing function for smooth, natural movement
+    function easeInOutCubic(t) {
+      return t < 0.5 
+        ? 4 * t * t * t 
+        : 1 - Math.pow(-2 * t + 2, 3) / 2;
+    }
+    
+    function animation(currentTime) {
+      if (startTime === null) startTime = currentTime;
+      const timeElapsed = currentTime - startTime;
+      const progress = Math.min(timeElapsed / duration, 1);
+      const ease = easeInOutCubic(progress);
+      
+      window.scrollTo(0, startPosition + (distance * ease));
+      
+      if (timeElapsed < duration) {
+        requestAnimationFrame(animation);
+      }
+    }
+    
+    requestAnimationFrame(animation);
+  }
+
+  // Auto-detect buttons that should scroll to gas station locator
+  document.addEventListener('DOMContentLoaded', function() {
+    console.log('Banner scroll script loaded'); // Debug log
+    
+    // Wait a bit for DOM to be fully ready
+    setTimeout(function() {
+      // Find all banner buttons with multiple selectors
+      const bannerButtons = document.querySelectorAll('.banner__buttons a, .banner a.button, .slideshow__text a');
+      
+      console.log('Found banner buttons:', bannerButtons.length); // Debug log
+      
+      bannerButtons.forEach((button, index) => {
+        // Check if button text contains keywords related to gas station finding
+        const buttonText = button.textContent.toLowerCase().trim();
+        
+        console.log('Button ' + index + ' text:', buttonText); // Debug log
+        
+        if (buttonText.includes('encontre') || 
+            buttonText.includes('estação') || 
+            buttonText.includes('gas station') ||
+            buttonText.includes('locator') ||
+            buttonText.includes('find station') ||
+            buttonText.includes('shop all') ||
+            buttonText.includes('button label')) {
+          
+          console.log('Match found for button:', buttonText); // Debug log
+          
+          // Remove default href behavior - use capture phase
+          button.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            console.log('Button clicked, scrolling...'); // Debug log
+            scrollToGasStationLocator();
+            return false;
+          }, true);
+          
+          // Also set the href to a hash to prevent navigation
+          button.setAttribute('href', '#gas-station-locator-section');
+          
+          // Add visual indication that it's scrollable
+          button.classList.add('scroll-to-gas-locator');
+          button.style.cursor = 'pointer';
+          
+          console.log('Button configured for scrolling'); // Debug log
+        }
+      });
+    }, 500);
+  });
+</script>

@@ -19,7 +19,7 @@
     <div class="contact-form__container">
       <!-- Left Panel - Contact Information -->
       <div class="contact-form__info">
-        <h2 class="contact-form__title">{{ section.settings.heading | default: 'Contact us' }}</h2>
+        <div class="contact-form__title">{{ section.settings.heading | default: 'Contact us' }}</div>
         <p class="contact-form__subtitle">{{ section.settings.subtitle | default: 'We are available to answer your questions' }}</p>
       </div>
 
@@ -262,19 +262,19 @@ document.addEventListener('DOMContentLoaded', function() {
   "class": "section",
   "settings": [
     {
-      "type": "text",
+      "type": "richtext",
       "id": "heading",
-      "default": "Contact us",
+      "default": "<p>Contact us</p>",
       "label": "Heading"
     },
     {
-      "type": "text",
+      "type": "textarea",
       "id": "subtitle",
       "default": "We are available to answer your questions",
       "label": "Subtitle"
     },
     {
-      "type": "text",
+      "type": "textarea",
       "id": "address",
       "default": "R da Recta de Gomil 152 4595-144 Pacos ferreira",
       "label": "Address"

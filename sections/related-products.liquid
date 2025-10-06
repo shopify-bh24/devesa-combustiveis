@@ -18,10 +18,180 @@
       padding-bottom: {{ section.settings.padding_bottom }}px;
     }
   }
+
+  /* Slider Wrapper */
+  .related-products-slider {
+    position: relative;
+    overflow: visible;
+    padding: 0 50px;
+    /* margin: 0 -50px; */
+  }
+
+  .related-products-slider__wrapper {
+    overflow: hidden;
+    width: 100%;
+    padding: 20px 0;
+    margin: -20px 0;
+  }
+
+  .related-products-slider__container {
+    display: flex;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    gap: 20px;
+    will-change: transform;
+    padding : 15px ;
+  }
+
+  .related-products-slider__item {
+    flex: 0 0 calc(25% - 15px);
+    min-width: 0;
+  }
+
+  /* Navigation Buttons */
+  .related-products-slider__nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #ffffff;
+    border: 1px solid #d1d5db;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    z-index: 10;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    outline: none;
+  }
+
+  .related-products-slider__nav:hover:not(:disabled) {
+    background: #f9fafb;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+    border-color: #9ca3af;
+    transform: translateY(-50%) scale(1.05);
+  }
+
+  .related-products-slider__nav:active:not(:disabled) {
+    transform: translateY(-50%) scale(0.98);
+  }
+
+  .related-products-slider__nav--prev {
+    left: 13px;
+  }
+
+  .related-products-slider__nav--next {
+    right: 13px;
+  }
+
+  .related-products-slider__nav svg {
+    width: 20px;
+    height: 20px;
+    color: #374151;
+    stroke-width: 2.5;
+  }
+
+  .related-products-slider__nav:hover:not(:disabled) svg {
+    color: #111827;
+  }
+
+  .related-products-slider__nav:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    background: #f3f4f6;
+    border-color: #e5e7eb;
+  }
+
+  .related-products-slider__nav:disabled:hover {
+    background: #f3f4f6;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    border-color: #e5e7eb;
+    transform: translateY(-50%);
+  }
+
+  .related-products-slider__nav:disabled svg {
+    color: #d1d5db;
+  }
+
+  /* Responsive Design */
+  @media screen and (max-width: 989px) {
+    .related-products-slider__item {
+      flex: 0 0 calc(33.333% - 14px);
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .related-products {
+      padding-left: 0 !important;
+      padding-right: 0 !important;
+      margin: 0 !important;
+      max-width: 100% !important;
+    }
+
+    .related-products-slider {
+      padding: 0 15px;
+      margin: 0;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .related-products-slider__wrapper {
+      padding: 15px 0;
+      margin: -15px 0;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .related-products-slider__container {
+      gap: 12px;
+      width: 100%;
+    }
+
+    .related-products-slider__item {
+      flex: 0 0 calc(50% - 6px);
+    }
+    
+    .related-products-slider__nav {
+      width: 34px;
+      height: 34px;
+    }
+    
+    .related-products-slider__nav svg {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  @media screen and (max-width: 479px) {
+    .related-products-slider {
+      padding: 0 10px;
+    }
+
+    .related-products-slider__container {
+      gap: 8px;
+    }
+
+    .related-products-slider__item {
+      flex: 0 0 calc(100% - 20px);
+      max-width: calc(100% - 20px);
+    }
+    
+    .related-products-slider__nav {
+      width: 40px;
+      height: 40px;
+    }
+
+    .related-products-slider__nav svg {
+      width: 30px;
+      height: 30px;
+    }
+  }
 {%- endstyle -%}
 
 <div class="color-{{ section.settings.color_scheme }} gradient">
-  <product-recommendations
+  <product-recommendations 
     class="related-products page-width section-{{ section.id }}-padding isolate{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
     data-url="{{ routes.product_recommendations_url }}?limit={{ section.settings.products_to_show }}"
     data-section-id="{{ section.id }}"
@@ -32,32 +202,303 @@
       <h2 class="related-products__heading inline-richtext {{ section.settings.heading_size }}">
         {{ section.settings.heading }}
       </h2>
-      <ul
-        class="grid product-grid grid--{{ section.settings.columns_desktop }}-col-desktop grid--{{ section.settings.columns_mobile }}-col-tablet-down"
-        role="list"
-      >
-        {% assign skip_card_product_styles = false %}
-        {% for recommendation in recommendations.products %}
-          <li class="grid__item">
-            {% render 'card-product',
-              card_product: recommendation,
-              media_aspect_ratio: section.settings.image_ratio,
-              image_shape: section.settings.image_shape,
-              show_secondary_image: section.settings.show_secondary_image,
-              show_vendor: section.settings.show_vendor,
-              show_rating: section.settings.show_rating,
-              skip_styles: skip_card_product_styles
-            %}
-          </li>
-          {%- assign skip_card_product_styles = true -%}
-        {% endfor %}
-      </ul>
+      
+      <div class="related-products-slider" data-related-products-slider>
+        <div class="related-products-slider__wrapper">
+          <div class="related-products-slider__container" data-slider-container>
+            {% assign skip_card_product_styles = false %}
+            {% for recommendation in recommendations.products %}
+              <div class="related-products-slider__item">
+                {% render 'card-product',
+                  card_product: recommendation,
+                  media_aspect_ratio: section.settings.image_ratio,
+                  image_shape: section.settings.image_shape,
+                  show_secondary_image: section.settings.show_secondary_image,
+                  show_vendor: section.settings.show_vendor,
+                  show_rating: section.settings.show_rating,
+                  skip_styles: skip_card_product_styles
+                %}
+              </div>
+              {%- assign skip_card_product_styles = true -%}
+            {% endfor %}
+          </div>
+        </div>
+        
+        <button type="button" class="related-products-slider__nav related-products-slider__nav--prev" data-slider-prev aria-label="Previous products">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+        </button>
+        
+        <button type="button" class="related-products-slider__nav related-products-slider__nav--next" data-slider-next aria-label="Next products">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </button>
+      </div>
     {% endif %}
   </product-recommendations>
   {% if section.settings.image_shape == 'arch' %}
     {{ 'mask-arch.svg' | inline_asset_content }}
   {%- endif -%}
 </div>
+
+<script>
+  (function() {
+    'use strict';
+    
+    class RelatedProductsSlider {
+      constructor(container) {
+        if (!container) return;
+        
+        this.container = container;
+        this.sliderContainer = container.querySelector('[data-slider-container]');
+        this.items = container.querySelectorAll('.related-products-slider__item');
+        this.prevBtn = container.querySelector('[data-slider-prev]');
+        this.nextBtn = container.querySelector('[data-slider-next]');
+        
+        if (!this.sliderContainer || !this.items.length || !this.prevBtn || !this.nextBtn) {
+          console.warn('Slider elements not found');
+          return;
+        }
+        
+        this.currentIndex = 0;
+        this.isAnimating = false;
+        this.resizeTimer = null;
+        
+        this.init();
+      }
+      
+      getItemsPerView() {
+        const containerWidth = window.innerWidth;
+        if (containerWidth >= 768) return 4;
+        if (containerWidth >= 480) return 2;
+        return 1;
+      }
+      
+      init() {
+        this.itemsPerView = this.getItemsPerView();
+        // Calculate max scroll index (total items minus visible items)
+        this.maxIndex = Math.max(0, this.items.length - this.itemsPerView);
+        
+        // Small delay to ensure all styles are computed
+        setTimeout(() => {
+          this.updateSlider(false);
+          this.updateNavButtons();
+        }, 50);
+        
+        this.bindEvents();
+      }
+      
+      bindEvents() {
+        // Prevent default button behavior
+        this.prevBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          this.prev();
+        }, { passive: false });
+        
+        this.nextBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          this.next();
+        }, { passive: false });
+        
+        // Handle resize with debounce
+        window.addEventListener('resize', () => {
+          clearTimeout(this.resizeTimer);
+          this.resizeTimer = setTimeout(() => {
+            this.handleResize();
+          }, 150);
+        });
+      }
+      
+      handleResize() {
+        const newItemsPerView = this.getItemsPerView();
+        if (newItemsPerView !== this.itemsPerView) {
+          this.itemsPerView = newItemsPerView;
+          this.maxIndex = Math.max(0, this.items.length - this.itemsPerView);
+          this.currentIndex = Math.min(this.currentIndex, this.maxIndex);
+          this.updateSlider(false);
+          this.updateNavButtons();
+        }
+      }
+      
+      prev() {
+        if (this.isAnimating || this.currentIndex <= 0) return;
+        
+        this.isAnimating = true;
+        this.currentIndex--;
+        this.updateSlider(true);
+        this.updateNavButtons();
+        
+        setTimeout(() => {
+          this.isAnimating = false;
+        }, 400);
+      }
+      
+      next() {
+        if (this.isAnimating || this.currentIndex >= this.maxIndex) return;
+        
+        this.isAnimating = true;
+        this.currentIndex++;
+        this.updateSlider(true);
+        this.updateNavButtons();
+        
+        setTimeout(() => {
+          this.isAnimating = false;
+        }, 400);
+      }
+      
+      updateSlider(animate = true) {
+        if (!this.sliderContainer || !this.items.length) return;
+        
+        // Get the wrapper (visible area) width
+        const wrapper = this.sliderContainer.parentElement;
+        const wrapperWidth = wrapper.offsetWidth;
+        
+        // Get the actual width of one item plus gap
+        const firstItem = this.items[0];
+        const itemWidth = firstItem.offsetWidth;
+        const gap = parseFloat(window.getComputedStyle(this.sliderContainer).gap) || 20;
+        
+        let moveDistance;
+        
+        // Special handling for the last position
+        if (this.currentIndex === this.maxIndex && this.maxIndex > 0) {
+          // Get the actual scrollable width
+          const totalContentWidth = this.sliderContainer.scrollWidth;
+          
+          // Calculate how much we need to move to show all remaining items
+          // Add 2px buffer to ensure the last item is fully visible (accounts for rounding)
+          moveDistance = Math.max(0, totalContentWidth - wrapperWidth + 2);
+          
+          // Debug: log values to console
+          console.log('Last position - Total width:', totalContentWidth, 'Wrapper width:', wrapperWidth, 'Move distance:', moveDistance, 'Item width:', itemWidth, 'Gap:', gap);
+        } else {
+          // Normal movement: move by current index * (item width + gap)
+          moveDistance = this.currentIndex * (itemWidth + gap);
+        }
+        
+        // Ensure we don't move beyond available content (with 2px buffer)
+        const maxMoveDistance = this.sliderContainer.scrollWidth - wrapperWidth + 2;
+        moveDistance = Math.min(moveDistance, Math.max(0, maxMoveDistance));
+        
+        if (!animate) {
+          this.sliderContainer.style.transition = 'none';
+        }
+        
+        this.sliderContainer.style.transform = `translateX(-${moveDistance}px)`;
+        
+        if (!animate) {
+          // Force reflow
+          this.sliderContainer.offsetHeight;
+          this.sliderContainer.style.transition = '';
+        }
+      }
+      
+      updateNavButtons() {
+        if (this.prevBtn) {
+          this.prevBtn.disabled = this.currentIndex === 0;
+          this.prevBtn.setAttribute('aria-disabled', this.currentIndex === 0);
+        }
+        
+        if (this.nextBtn) {
+          this.nextBtn.disabled = this.currentIndex >= this.maxIndex;
+          this.nextBtn.setAttribute('aria-disabled', this.currentIndex >= this.maxIndex);
+        }
+      }
+    }
+    
+    // Initialize function
+    function initializeSliders() {
+      const sliders = document.querySelectorAll('[data-related-products-slider]');
+      sliders.forEach(slider => {
+        // Check if slider has items before initializing
+        const items = slider.querySelectorAll('.related-products-slider__item');
+        if (items.length > 0 && !slider.dataset.sliderInitialized) {
+          new RelatedProductsSlider(slider);
+          slider.dataset.sliderInitialized = 'true';
+        }
+      });
+    }
+    
+    // Wait for product-recommendations to load
+    function observeProductRecommendations() {
+      const productRecommendations = document.querySelectorAll('product-recommendations');
+      
+      productRecommendations.forEach(element => {
+        // Check if already has content
+        const slider = element.querySelector('[data-related-products-slider]');
+        if (slider) {
+          const items = slider.querySelectorAll('.related-products-slider__item');
+          if (items.length > 0 && !slider.dataset.sliderInitialized) {
+            // Small delay to ensure DOM is fully rendered
+            setTimeout(() => {
+              new RelatedProductsSlider(slider);
+              slider.dataset.sliderInitialized = 'true';
+            }, 100);
+          }
+        }
+        
+        // Observe for content changes
+        const observer = new MutationObserver((mutations) => {
+          mutations.forEach((mutation) => {
+            if (mutation.addedNodes.length > 0 || mutation.type === 'childList') {
+              const slider = element.querySelector('[data-related-products-slider]');
+              if (slider && !slider.dataset.sliderInitialized) {
+                const items = slider.querySelectorAll('.related-products-slider__item');
+                if (items.length > 0) {
+                  setTimeout(() => {
+                    new RelatedProductsSlider(slider);
+                    slider.dataset.sliderInitialized = 'true';
+                  }, 150);
+                }
+              }
+            }
+          });
+        });
+        
+        observer.observe(element, {
+          childList: true,
+          subtree: true
+        });
+      });
+    }
+    
+    // Initialize on DOM ready
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', () => {
+        initializeSliders();
+        observeProductRecommendations();
+      });
+    } else {
+      initializeSliders();
+      observeProductRecommendations();
+    }
+    
+    // Additional check after a delay for AJAX loaded content
+    setTimeout(() => {
+      initializeSliders();
+    }, 500);
+    
+    setTimeout(() => {
+      initializeSliders();
+    }, 1000);
+    
+    // Shopify section events
+    document.addEventListener('shopify:section:load', (event) => {
+      setTimeout(() => {
+        const slider = event.target.querySelector('[data-related-products-slider]');
+        if (slider) {
+          slider.dataset.sliderInitialized = '';
+          new RelatedProductsSlider(slider);
+          slider.dataset.sliderInitialized = 'true';
+        }
+      }, 100);
+    });
+  })();
+</script>
 
 {% schema %}
 {

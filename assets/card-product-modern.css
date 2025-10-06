@@ -22,7 +22,7 @@
 
 
 .card__media .media img {
-  object-fit: contain !important;
+  /* object-fit: contain !important; */
   border-radius: 8px !important;
   display: block !important;
 }
@@ -35,11 +35,12 @@
 
 /* Default Star Rating - Always Show */
 .card__information::before {
-  content: "⭐⭐⭐⭐⭐" !important;
+  /* content: "★★★★★" !important;
   display: block !important;
-  font-size: 16px !important;
+  font-size: 30px !important;
   margin-bottom: 8px !important;
   line-height: 1 !important;
+  color: #ffc107 !important; */
 }
 
 /* Fallback for systems that don't display emoji stars */
@@ -57,64 +58,29 @@
   clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%) !important;
 }
 
-/* Review Count - Always Show */
-.card__information::after {
-  content: "67 reviews" !important;
-  display: block !important;
-  font-size: 12px !important;
-  color: #999 !important;
-  /* margin-bottom: 12px !important; */
-  font-family: 'Heebo', sans-serif !important;
+
+/* Product Rating - Direct HTML Styling */
+.product-rating {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
 }
 
-/* Star Rating - Enhanced Display */
-.card__information .rating-stars.simple-rating {
-  display: flex !important;
-  gap: 2px !important;
-  margin-bottom: 8px !important;
-  align-items: center !important;
+.product-rating .stars {
+  color: #ffc107;
+  font-size: 18px;
+  line-height: 1;
+  letter-spacing: 4px;
+  font-size: 23px;
 }
 
-.card__information .rating-stars.simple-rating span {
-  font-size: 16px !important;
-  color: #ffc107 !important;
-  line-height: 1 !important;
+.product-rating .review-count {
+  color: #999;
+  font-size: 12px;
+  font-family: 'Heebo', sans-serif;
 }
 
-/* Rating Count */
-.card__information .rating-count {
-  margin-bottom: 12px !important;
-  display: block !important;
-}
-
-.card__information .rating-count.caption {
-  font-size: 14px !important;
-  color: #666 !important;
-}
-
-/* Star Rating */
-.card__information .rating {
-  margin-bottom: 0.8rem !important;
-  display: flex !important;
-  align-items: center !important;
-}
-
-.card__information .rating-star::before {
-  color: #ffc107 !important;
-  font-size: 16px !important;
-}
-
-.card__information .rating-star {
-  margin-right: 4px !important;
-}
-
-/* Review Count */
-.card__information .rating-count {
-  font-size: 14px !important;
-  color: #999 !important;
-  margin-left: 8px !important;
-  margin-top: 0 !important;
-}
 
 /* Product Title - Enhanced */
 .card__heading {

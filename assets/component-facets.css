@@ -104,19 +104,32 @@
 }
 
 .facet-filters__sort {
-  background-color: transparent;
-  border: 0;
-  border-radius: 0;
-  font-size: 1.4rem;
-  height: auto;
-  line-height: calc(1 + 0.5 / var(--font-body-scale));
+  background-color: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 14px;
+  height: 45px;
+  line-height: 1.5;
   margin: 0;
-  padding-left: 0;
-  padding-right: 1.75rem;
+  padding: 10px 40px 10px 16px;
+  font-family: 'Heebo', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-weight: 500;
+  color: #374151;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  transition: all 0.2s ease;
 }
 
 .facet-filters__sort + .icon-caret {
-  right: 0;
+  right: 12px;
+  width: 12px;
+  height: 12px;
+  color: #6b7280;
+  transition: transform 0.2s ease;
+}
+
+.select:has(.facet-filters__sort:focus) .icon-caret,
+.select:has(.facet-filters__sort:hover) .icon-caret {
+  color: #3b82f6;
 }
 
 @media screen and (forced-colors: active) {
@@ -125,11 +138,14 @@
   }
 }
 
-.facet-filters__sort,
 .facet-filters__sort:hover {
-  box-shadow: none;
-  filter: none;
-  transition: none;
+  border-color: #3b82f6;
+  box-shadow: 0 2px 6px rgba(59, 130, 246, 0.15);
+}
+
+.facet-filters__sort:active {
+  border-color: #2563eb;
+  box-shadow: 0 1px 2px rgba(37, 99, 235, 0.1);
 }
 
 .mobile-facets__sort .select__select:focus-visible {
@@ -145,15 +161,34 @@
 }
 
 .facet-filters__sort:focus-visible {
-  outline: 0.2rem solid rgba(var(--color-foreground), 0.5);
-  outline-offset: 1rem;
-  box-shadow: 0 0 0 1rem rgb(var(--color-background)), 0 0 0.2rem 1.2rem rgba(var(--color-foreground), 0.3);
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2), 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
 .facet-filters__sort.focused {
-  outline: 0.2rem solid rgba(var(--color-foreground), 0.5);
-  outline-offset: 1rem;
-  box-shadow: 0 0 0 1rem rgb(var(--color-background)), 0 0 0.2rem 1.2rem rgba(var(--color-foreground), 0.3);
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2), 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Dropdown options styling */
+.facet-filters__sort option {
+  padding: 10px 16px;
+  font-size: 14px;
+  color: #374151;
+  background-color: #ffffff;
+  font-family: 'Heebo', sans-serif;
+}
+
+.facet-filters__sort option:hover {
+  background-color: #f3f4f6;
+}
+
+.facet-filters__sort option:checked {
+  background-color: #3b82f6;
+  color: #ffffff;
+  font-weight: 600;
 }
 
 .facets {

@@ -12,7 +12,7 @@
   gap: 2rem;
   max-width: 1200px;
   margin: 0 auto;
-  grid-template-columns: 55% 45%;
+  grid-template-columns: 1fr 1fr;
 }
 
 /* Left Panel - Contact Form (White Box) */
@@ -167,14 +167,14 @@
 
 .contact-section__phone {
   font-size: 1.6rem;
-  color: #4b5563;
+  color: #fafafa;
   margin: 0;
   font-weight: 600;
 }
 
 .contact-section__chat-text {
   font-size: 22px;
-  color: #6b7280;
+  color: #ffffff;
   margin: 0;
 }
 
@@ -219,19 +219,20 @@
   }
 
   .contact-section__subtitle {
-    font-size: 0.95rem;
+    font-size: 1.2rem;
   }
 
   .contact-section__service-title {
-    font-size: 1.1rem;
+    font-size: 1.7rem;
+    color: #fff;
   }
 
   .contact-section__phone {
-    font-size: 1rem;
+    font-size: 1.4rem;
   }
 
   .contact-section__chat-text {
-    font-size: 0.9rem;
+    font-size: 1.2rem;
   }
 }
 
@@ -264,11 +265,13 @@
   }
 
   .contact-section__title {
-    font-size: 1.4rem;
+    font-size: 1.7rem;
+    color: #fff;
   }
 
   .contact-section__subtitle {
-    font-size: 0.9rem;
+    font-size: 1.2rem;
+    color: #fff;
   }
 }
 

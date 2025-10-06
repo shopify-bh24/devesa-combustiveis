@@ -523,7 +523,7 @@ h6:empty {
 }
 
 a:not([href]) {
-  cursor: not-allowed;
+  /* cursor: not-allowed; */
 }
 
 .circle-divider::after {
@@ -943,6 +943,7 @@ summary::-webkit-details-marker {
 .grid--1-col .grid__item {
   max-width: 100%;
   width: 100%;
+  padding: 0 2rem 0 2rem;
 }
 
 .grid--3-col .grid__item {
@@ -1070,7 +1071,9 @@ summary::-webkit-details-marker {
   }
 
   .grid--peek.slider .grid__item:first-of-type {
-    margin-left: 1.5rem;
+    /* margin-left: 1.5rem; */
+    padding: 0;
+    margin: 0;
   }
 
   /* Fix to show some space at the end of our sliders in all browsers */
@@ -1134,13 +1137,13 @@ summary::-webkit-details-marker {
 
 .media>*:not(.zoom):not(.deferred-media__poster-button),
 .media model-viewer {
-  display: block;
+  /* display: block; */
   max-width: 100%;
   position: absolute;
   top: 0;
-  left: 0%;
+  /* left: 0%; */
   height: 100%;
-  width: 100%;
+  /* width: 100%; */
 }
 
 .media>img {
@@ -1256,6 +1259,8 @@ button.shopify-payment-button__button--unbranded {
   bottom: 0;
   left: 0;
   z-index: -1;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .2), transparent);
+  transition: left .6s ease;
   border-radius: var(--buttons-radius-outset);
   box-shadow: var(--shadow-horizontal-offset) var(--shadow-vertical-offset) var(--shadow-blur-radius) rgba(var(--color-shadow), var(--shadow-opacity));
 }

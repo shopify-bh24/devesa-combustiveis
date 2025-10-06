@@ -42,13 +42,14 @@ slider-component.slider-component-full-width {
     scroll-padding-left: 1.5rem;
     -webkit-overflow-scrolling: touch;
     margin-bottom: 1rem;
+    gap: 0  ;
   }
 
   /* Fix to show some space at the end of our sliders in all browsers */
   .slider--mobile:after {
     content: '';
     width: 0;
-    padding-left: 1.5rem;
+  
   }
 
   .slider.slider--mobile .slider__slide {
@@ -315,6 +316,8 @@ slider-component.slider-component-full-width {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  height: max-content;
+  border: none;
 }
 
 @media screen and (min-width: 990px) {

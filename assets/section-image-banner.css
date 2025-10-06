@@ -6,6 +6,176 @@
   isolation: isolate;
 }
 
+.slideshow__text-mobile--center h2 {
+  color: #ffffff !important;
+  font-weight: 500;
+}
+
+.banner__text p {
+  color: #ffffff !important;
+  font-size: 23px !important;
+}
+
+.banner__buttons a {
+  padding: 1.5rem 2rem;
+  font-size: 2rem;
+  border-radius: 10rem;
+  background: linear-gradient(135deg, 
+    #ff6b35 0%, 
+    #ff8533 25%, 
+    #ff9500 50%, 
+    #ff8533 75%, 
+    #ff6b35 100%);
+  background-size: 250% 250%;
+  animation: gradient-shift 4s ease-in-out infinite;
+  font-weight: 600;
+  opacity: 1 !important;
+  cursor: pointer !important;
+  border: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.2),
+              0 8px 25px rgba(255, 107, 53, 0.3),
+              0 0 0 1px rgba(255, 107, 53, 0.2);
+  position: relative;
+  overflow: hidden;
+  transform: perspective(1px) translateZ(0);
+  backface-visibility: hidden;
+}
+
+.banner__buttons a:hover {
+  background: linear-gradient(45deg, 
+    #e55a2b 0%, 
+    #ff6b35 15%, 
+    #ff8533 35%, 
+    #ff9500 50%, 
+    #ff8533 65%, 
+    #ff6b35 85%, 
+    #e55a2b 100%);
+  background-size: 300% 300%;
+  background-position: 100% 100%;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  transform: translateY(-8px) scale(1.05);
+  box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.3),
+              0 30px 60px rgba(255, 107, 53, 0.6), 
+              0 15px 35px rgba(229, 90, 43, 0.4);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  filter: brightness(1.1) saturate(1.2);
+  animation: gradient-flow 2s ease-in-out infinite, subtle-pulse 3s ease-in-out infinite;
+}
+
+.banner__buttons a:active {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 12px 30px rgba(255, 107, 53, 0.4),
+              0 4px 15px rgba(229, 90, 43, 0.2);
+  transition: all 0.15s ease;
+}
+
+/* Enhanced gradient shimmer effect for banner button */
+.banner__buttons a::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(255, 255, 255, 0.1) 20%, 
+    rgba(255, 255, 255, 0.4) 40%, 
+    rgba(255, 255, 255, 0.7) 50%, 
+    rgba(255, 255, 255, 0.4) 60%, 
+    rgba(255, 255, 255, 0.1) 80%, 
+    transparent 100%);
+  transition: left 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  z-index: 1;
+  border-radius: 10rem;
+}
+
+.banner__buttons a:hover::before {
+  left: 100%;
+}
+
+/* Focus state for accessibility */
+.banner__buttons a:focus {
+  outline: 3px solid rgba(255, 107, 53, 0.6);
+  outline-offset: 3px;
+}
+
+/* Additional hover states for mobile touch devices */
+@media (hover: none) and (pointer: coarse) {
+  .banner__buttons a:hover {
+    background: linear-gradient(135deg, #ff6b35 0%, #ff8533 50%, #ff6b35 100%);
+    transform: none;
+    box-shadow: 0 8px 25px rgba(255, 107, 53, 0.25);
+  }
+  
+  .banner__buttons a:active {
+    transform: scale(0.98);
+    box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+  }
+}
+
+/* Gradient shift animation for base banner button */
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Gradient flow animation for hover */
+@keyframes gradient-flow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Pulsing animation for better visibility */
+@keyframes subtle-pulse {
+  0%, 100% {
+    box-shadow: 0 8px 25px rgba(255, 107, 53, 0.25);
+  }
+  50% {
+    box-shadow: 0 8px 25px rgba(255, 107, 53, 0.4);
+  }
+}
+
+/* Disable animations for accessibility and performance */
+@media (prefers-reduced-motion: reduce) {
+  .banner__buttons a {
+    animation: none !important;
+  }
+  
+  .banner__buttons a:hover {
+    animation: none !important;
+  }
+}
+
+/* Scroll to gas station locator functionality */
+.scroll-to-gas-locator {
+  cursor: pointer !important;
+}
+
+/* Smooth scroll behavior for entire page */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 100px;
+}
+
 .banner__box {
   text-align: center;
 }
@@ -284,7 +454,7 @@
   .banner__content {
     padding: 5rem;
   }
-  
+
 
   .banner__content--top-left {
     align-items: flex-start;
@@ -484,7 +654,7 @@
 }
 
 .banner__box>*+.banner__buttons {
-  margin-top: 2rem;
+  margin-top: 4rem;
 }
 
 @media screen and (max-width: 749px) {
