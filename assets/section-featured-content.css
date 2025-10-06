@@ -60,7 +60,7 @@
   max-width: 1440px;
   margin: 0 auto;
   padding: 0 2rem;
-  width:  1440px;
+  /* width:  1440px; */
   position: relative;
   z-index: 2;
 }
@@ -176,9 +176,11 @@
 
   .featured-content__grid {
     grid-template-columns: 1fr;
-    gap: 1.5rem;
-    padding: 0 1rem;
+    gap: 4.5rem;
+    padding: 0 6rem;
   }
+
+ 
 
   .featured-content__card-image {
     height: 180px;

@@ -131,8 +131,9 @@ slideshow-component .slideshow.banner {
   .slideshow__controls {
      position: absolute;
      bottom: 0;
-     width: 100%;
+     width: 99%;
      top: 50%;
+     left: 10px;
      justify-content: space-between;
   }
 }

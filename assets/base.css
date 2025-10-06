@@ -1364,9 +1364,11 @@ shopify-accelerated-checkout-cart {
   opacity: 0.5;
 }
 
-.button--full-width {
+.button--full-width  {
   display: flex;
   width: 100%;
+  padding: 1rem;
+
 }
 
 .button.loading {
@@ -1589,7 +1591,7 @@ details[open]>.share-button__fallback {
 .customer select {
   -webkit-appearance: none;
   appearance: none;
-  background-color: rgb(var(--color-background));
+  background-color:rgb(39 49 84);
   color: rgb(var(--color-foreground));
   font-family: var(--font-body-family);
   font-style: var(--font-body-style);
@@ -1666,7 +1668,7 @@ details[open]>.share-button__fallback {
 .customer .field input:focus-visible,
 .customer select:focus-visible,
 .localization-form__select:focus-visible.localization-form__select:after {
-  box-shadow: 0 0 0 calc(0.1rem + var(--inputs-border-width)) rgba(var(--color-foreground));
+  box-shadow: 0 0 0 calc(.1rem + var(--inputs-border-width)) rgb(45 45 45);
   outline: 0;
   border-radius: var(--inputs-radius);
 }
@@ -1702,7 +1704,7 @@ details[open]>.share-button__fallback {
   pointer-events: none;
   position: absolute;
   top: calc(50% - 0.2rem);
-  right: 0;
+  right: 9px;
 }
 
 .select__select,
@@ -2745,6 +2747,7 @@ details[open] .modal-overlay::after {
   padding: 0 5rem 0 1rem;
   line-height: calc(1 + 0.8 / var(--font-body-scale));
   position: relative;
+  background: #162147 !important;
 }
 
 .search-modal__content-bottom {
@@ -3079,7 +3082,7 @@ details-disclosure>details {
   border: var(--media-border-width) solid rgba(var(--color-foreground), var(--media-border-opacity));
   border-radius: var(--media-radius);
   overflow: visible !important;
-  background-color: rgb(var(--color-background));
+  background-color: rgba(245, 245, 245, 0.959);
 }
 
 .global-media-settings:after {
@@ -3377,6 +3380,7 @@ details-disclosure>details {
     opacity: 1;
     animation: var(--animation-fade-in);
     height: 111% !important;
+    /* padding: 0 3rem; */
     /* background: #273154 !important; */
   }
 

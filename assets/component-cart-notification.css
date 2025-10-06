@@ -96,10 +96,23 @@
 }
 
 .cart-notification-product {
-  align-items: flex-start;
+  align-items: center;
   display: flex;
   padding-bottom: 3rem;
   padding-top: 2rem;
+}
+
+.cart-notification__links #cart-notification-button {
+  background: var(--gradient-orange) !important;
+  color: white;
+}
+
+#cart-notification-form .button--full-width {
+  background: black;
+  color: white;
+}
+.cart-notification__links .button-label {
+  color: darkorange;
 }
 
 .cart-notification-product dl {
@@ -120,4 +133,5 @@
 .cart-notification-product__name {
   margin-bottom: 0.5rem;
   margin-top: 0;
+  color: black;
 }
