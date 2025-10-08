@@ -24,6 +24,8 @@
 
 .blog__posts.articles-wrapper .article {
   scroll-snap-align: start;
+  border-radius: 20px;
+  overflow: hidden;
 }
 
 @media screen and (max-width: 749px) {
@@ -47,13 +49,43 @@
 @media screen and (min-width: 750px) {
   .blog__button {
     margin-top: 5rem;
+    background: var(--gradient-orange);
+    color: #fff;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 5rem;
+    font-size: 1.6rem;
+    font-weight: 600;
+    text-decoration: none;
+    text-align: center;
+    transition: all .3s ease;
+    display: flex;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 15px #4474c34d;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    padding: 12px 0;
+    width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .blog__button:hover {
+    background: linear-gradient(135deg, var(--color-accent-orange-dark) 0%, var(--color-accent-orange) 50%, var(--color-accent-orange-dark) 100%);
+    transform: translateY(-2px);
+    color: #fff;
+    text-decoration: none;
+    box-shadow: 0 6px 20px #4474c366;
   }
 }
+
 
 /* check for flexbox gap in older Safari versions */
 @supports not (inset: 10px) {
   @media screen and (min-width: 750px) {
-    .blog__posts .article + .article {
+    .blog__posts .article+.article {
       margin-left: var(--grid-desktop-horizontal-spacing);
     }
   }

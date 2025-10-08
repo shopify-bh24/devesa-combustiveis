@@ -76,6 +76,11 @@
 .article-card__excerpt {
   width: 100%;
   margin-top: 1.2rem;
+  color: #ffffff;
+}
+
+#shopify-section-template--26613221196124__main {
+  background: #ffffff !important;
 }
 
 .article-card__link:not(:only-child) {
