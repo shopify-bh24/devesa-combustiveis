@@ -115,7 +115,7 @@ slideshow-component .slideshow.banner {
     border-bottom-right-radius: var(--text-boxes-radius);
     border-bottom-left-radius: var(--text-boxes-radius);
     position:absolute;
-    top: 0;
+    top: 44%;
     bottom: 0;
     display: flex;
     width: 100%;
@@ -174,7 +174,7 @@ slideshow-component:not(.page-width) .slider-buttons {
 
 .slideshow__autoplay .icon.icon-play,
 .slideshow__autoplay .icon.icon-pause {
-  display: block;
+  display: none;
   position: absolute;
   opacity: 1;
   transform: scale(1);

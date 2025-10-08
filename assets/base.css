@@ -943,7 +943,6 @@ summary::-webkit-details-marker {
 .grid--1-col .grid__item {
   max-width: 100%;
   width: 100%;
-  padding: 0 2rem 0 2rem;
 }
 
 .grid--3-col .grid__item {
