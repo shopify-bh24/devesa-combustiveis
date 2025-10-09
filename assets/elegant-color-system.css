@@ -32,7 +32,7 @@
   --color-text-primary: #ffffff;
   --color-text-secondary: #cccccc;
   --color-text-muted: #9ca3af;
-  --color-text-dark: #1a1a1a;
+  --color-text-dark: #172036;
   
   /* Background Gradients */
   --gradient-primary: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary-medium) 100%);

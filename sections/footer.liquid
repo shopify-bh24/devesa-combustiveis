@@ -35,26 +35,23 @@
       <div class="footer__column">
         <h2 class="footer__column-heading">Devesa.pt</h2>
         <ul class="footer__links">
-          <li><a href="#" class="footer__link">Our strategy</a></li>
-          <li><a href="#" class="footer__link">Our values</a></li>
-          <li><a href="#" class="footer__link">Our climate target</a></li>
-          <li><a href="#" class="footer__link">Our stories</a></li>
-          <li><a href="#" class="footer__link">UK Modern Slavery Act</a></li>
-          <li><a href="#" class="footer__link">Cautionary note</a></li>
+          <li><a href="#" class="footer__link">About Us</a></li>
+          <li><a href="#shopify-section-template--26613221327196__contact_form_37fJ6L" class="footer__link">Contact Us</a></li>
+
         </ul>
       </div>
 
-      <!-- Column 2: Help Section -->
+      <!-- Column 2: Products & Services -->
       <div class="footer__column">
-        <h2 class="footer__column-heading">Can we help?</h2>
+        <h2 class="footer__column-heading">Products & Services</h2>
         <ul class="footer__links">
-          <li><a href="#" class="footer__link">Contact us</a></li>
-          <li><a href="#" class="footer__link">Job search</a></li>
-          <li><a href="#" class="footer__link">Shell Global Helpline</a></li>
+          <li><a href="#shopify-section-template--26613221327196__featured_collection_ydnrpx" class="footer__link">Gas Bottles</a></li>
+          <li><a href="#shopify-section-template--26613221327196__gas_station_locator" class="footer__link">Find Gas Stations</a></li>
+          <li><a href="#shopify-section-template--26613221327196__featured_content" class="footer__link">Delivery Service</a></li>
         </ul>
       </div>
 
-      <!-- Column 3: Social Section -->
+      <!-- Column 4: Social Section -->
       <div class="footer__column">
         <h2 class="footer__column-heading">Connect with us</h2>
         <ul class="footer__social-links">
@@ -136,6 +133,55 @@ document.addEventListener('DOMContentLoaded', function() {
     window.scrollTo({
       top: 0,
       behavior: 'smooth'
+    });
+  });
+
+  // Smooth scroll for footer links
+  const footerLinks = document.querySelectorAll('.footer__link');
+  
+  footerLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
+      const href = this.getAttribute('href');
+      
+      // Check if it's an internal link (starts with # or /)
+      if (href && (href.startsWith('#') || href.startsWith('/'))) {
+        e.preventDefault();
+        
+        let targetElement;
+        
+        if (href.startsWith('#')) {
+          // Handle anchor links
+          const targetId = href.substring(1);
+          targetElement = document.getElementById(targetId);
+        } else if (href.startsWith('/')) {
+          // Handle page links - scroll to top of page
+          targetElement = document.body;
+        }
+        
+        if (targetElement) {
+          // Calculate offset to account for fixed header
+          const headerHeight = document.querySelector('.header') ? document.querySelector('.header').offsetHeight : 0;
+          const targetPosition = targetElement.offsetTop - headerHeight - 20;
+          
+          window.scrollTo({
+            top: Math.max(0, targetPosition),
+            behavior: 'smooth'
+          });
+        }
+      }
+    });
+  });
+
+  // Smooth scroll for social links (scroll to top)
+  const socialLinks = document.querySelectorAll('.footer__social-link');
+  
+  socialLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
+      // For social links, scroll to top smoothly
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
     });
   });
 });

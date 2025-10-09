@@ -1040,10 +1040,11 @@ a.product__text {
 
 .thumbnail.global-media-settings img {
   border-radius: 0;
+  object-fit: contain;
 }
 
 .thumbnail[aria-current] {
-  box-shadow: 0 0 0rem 0.1rem rgb(var(--color-foreground));
+  /* box-shadow: 0 0 0rem 0.1rem rgb(var(--color-foreground)); */
   border-color: rgb(var(--color-foreground));
 }
 

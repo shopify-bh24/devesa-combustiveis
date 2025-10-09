@@ -413,24 +413,6 @@
         "margin_bottom": 80
       }
     },
-    "featured_blog_tPRjDy": {
-      "type": "featured-blog",
-      "name": "t:sections.featured-blog.presets.name",
-      "settings": {
-        "blog": "news",
-        "post_limit": 4,
-        "heading": "Blogs",
-        "heading_size": "h1",
-        "columns_desktop": 4,
-        "show_view_all": true,
-        "show_image": true,
-        "show_date": true,
-        "show_author": false,
-        "color_scheme": "scheme-2",
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
     "news_blog_LtJY44": {
       "type": "news-blog",
       "blocks": {
@@ -491,65 +473,22 @@
         "padding_bottom": 60
       }
     },
-    "blog_section": {
-      "type": "blog-section",
-      "blocks": {
-        "blog_card_1": {
-          "type": "blog_card",
-          "settings": {
-            "image": "shopify://shop_images/download_14.png",
-            "title": "<p><strong>Into the deep:</strong> The ground-breaking technology transforming gas production at Ormen Lange</p>",
-            "description": "The world's deepest subsea compression system, located at a record distance from the shore, will boost energy supplies from a Norwegian gas field to homes and businesses across Europe.",
-            "button_text": "Read more",
-            "button_link": "#"
-          }
-        },
-        "blog_card_2": {
-          "type": "blog_card",
-          "settings": {
-            "image": "shopify://shop_images/download_10.jpg",
-            "title": "<p><strong>Northern Lights:</strong> Inside a pioneering project</p>",
-            "description": "Innovation and collaboration created the world's first commercial carbon transport and storage service in Norway. So how does it work?",
-            "button_text": "Read more",
-            "button_link": "#"
-          }
-        },
-        "blog_card_3": {
-          "type": "blog_card",
-          "settings": {
-            "image": "shopify://shop_images/download_8.jpg",
-            "title": "<p><strong>LNG:</strong> A new frontier in global gas supply</p>",
-            "description": "The largest private-sector investment in Canada's history and the country's first liquefied natural gas (LNG) export facility, LNG Canada is helping to meet the world's growing demand for a critical fuel in the energy transition.",
-            "button_text": "Read more",
-            "button_link": "#"
-          }
-        },
-        "blog_card_4": {
-          "type": "blog_card",
-          "settings": {
-            "image": "shopify://shop_images/download_6.jpg",
-            "title": "<p><strong>Whale: </strong>Setting new standards for deep water</p>",
-            "description": "The most efficient of Shell's oil and gas platforms in the Gulf of America, Whale joins our leading deep-water portfolio to help deliver the secure energy the world needs today.",
-            "button_text": "Read more",
-            "button_link": "#"
-          }
-        }
-      },
-      "block_order": [
-        "blog_card_1",
-        "blog_card_2",
-        "blog_card_3",
-        "blog_card_4"
-      ],
-      "disabled": true,
+    "featured_blog_tPRjDy": {
+      "type": "featured-blog",
+      "name": "t:sections.featured-blog.presets.name",
       "settings": {
-        "heading": "Latest News & Insights",
-        "description": "Stay updated with the latest developments in energy technology and innovation",
-        "color_scheme": "background-1",
-        "highlight_color": "#ff6b35",
-        "highlight_font_size": 1.1,
-        "padding_top": 60,
-        "padding_bottom": 100
+        "blog": "news",
+        "post_limit": 4,
+        "heading": "Blogs",
+        "heading_size": "h1",
+        "columns_desktop": 4,
+        "show_view_all": true,
+        "show_image": true,
+        "show_date": true,
+        "show_author": false,
+        "color_scheme": "scheme-2",
+        "padding_top": 36,
+        "padding_bottom": 36
       }
     },
     "featured_collection_ydnrpx": {
@@ -578,6 +517,24 @@
         "columns_mobile": "1",
         "swipe_on_mobile": false,
         "padding_top": 4,
+        "padding_bottom": 100
+      }
+    },
+    "featured_blog_zbkNNg": {
+      "type": "featured-blog",
+      "name": "t:sections.featured-blog.presets.name",
+      "settings": {
+        "blog": "more-stories",
+        "post_limit": 12,
+        "heading": "More Storys",
+        "heading_size": "h1",
+        "columns_desktop": 4,
+        "show_view_all": true,
+        "show_image": true,
+        "show_date": true,
+        "show_author": false,
+        "color_scheme": "",
+        "padding_top": 64,
         "padding_bottom": 100
       }
     },
@@ -719,6 +676,7 @@
         "story_card_11",
         "story_card_12"
       ],
+      "disabled": true,
       "settings": {
         "heading": "More stories",
         "description": "",
@@ -759,8 +717,8 @@
     "gas_station_locator",
     "news_blog_LtJY44",
     "featured_blog_tPRjDy",
-    "blog_section",
     "featured_collection_ydnrpx",
+    "featured_blog_zbkNNg",
     "more_stories",
     "contact_form_37fJ6L"
   ]

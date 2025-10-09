@@ -164,9 +164,9 @@
   padding-top: 0.5rem;
   scroll-padding: 0.5rem 0;
   max-height: 20.5rem;
-  max-width: 28rem;
-  min-width: 14rem;
-  width: max-content;
+  /* max-width: 28rem; */
+  /* min-width: 14rem; */
+  /* width: max-content; */
 }
 
 .disclosure__list::-webkit-scrollbar {
