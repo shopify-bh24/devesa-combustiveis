@@ -2,7 +2,7 @@
 .contact-form {
   background-color: var(--color-primary-light);
   color: #ffffff;
-  padding: 6rem 0;
+  padding: 6rem 0 !important;
   position: relative;
   overflow: hidden;
 }
@@ -305,6 +305,7 @@
 .contact-form__field {
   display: flex;
   flex-direction: column;
+  gap: 20px;
 }
 
 .contact-form__input,

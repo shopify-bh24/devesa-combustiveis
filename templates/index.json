@@ -57,30 +57,15 @@
           "settings": {
             "image": "shopify://shop_images/download_14.jpg",
             "image_overlay_opacity": 20,
-            "heading": "Lavagens de Automóveis Devesa – Cuidamos do brilho do seu carro",
+            "heading": "Encontre o posto mais perto de si.",
             "heading_size": "h1",
-            "subheading": "Discover our professional car wash programs",
-            "button_label": "Encontre uma estação com cafetaria",
-            "link": "#gas-station-locator-section",
-            "button_style_secondary": false,
-            "show_text_box": true,
-            "box_align": "middle-center",
-            "text_alignment": "center",
-            "text_alignment_mobile": "center",
-            "color_scheme": ""
-          }
-        },
-        "slide_nhrxyd": {
-          "type": "slide",
-          "settings": {
-            "image": "shopify://shop_images/download_13.jpg",
-            "image_overlay_opacity": 20,
-            "heading": "Lavagens de Automóveis Devesa – Cuidamos do brilho do seu carro",
-            "heading_size": "h1",
-            "subheading": "Sabores, conveniência e conforto nas estações Devesa",
-            "button_label": "Encontre uma estação com cafetaria",
-            "link": "#gas-station-locator-section",
-            "button_style_secondary": false,
+            "subheading": "Combustíveis de confiança, atendimento próximo.",
+            "primary_button_label": "Encontrar posto",
+            "primary_button_link": "/localizacoes",
+            "secondary_button_label": "Serviços & Facilidades",
+            "secondary_button_link": "#servicos",
+            "primary_button_style_secondary": false,
+            "secondary_button_style_secondary": false,
             "show_text_box": true,
             "box_align": "middle-center",
             "text_alignment": "center",
@@ -90,14 +75,14 @@
         }
       },
       "block_order": [
-        "slide_GGcccR",
-        "slide_nhrxyd"
+        "slide_GGcccR"
       ],
       "name": "t:sections.slideshow.presets.name",
       "settings": {
         "layout": "full_bleed",
         "slide_logo_img": "shopify://shop_images/download_1.png",
-        "slide_height": "large",
+        "text_alignment": "start",
+        "slide_height": "medium",
         "slider_visual": "counter",
         "auto_rotate": true,
         "change_slides_speed": 3,
@@ -113,7 +98,7 @@
         "collection": "all",
         "products_to_show": 8,
         "title": "Featured products",
-        "heading_size": "h2",
+        "heading_size": "h1",
         "description": "",
         "show_description": false,
         "description_style": "body",
@@ -122,10 +107,12 @@
         "full_width": false,
         "show_view_all": true,
         "view_all_style": "solid",
-        "color_scheme": "scheme-1",
+        "color_scheme": "",
+        "link_text": "",
+        "link": "",
         "image_ratio": "adapt",
         "image_shape": "default",
-        "show_secondary_image": true,
+        "show_secondary_image": false,
         "show_vendor": false,
         "show_rating": false,
         "quick_add": "none",
@@ -162,6 +149,7 @@
         "step_2",
         "step_3"
       ],
+      "disabled": true,
       "settings": {
         "color_scheme": "scheme-1"
       }
@@ -173,40 +161,40 @@
           "type": "content_card",
           "settings": {
             "image": "shopify://shop_images/download1.jpg",
-            "title": "Repsol",
-            "description": "Repsol Fuels",
-            "button_label": "Read more →",
-            "button_link": ""
+            "title": "Combustíveis",
+            "description": "",
+            "button_label": "Read more",
+            "button_link": "/localizacoes?servico=combustiveis"
           }
         },
         "content_card_2": {
           "type": "content_card",
           "settings": {
             "image": "shopify://shop_images/download2.jpg",
-            "title": "Gás",
-            "description": "Garrafas de gás",
-            "button_label": "Read more →",
-            "button_link": ""
+            "title": "Garrafas de Gás",
+            "description": "",
+            "button_label": "Read more",
+            "button_link": "/localizacoes?servico=gas"
           }
         },
         "content_card_3": {
           "type": "content_card",
           "settings": {
             "image": "shopify://shop_images/download3.jpg",
-            "title": "Consumíveis auto",
-            "description": "Loja de Conveniencia",
-            "button_label": "Read more →",
-            "button_link": ""
+            "title": "Loja de Conveniência",
+            "description": "",
+            "button_label": "Read more",
+            "button_link": "/localizacoes?servico=loja"
           }
         },
         "content_card_4": {
           "type": "content_card",
           "settings": {
             "image": "shopify://shop_images/download4.jpg",
-            "title": "Cafeteria",
-            "description": "Bebidas e snacks",
-            "button_label": "Read more →",
-            "button_link": ""
+            "title": "Cafetaria",
+            "description": "",
+            "button_label": "Read more",
+            "button_link": "/localizacoes?servico=cafeteria"
           }
         },
         "content_card_5": {
@@ -214,9 +202,9 @@
           "settings": {
             "image": "shopify://shop_images/download5.jpg",
             "title": "Lavagem",
-            "description": "Interiores e exteriores",
-            "button_label": "Read more →",
-            "button_link": ""
+            "description": "",
+            "button_label": "Read more",
+            "button_link": "/localizacoes?servico=lavagem"
           }
         }
       },
@@ -228,189 +216,17 @@
         "content_card_5"
       ],
       "settings": {
-        "heading": "Featured Content",
+        "heading": "SERVIÇOS & FACILIDADES",
         "heading_size": "h1",
         "color_scheme": "scheme-1"
       }
     },
     "gas_station_locator": {
       "type": "gas-station-locator",
-      "blocks": {
-        "station_2": {
-          "type": "gas_station",
-          "settings": {
-            "name": "Gandarela",
-            "brand": "EVESA",
-            "address": "Avenida Norte, 456, Porto, Portugal",
-            "latitude": "41.1579",
-            "longitude": "-8.6291",
-            "hours": "6:00 AM - 10:00 PM",
-            "phone": "+351 22 987 6543",
-            "services": "Fuel, Convenience Store, Bottle, Coffee, Car Wash",
-            "is_open": true
-          }
-        },
-        "station_4": {
-          "type": "gas_station",
-          "settings": {
-            "name": "Alvor",
-            "brand": "EVESA",
-            "address": "Rua Oeste, 321, Coimbra, Portugal",
-            "latitude": "40.2033",
-            "longitude": "-8.4103",
-            "hours": "7:00 AM - 11:00 PM",
-            "phone": "+351 239 456 789",
-            "services": "Fuel, Convenience Store, Bottle, Coffee, Car Wash",
-            "is_open": false
-          }
-        },
-        "station_5": {
-          "type": "gas_station",
-          "settings": {
-            "name": "Fall",
-            "brand": "EVESA",
-            "address": "Rua Fall, 456, Braga, Portugal",
-            "latitude": "41.5518",
-            "longitude": "-8.4229",
-            "hours": "24/7",
-            "phone": "+351 253 123 456",
-            "services": "Fuel, Convenience Store, Bottle, Coffee, Car Wash",
-            "is_open": true
-          }
-        },
-        "station_6": {
-          "type": "gas_station",
-          "settings": {
-            "name": "Valega",
-            "brand": "EVESA",
-            "address": "Estrada Valega, 789, Aveiro, Portugal",
-            "latitude": "40.6405",
-            "longitude": "-8.6538",
-            "hours": "6:00 AM - 10:00 PM",
-            "phone": "+351 234 567 890",
-            "services": "Fuel, Convenience Store, Bottle, Coffee, Car Wash",
-            "is_open": true
-          }
-        },
-        "station_7": {
-          "type": "gas_station",
-          "settings": {
-            "name": "Frazão",
-            "brand": "EVESA",
-            "address": "R. da Recta de Gomil 136 4595, Frazão",
-            "latitude": "41.2048",
-            "longitude": "-8.3333",
-            "hours": "Every day 24 hours",
-            "phone": "+351 255 873 179",
-            "services": "Fuel, Convenience Store, Bottle, Coffee, Paw",
-            "is_open": true
-          }
-        },
-        "station_8": {
-          "type": "gas_station",
-          "settings": {
-            "name": "Paços de Ferreira",
-            "brand": "EVESA",
-            "address": "Avenida Principal, 456, Paços de Ferreira, Portugal",
-            "latitude": "41.2768",
-            "longitude": "-8.3761",
-            "hours": "6:00 AM - 10:00 PM",
-            "phone": "+351 255 987 654",
-            "services": "Fuel, Convenience Store, Bottle, Coffee, Car Wash",
-            "is_open": true
-          }
-        },
-        "station_9": {
-          "type": "gas_station",
-          "settings": {
-            "name": "Marco de Canavezes",
-            "brand": "EVESA",
-            "address": "Rua Central, 789, Marco de Canavezes, Portugal",
-            "latitude": "41.1833",
-            "longitude": "-8.1500",
-            "hours": "24/7",
-            "phone": "+351 255 456 789",
-            "services": "Fuel, Convenience Store, Bottle, Coffee, Car Wash",
-            "is_open": true
-          }
-        },
-        "station_10": {
-          "type": "gas_station",
-          "settings": {
-            "name": "Between the Rivers",
-            "brand": "EVESA",
-            "address": "Place of Portela PT, R. da Torre, 4575-416 Portela",
-            "latitude": "40.7500",
-            "longitude": "-8.5500",
-            "hours": "Every day 06:30 - 22:00",
-            "phone": "+351 255 612 576",
-            "services": "Fuel, Convenience Store, Bottle, Coffee, Car Wash",
-            "is_open": true
-          }
-        },
-        "station_11": {
-          "type": "gas_station",
-          "settings": {
-            "name": "Pedorido",
-            "brand": "EVESA",
-            "address": "Industrial Zone Z0470613 PT, 4550-336 Pedorido",
-            "latitude": "40.8500",
-            "longitude": "-8.4500",
-            "hours": "Every day 6:30 - 21:00",
-            "phone": "+351 255 762 630",
-            "services": "Fuel, Convenience Store, Bottle, Coffee, WC",
-            "is_open": true
-          }
-        },
-        "station_12": {
-          "type": "gas_station",
-          "settings": {
-            "name": "Lourosa",
-            "brand": "EVESA",
-            "address": "R. Areal 1053, 4520-605 Santa Maria da Feira",
-            "latitude": "40.9843",
-            "longitude": "-8.5514",
-            "hours": "Every day 07:00 - 23:00",
-            "phone": "+351 255 873 179",
-            "services": "Fuel, Convenience Store, Bottle, Coffee, Fan",
-            "is_open": true
-          }
-        },
-        "station_13": {
-          "type": "gas_station",
-          "settings": {
-            "name": "Valongo",
-            "brand": "EVESA",
-            "address": "Fonseca Dias Street, 4440-652 Valongo",
-            "latitude": "41.1947",
-            "longitude": "-8.5000",
-            "hours": "Every day 24 hours",
-            "phone": "+351 255 873 179",
-            "services": "Fuel, Convenience Store, Bottle, Coffee, Flower",
-            "is_open": true
-          }
-        }
-      },
-      "block_order": [
-        "station_2",
-        "station_4",
-        "station_5",
-        "station_6",
-        "station_7",
-        "station_8",
-        "station_9",
-        "station_10",
-        "station_11",
-        "station_12",
-        "station_13"
-      ],
       "settings": {
-        "main_heading": "Find the nearest Gas Station",
-        "description": "The best fuels on the market.",
-        "button_text": "Gas station locator",
-        "google_maps_api_key": "AIzaSyBC2obUJwfbdLzQpPodAMLSiRfXQRykOe8",
-        "margin_top": 0,
-        "margin_bottom": 80
+        "map_title": "Encontre a estação mais próxima",
+        "mode": "map",
+        "google_maps_api_key": "AIzaSyBC2obUJwfbdLzQpPodAMLSiRfXQRykOe8"
       }
     },
     "news_blog_LtJY44": {
@@ -475,6 +291,7 @@
     },
     "featured_blog_tPRjDy": {
       "type": "featured-blog",
+      "disabled": true,
       "name": "t:sections.featured-blog.presets.name",
       "settings": {
         "blog": "news",
@@ -491,23 +308,36 @@
         "padding_bottom": 36
       }
     },
+    "another_blog_hEeg9i": {
+      "type": "another-blog",
+      "name": "News Blog",
+      "settings": {
+        "title": "Notícias & Promoções",
+        "promotion_button_text": "Promoções",
+        "news_button_text": "Notícias",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
     "featured_collection_ydnrpx": {
       "type": "featured-collection",
       "name": "t:sections.featured-collection.presets.name",
       "settings": {
         "collection": "garrafas-de-gas",
-        "products_to_show": 8,
-        "title": "Buy Gas Cylinders Online: Receive at Your Home",
+        "products_to_show": 4,
+        "title": "Loja — Garrafas de Gás”",
         "heading_size": "h1",
-        "description": "<p>Choose your gas bottle and order now</p>",
+        "description": "",
         "show_description": false,
         "description_style": "body",
         "columns_desktop": 4,
         "enable_desktop_slider": false,
         "full_width": false,
-        "show_view_all": true,
+        "show_view_all": false,
         "view_all_style": "solid",
-        "color_scheme": "scheme-3",
+        "color_scheme": "",
+        "link_text": "Ver tudo",
+        "link": "/loja/garrafas-de-gas",
         "image_ratio": "adapt",
         "image_shape": "default",
         "show_secondary_image": false,
@@ -516,12 +346,13 @@
         "quick_add": "none",
         "columns_mobile": "1",
         "swipe_on_mobile": false,
-        "padding_top": 4,
-        "padding_bottom": 100
+        "padding_top": 0,
+        "padding_bottom": 60
       }
     },
     "featured_blog_zbkNNg": {
       "type": "featured-blog",
+      "disabled": true,
       "name": "t:sections.featured-blog.presets.name",
       "settings": {
         "blog": "more-stories",
@@ -689,22 +520,22 @@
       "type": "contact-form",
       "name": "Contact Form",
       "settings": {
-        "heading": "<p>We take great pride in our work, and our passion drives everything we do.</p>",
-        "subtitle": "Devesa Combustíveis is a leading fuel management company with over 10 years of experience in the market. Our work is based on our passion and the pursuit of improving customer satisfaction.",
-        "address": "R da Recta de Gomil 152 4595-144 Pacos ferreira",
-        "phone": "+351 923 080 048, +351 255 405 289",
+        "title": "Receber novidades & promoções",
+        "button_label": "Subscrever",
+        "checkbox_label": "Concordo em receber comunicações.",
+        "success_message": "Obrigado! Confirme no email.",
         "color_scheme": "background-1",
-        "background_image": "shopify://shop_images/istockphoto-2160041157-612x612.jpg",
-        "background_opacity": 0,
-        "enable_grid_effect": false,
+        "background_image": "shopify://shop_images/istockphoto-1441262452-612x612.jpg",
+        "background_opacity": 20,
+        "enable_grid_effect": true,
         "grid_style": "dots",
-        "grid_size": 35,
+        "grid_size": 20,
         "enable_animation": true,
         "animation_type": "slide-up",
         "animation_duration": 0.6,
         "animation_delay": 0.2,
-        "padding_top": 60,
-        "padding_bottom": 60
+        "padding_top": 52,
+        "padding_bottom": 52
       }
     }
   },
@@ -717,6 +548,7 @@
     "gas_station_locator",
     "news_blog_LtJY44",
     "featured_blog_tPRjDy",
+    "another_blog_hEeg9i",
     "featured_collection_ydnrpx",
     "featured_blog_zbkNNg",
     "more_stories",

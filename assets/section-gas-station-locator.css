@@ -2,7 +2,6 @@
 .gas-station-locator {
   display: flex;
   flex-direction: column;
-  min-height: 600px;
   background-color: #ffffff;
 }
 
@@ -10,7 +9,8 @@
   .gas-station-locator {
     flex-direction: row;
     margin: auto;
-    max-width: 1259px;
+    padding: 0px 20px !important;
+    max-width: 1400px;
   }
 }
 
@@ -44,21 +44,16 @@
 .gas-station-locator__brand {
   font-size: 1.4rem;
   font-weight: 600;
-  /* margin-bottom: 2rem; */
-  color: #ffffff;
 }
 
 .gas-station-locator__heading {
-  font-size: 3rem;
   font-weight: 700;
   /* line-height: 1.1; */
-  margin-bottom: 1rem;
-  color: #ffffff;
-  margin-top: 15px;
+  margin: 0px;
 }
 
 .gas-station-locator__description {
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   line-height: 1.6;
   margin-bottom: 2.5rem;
   color: #ffffff;
@@ -157,8 +152,7 @@
 
 @media screen and (min-width: 750px) {
   .gas-station-locator__map {
-    /* height: auto; */
-    min-height: 600px;
+    height: auto;
   }
 }
 

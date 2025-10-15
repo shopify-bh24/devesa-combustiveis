@@ -861,7 +861,6 @@ summary::-webkit-details-marker {
 }
 
 .title-wrapper--no-top-margin {
-  margin-top: 15px !important;
   font-weight: 700;
   justify-content: center;
 }
@@ -872,6 +871,7 @@ summary::-webkit-details-marker {
 .title-wrapper--no-top-margin>.title {
   margin-top: 0;
   font-size: 4rem !important;
+  color: white;
 }
 
 .gm-style-iw-chr {
@@ -919,7 +919,6 @@ summary::-webkit-details-marker {
 
 .grid:last-child {
   margin-bottom: 0;
-  padding: 0 10px;
   gap: 2, 5rem;
 }
 

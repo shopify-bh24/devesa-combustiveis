@@ -37,6 +37,16 @@
       padding-bottom: {{ section.settings.padding_bottom }}px;
     }
   }
+
+  .featured-collection_nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .featured-collection_nav a {
+    color: #FFF;
+  }
 {%- endstyle -%}
 
 {%- liquid
@@ -73,12 +83,16 @@
     id="collection-{{ section.id }}"
     data-id="{{ section.id }}"
   >
+    <div class="page-width" style="padding: 20px;">
     <div class="collection__title title-wrapper title-wrapper--no-top-margin page-width{% if show_mobile_slider %} title-wrapper--self-padded-tablet-down{% endif %}{% if show_desktop_slider %} collection__title--desktop-slider{% endif %}">
-      {%- if section.settings.title != blank -%}
-        <h2 class="title inline-richtext {{ section.settings.heading_size }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
-          {{ section.settings.title }}
-        </h2>
-      {%- endif -%}
+      <div class="featured-collection_nav">
+        {%- if section.settings.title != blank -%}
+          <h2 class="title inline-richtext {{ section.settings.heading_size }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+            {{ section.settings.title }}
+          </h2>
+          <a href="{{ section.settings.link }}" class="view-all_link">{{ section.settings.link_text }}</a>
+        {%- endif -%}
+      </div>
       {%- if section.settings.description != blank
         or section.settings.show_description
         and section.settings.collection.description != empty
@@ -201,6 +215,7 @@
     {% if section.settings.image_shape == 'arch' %}
       {{ 'mask-arch.svg' | inline_asset_content }}
     {%- endif -%}
+  </div>
   </div>
 </div>
 
@@ -354,6 +369,16 @@
       "label": "t:sections.all.colors.label",
       "info": "t:sections.all.colors.has_cards_info",
       "default": "scheme-1"
+    },
+    {
+      "type": "text",
+      "id": "link_text",
+      "label": "Link Text"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "Link"
     },
     {
       "type": "header",

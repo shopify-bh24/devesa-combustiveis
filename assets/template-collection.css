@@ -70,14 +70,15 @@
 }
 
 .collection__title.title-wrapper {
-  margin-bottom: 7rem;
+  margin-bottom: 5rem;
 }
 
 .collection__title .title:not(:only-child) {
-  margin-bottom: 1rem;
+  margin-bottom: 0px;
+  margin-top: 25px;
   font-size: 4rem !important;
   font-weight: 700;
-  padding: 60px 0 20px 0;
+  color: #FFF;
 }
 
 @media screen and (min-width: 990px) {

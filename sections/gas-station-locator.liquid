@@ -2,788 +2,217 @@
 
 {%- style -%}
   .gas-station-locator {
-    margin-top: {{ section.settings.margin_top | times: 0.75 | round: 0 }}px;
-    /* margin-bottom: {{ section.settings.margin_bottom | times: 0.75 | round: 0 }}px; */
-    padding: 65px 33px;
+    padding: 25px;
     gap: 2.5rem;
+    text-align: center;
   }
 
-  @media screen and (min-width: 750px) {
-    .gas-station-locator {
-    ;
-    /* margin-top: {{ section.settings.margin_top }}px; */
-    /* margin-bottom: {{ section.settings.margin_bottom }}px; */
+  .gas-station-locator__description {
+    color: #555;
+    margin-bottom: 1.5rem;
   }
-}
+
+  .gas-station-locator__form {
+    display: flex;
+    justify-content: center;
+    gap: 2.5rem;
+    flex-wrap: wrap;
+  }
+
+  .gas-station-locator__input {
+    flex: 1 1 250px;
+    padding: 1.5rem 2rem;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 1.5rem;
+  }
+
+  /* Map version */
+  .map-placeholder {
+    text-align: center;
+    padding: 80px 20px;
+    background-color: #ededed;
+    border-radius: 20px;
+  }
+
+  .activate-map-btn {
+    padding: 1rem 2rem;
+    font-size: 1.5rem;
+    border-radius: 10rem;
+    background: linear-gradient(135deg, #ff6b35, #ff8533, #ff9500, #ff8533, #ff6b35);
+    background-size: 250% 250%;
+    animation: gradient-shift 4s ease-in-out infinite;
+    font-weight: 600;
+    opacity: 1 !important;
+    cursor: pointer !important;
+    border: none;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    box-shadow: inset 0 2px 4px #fff3, 0 8px 25px #ff6b354d, 0 0 0 1px #ff6b3533;
+    position: relative;
+    overflow: hidden;
+    transform: perspective(1px) translateZ(0);
+    backface-visibility: hidden;
+    color: #fff;
+  }
+  
+  .gas-station-locator__button {
+    padding: 1.5rem 4rem;
+    font-size: 1.5rem;
+    border-radius: 10rem;
+    background: linear-gradient(135deg, #ff6b35, #ff8533, #ff9500, #ff8533, #ff6b35);
+    background-size: 250% 250%;
+    animation: gradient-shift 4s ease-in-out infinite;
+    font-weight: 600;
+    opacity: 1 !important;
+    cursor: pointer !important;
+    border: none;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    box-shadow: inset 0 2px 4px #fff3, 0 8px 25px #ff6b354d, 0 0 0 1px #ff6b3533;
+    position: relative;
+    overflow: hidden;
+    transform: perspective(1px) translateZ(0);
+    backface-visibility: hidden;
+    color: #fff;
+  }
+
+  .activate-map-btn:hover {
+    background: linear-gradient(45deg, #e55a2b, #ff6b35 15%, #ff8533 35%, #ff9500, #ff8533 65%, #ff6b35 85%, #e55a2b);
+    background-size: 300% 300%;
+    background-position: 100% 100%;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    transform: translateY(-8px) scale(1.05);
+    box-shadow: inset 0 2px 4px #ffffff4d, 0 30px 60px #ff6b3599, 0 15px 35px #e55a2b66;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    filter: brightness(1.1) saturate(1.2);
+    animation: gradient-flow 2s ease-in-out infinite, subtle-pulse 3s ease-in-out infinite;
+  }
+
+  .gas-station-locator__button:hover {
+    background: linear-gradient(45deg, #e55a2b, #ff6b35 15%, #ff8533 35%, #ff9500, #ff8533 65%, #ff6b35 85%, #e55a2b);
+    background-size: 300% 300%;
+    background-position: 100% 100%;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    transform: translateY(-8px) scale(1.05);
+    box-shadow: inset 0 2px 4px #ffffff4d, 0 30px 60px #ff6b3599, 0 15px 35px #e55a2b66;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    filter: brightness(1.1) saturate(1.2);
+    animation: gradient-flow 2s ease-in-out infinite, subtle-pulse 3s ease-in-out infinite;
+  }
+
+  .gas-station-locator__map {
+    width: 100%;
+    height: 550px;
+    border-radius: 20px;
+    display: none;
+  }
 {%- endstyle -%}
 
-<div id="gas-station-locator-section" class="gas-station-locator">
-  <!-- Left Panel - Information -->
-  <div class="gas-station-locator__info-panel">
-    <div class="gas-station-locator__brand">Devesa Fuels</div>
-    <h2 class="gas-station-locator__heading">Encontre a estação Devesa<br>mais próxima</h2>
-    <p class="gas-station-locator__description">Os melhores combustíveis do mercado.</p>
-    <button class="gas-station-locator__button" onclick="scrollToMap()">
-      Locador de estação
-      <svg
-        class="gas-station-locator__button-arrow"
-        viewBox="0 0 16 16"
-        fill="currentColor">
-        <path
-          d="M6 12L10 8L6 4"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round" />
-      </svg>
-    </button>
-  </div>
+<style>
+  .gas-station-locator {
+    flex-direction: column;
+  }
+</style>
 
-  <!-- Right Panel - Map and Location List -->
-  <div class="gas-station-locator__map-panel">
-    <!-- Map Container -->
-    <div class="gas-station-locator__map-container">
-      <div id="gas-station-map" class="gas-station-locator__map"></div>
-      <div class="gas-station-locator__map-controls">
-        <button class="gas-station-locator__zoom-btn" onclick="zoomIn()">+</button>
-        <button class="gas-station-locator__zoom-btn" onclick="zoomOut()">-</button>
+<div class="gas-station-locator">
+  {% if section.settings.mode == 'teaser' %}
+    <!-- Lightweight home version -->
+    <h2 class="gas-station-locator__heading h1">{{ section.settings.map_title }}</h2>
+    <form action="/pages/localizacoes" method="get" class="gas-station-locator__form">
+      <input
+        type="text"
+        name="q"
+        placeholder="Pesquisar por local…"
+        class="gas-station-locator__input"
+      >
+      <button type="submit" class="gas-station-locator__button button">Ver mapa</button>
+    </form>
+  {% elsif section.settings.mode == 'map' %}
+    <!-- Full locator page version -->
+    <h2 class="gas-station-locator__heading h1">{{ section.settings.map_title }}</h2>
+    <div class="map-container">
+      <p class="gas-station-locator__description">Os melhores combustíveis do mercado.</p>
+
+      <div class="map-placeholder" id="map-placeholder">
+        <button id="activateMapButton" class="activate-map-btn button">Ativar mapa</button>
       </div>
+      <div id="gas-station-map" class="gas-station-locator__map"></div>
     </div>
 
-  <!-- Location List -->
-  </div>
-  
-  <div class="gas-station-locator__locations">
-    {% comment %} <div class="gas-station-locator__filter">
-      <select id="brand-filter" class="gas-station-locator__filter-select">
-        <option value="">All Brands</option>
-        {%- assign unique_brands = '' -%}
-        {%- for block in section.blocks -%}
-          {%- unless unique_brands contains block.settings.brand -%}
-            <option value="{{ block.settings.brand }}">{{ block.settings.brand }}</option>
-            {%- assign unique_brands = unique_brands | append: block.settings.brand | append: ',' -%}
-          {%- endunless -%}
-        {%- endfor -%}
-      </select>
-    </div> {% endcomment %}
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key={{ section.settings.google_maps_api_key }}"
+      async
+      defer
+    ></script>
 
-    <div class="gas-station-locator__location-list" id="location-list">
-   <!-- Repsol Group Header (non-clickable) -->
-   <div class="gas-station-locator__group-headers">
-    <span class="">Gas Station Locators</span>
-  </div>
-      {%- for block in section.blocks -%}
-        {%- if block.type == 'gas_station' -%}
-          <div
-            class="gas-station-locator__location-item"
-            data-brand="{{ block.settings.brand | handle }}"
-            data-lat="{{ block.settings.latitude }}"
-            data-lng="{{ block.settings.longitude }}"
-            data-station-id="{{ block.id }}"
-            onclick="showLocationOnMap('{{ block.id }}', {{ block.settings.latitude }}, {{ block.settings.longitude }}, '{{ block.settings.name }}')">
-            <span class="gas-station-locator__location-name">{{ block.settings.name }}</span>
-          </div>
-        {%- endif -%}
-      {%- endfor -%}
-      <!-- Galp Group Header (non-clickable) -->
+    <script>
+      let map;
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('gas-station-map'), {
+          center: { lat: 40.0, lng: -8.0 },
+          zoom: 7,
+        });
+      }
 
-
-   
-
-
-    </div>
-  </div>
+      document.addEventListener('DOMContentLoaded', () => {
+        const activateBtn = document.getElementById('activateMapButton');
+        activateBtn.addEventListener('click', () => {
+          document.getElementById('map-placeholder').style.display = 'none';
+          const mapContainer = document.getElementById('gas-station-map');
+          mapContainer.style.display = 'block';
+          if (typeof initMap === 'function') {
+            initMap();
+          }
+        });
+      });
+    </script>
+  {% endif %}
 </div>
 
-<!-- Google Maps API -->
-<script
-  src="https://maps.googleapis.com/maps/api/js?key={{ section.settings.google_maps_api_key }}&callback=initMap"
-  async
-  defer></script>
-
-<script>
-  let map;
-  let markers = [];
-  let infoWindow;
-  
-  // Station data from Liquid
-  const stations = [
-  {%- for block in section.blocks -%}
-    {%- if block.type == 'gas_station' -%}
-      {
-        id: '{{ block.id }}',
-        name: {{ block.settings.name | json }},
-        brand: {{ block.settings.brand | json }},
-        address: {{ block.settings.address | json }},
-        latitude: parseFloat({{ block.settings.latitude | json }}),
-        longitude: parseFloat({{ block.settings.longitude | json }}),
-        hours: {{ block.settings.hours | json }},
-        phone: {{ block.settings.phone | json }},
-        services: {{ block.settings.services | json }},
-        is_open: {{ block.settings.is_open | json }}
-      }{%- unless forloop.last -%},{%- endunless -%}
-    {%- endif -%}
-  {%- endfor -%}
-  ];
-  
-  function initMap() {
-  // Center on Portugal with wider view
-  map = new google.maps.Map(document.getElementById('gas-station-map'), {
-    center: { lat: 40.0, lng: -8 },
-    zoom: 7.3,
-    styles: [
-      // Custom dark theme for map
-      { elementType: "geometry", stylers: [{ color: "#242f3e" }] },
-      { elementType: "labels.text.stroke", stylers: [{ color: "#242f3e" }] },
-      { elementType: "labels.text.fill", stylers: [{ color: "#746855" }] },
-      {
-        featureType: "administrative.locality",
-        elementType: "labels.text.fill",
-        stylers: [{ color: "#d59563" }],
-      },
-      {
-        featureType: "poi",
-        elementType: "labels.text.fill",
-        stylers: [{ color: "#d59563" }],
-      },
-      {
-        featureType: "poi.park",
-        elementType: "geometry",
-        stylers: [{ color: "#263c3f" }],
-      },
-      {
-        featureType: "poi.park",
-        elementType: "labels.text.fill",
-        stylers: [{ color: "#6b9a76" }],
-      },
-      {
-        featureType: "road",
-        elementType: "geometry",
-        stylers: [{ color: "#38414e" }],
-      },
-      {
-        featureType: "road",
-        elementType: "geometry.stroke",
-        stylers: [{ color: "#212a37" }],
-      },
-      {
-        featureType: "road",
-        elementType: "labels.text.fill",
-        stylers: [{ color: "#9ca5b3" }],
-      },
-      {
-        featureType: "road.highway",
-        elementType: "geometry",
-        stylers: [{ color: "#746855" }],
-      },
-      {
-        featureType: "road.highway",
-        elementType: "geometry.stroke",
-        stylers: [{ color: "#1f2835" }],
-      },
-      {
-        featureType: "road.highway",
-        elementType: "labels.text.fill",
-        stylers: [{ color: "#f3d19c" }],
-      },
-      {
-        featureType: "transit",
-        elementType: "geometry",
-        stylers: [{ color: "#2f3948" }],
-      },
-      {
-        featureType: "transit.station",
-        elementType: "labels.text.fill",
-        stylers: [{ color: "#d59563" }],
-      },
-      {
-        featureType: "water",
-        elementType: "geometry",
-        stylers: [{ color: "#17263c" }],
-      },
-      {
-        featureType: "water",
-        elementType: "labels.text.fill",
-        stylers: [{ color: "#515c6d" }],
-      },
-      {
-        featureType: "water",
-        elementType: "labels.text.stroke",
-        stylers: [{ color: "#17263c" }],
-      },
-    ],
-  });
-  
-  infoWindow = new google.maps.InfoWindow();
-  addMarkers();
-  }
-  
-  function addMarkers() {
-  // Clear existing markers
-  markers.forEach(marker => marker.setMap(null));
-  markers = [];
-  
-  // Add markers for all stations
-  stations.forEach(station => {
-    let markerIcon;
-    
-    // Custom icon for Gandarela (Galp station)
-    if (station.name.toLowerCase().includes('gandarela')) {
-      markerIcon = {
-        url: 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(`
-          <svg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="20" cy="20" r="18" fill="#ff6b35" stroke="#ffffff" stroke-width="2"/>
-            <!-- G symbol -->
-            <text x="20" y="26" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="white">G</text>
-          </svg>
-        `),
-        scaledSize: new google.maps.Size(40, 40)
-      };
-    } else {
-      // Dark blue markers with yellow/red icon for other stations
-      markerIcon = {
-        url: 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(`
-         <svg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <radialGradient id="pinGradient" cx="50%" cy="30%" r="70%">
-                  <stop offset="0%" style="stop-color:#ff8c00;stop-opacity:1" />
-                  <stop offset="100%" style="stop-color:#ff4500;stop-opacity:1" />
-                </radialGradient>
-              </defs>
-              <path d="M20 4c-6.627 0-12 5.373-12 12 0 8 12 20 12 20s12-12 12-20c0-6.627-5.373-12-12-12z" fill="url(#pinGradient)" stroke="#ffffff" stroke-width="1"/>
-              <path d="M16 12h8v2h-8v-2zm0 4h8v2h-8v-2zm-2 4h12v2H14v-2z" fill="white" stroke="white" stroke-width="0.5"/>
-            </svg>
-        `),
-        scaledSize: new google.maps.Size(40, 40)
-      };
-    }
-    
-    const marker = new google.maps.Marker({
-      position: { lat: station.latitude, lng: station.longitude },
-      map: map,
-      title: station.name,
-      icon: markerIcon
-    });
-
-    marker.addListener('click', () => {
-      showStationInfo(station);
-    });
-
-    markers.push(marker);
-  });
-  }
-  
-  function showLocationOnMap(stationId, lat, lng, name) {
-  // Center map on selected location
-  map.setCenter({ lat: lat, lng: lng });
-  map.setZoom(12);
-  
-  // Highlight the clicked location item
-  document.querySelectorAll('.gas-station-locator__location-item').forEach(item => {
-    item.classList.remove('active');
-  });
-  document.querySelector(`[data-station-id="${stationId}"]`).classList.add('active');
-  
-  // Find and show marker info
-  const station = stations.find(s => s.id === stationId);
-  if (station) {
-    showStationInfo(station);
-  }
-  }
-  
-  function showStationInfo(station) {
-  const content = `
-    <div class="gas-station-info">
-      <div class="gas-station-info__header">
-        <h3 class="gas-station-info__title">${station.name}</h3>
-        <button class="gas-station-info__close" onclick="infoWindow.close()">×</button>
-      </div>
-      <div class="gas-station-info__content">
-        <div class="gas-station-info__detail">
-          <div class="gas-station-info__icon">
-            <svg viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
-            </svg>
-          </div>
-          <div class="gas-station-info__text">
-            <span class="gas-station-info__value">${station.address}</span>
-          </div>
-        </div>
-        
-        <div class="gas-station-info__detail">
-          <div class="gas-station-info__icon">
-            <svg viewBox="0 0 24 24" fill="currentColor">
-              <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
-            </svg>
-          </div>
-          <div class="gas-station-info__text">
-            <span class="gas-station-info__value">${station.phone}</span>
-          </div>
-        </div>
-        
-        <div class="gas-station-info__detail">
-          <div class="gas-station-info__icon">
-            <svg viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm4.2 14.2L11 13V7h1.5v5.2l4.5 2.7-.8 1.3z"/>
-            </svg>
-          </div>
-          <div class="gas-station-info__text">
-            <span class="gas-station-info__value">${station.hours}</span>
-          </div>
-        </div>
-        
-        <div class="gas-station-info__services">
-          ${getServiceIcons(station.services)}
-        </div>
-      </div>
-    </div>
-  `;
-  
-  infoWindow.setContent(content);
-  infoWindow.setPosition({ lat: station.latitude, lng: station.longitude });
-  infoWindow.open(map);
-  }
-  
-  function zoomIn() {
-  map.setZoom(map.getZoom() + 1);
-  }
-  
-  function zoomOut() {
-  map.setZoom(map.getZoom() - 1);
-  }
-  
-  function getServiceIcons(services) {
-  const serviceMap = {
-    'fuel': {
-      icon: `<svg viewBox="0 0 24 24" fill="currentColor">
-        <path d="M18.58 1H5.42L3 8v8h2v10h4v-10h4v10h4V16h2V8l-2.42-7zM12 2.5L13.5 6h-3L12 2.5zM5 8h14v6h-2v-4H7v4H5V8z"/>
-      </svg>`,
-      name: 'Fuel'
-    },
-    'gas': {
-      icon: `<svg viewBox="0 0 24 24" fill="currentColor">
-        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-      </svg>`,
-      name: 'Gas'
-    },
-    'convenience store': {
-      icon: `<svg viewBox="0 0 24 24" fill="currentColor">
-        <path d="M7 4V2c0-.55-.45-1-1-1s-1 .45-1 1v2c-1.1 0-2 .9-2 2v11c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2V2c0-.55-.45-1-1-1s-1 .45-1 1v2H7zm0 2h10v11H7V6z"/>
-      </svg>`,
-      name: 'Store'
-    },
-    'car wash': {
-      icon: `<svg viewBox="0 0 24 24" fill="currentColor">
-        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
-      </svg>`,
-      name: 'Car Wash'
-    },
-    'coffee': {
-      icon: `<svg viewBox="0 0 24 24" fill="currentColor">
-        <path d="M18.5 3H6c-1.1 0-2 .9-2 2v5.71c0 3.83 2.95 7.18 6.78 7.29 3.96.12 7.22-3.06 7.22-7v-1h.5c1.38 0 2.5-1.12 2.5-2.5S19.88 3 18.5 3zM16 5v1H8V5h8zm0 3v1H8V8h8zm.5 8H8c-1.66 0-3-1.34-3-3V5c0-1.66 1.34-3 3-3h8c1.66 0 3 1.34 3 3v11c0 1.66-1.34 3-3 3z"/>
-      </svg>`,
-      name: 'Coffee'
-    },
-    'lottery': {
-      icon: `<svg viewBox="0 0 24 24" fill="currentColor">
-        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-      </svg>`,
-      name: 'Lottery'
-    },
-    'atm': {
-      icon: `<svg viewBox="0 0 24 24" fill="currentColor">
-        <path d="M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z"/>
-      </svg>`,
-      name: 'ATM'
-    },
-    'restaurant': {
-      icon: `<svg viewBox="0 0 24 24" fill="currentColor">
-        <path d="M8.1 13.34l2.83-2.83L3.91 3.5c-1.56 1.56-1.56 4.09 0 5.66l4.19 4.18zm6.78-1.81c1.53.71 3.68.21 5.27-1.38 1.91-1.91 2.28-4.65.81-6.12-1.46-1.46-4.2-1.1-6.12.81-1.59 1.59-2.09 3.74-1.38 5.27L3.7 19.87l1.41 1.41L12 14.41l6.88 6.88 1.41-1.41L13.41 13l1.47-1.47z"/>
-      </svg>`,
-      name: 'Restaurant'
-    },
-    'bottle': {
-      icon: `<svg viewBox="0 0 24 24" fill="currentColor">
-        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-      </svg>`,
-      name: 'Bottle'
-    },
-    'dice': {
-      icon: `<svg viewBox="0 0 24 24" fill="currentColor">
-        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-      </svg>`,
-      name: 'Dice'
-    },
-    'flower': {
-      icon: `<svg viewBox="0 0 24 24" fill="currentColor">
-        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-      </svg>`,
-      name: 'Flower'
-    },
-    'paw': {
-      icon: `<svg viewBox="0 0 24 24" fill="currentColor">
-        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-      </svg>`,
-      name: 'Paw'
-    },
-    'fan': {
-      icon: `<svg viewBox="0 0 24 24" fill="currentColor">
-        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-      </svg>`,
-      name: 'Fan'
-    },
-    'wc': {
-      icon: `<svg viewBox="0 0 24 24" fill="currentColor">
-        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-      </svg>`,
-      name: 'WC'
-    }
-  };
-  
-  const servicesArray = services.toLowerCase().split(',').map(s => s.trim());
-  let iconsHtml = '';
-  
-  servicesArray.forEach(service => {
-    for (const [key, value] of Object.entries(serviceMap)) {
-      if (service.includes(key)) {
-        iconsHtml += `
-          <div class="gas-station-info__service-icon" title="${value.name}">
-            ${value.icon}
-          </div>
-        `;
-        break;
-      }
-    }
-  });
-  
-  return iconsHtml;
-  }
-  
-  function scrollToMap() {
-  document.querySelector('.gas-station-locator__map-panel').scrollIntoView({ 
-    behavior: 'smooth' 
-  });
-  }
-  
-  // Filter functionality
-  document.addEventListener('DOMContentLoaded', function() {
-  const brandFilter = document.getElementById('brand-filter');
-  
-  brandFilter.addEventListener('change', function() {
-    addMarkers();
-    updateLocationList();
-  });
-  
-  function updateLocationList() {
-    const selectedBrand = brandFilter.value;
-    const locationItems = document.querySelectorAll('.gas-station-locator__location-item');
-    
-    locationItems.forEach(item => {
-      const itemBrand = item.dataset.brand;
-      if (selectedBrand === '' || itemBrand === selectedBrand) {
-        item.style.display = 'block';
-      } else {
-        item.style.display = 'none';
-      }
-    });
-  }
-  });
-</script>
-
 {% schema %}
-  {
-    "name": "Gas Station Locator",
-    "tag": "section",
-    "class": "section",
-    "settings": [
-      {
-        "type": "header",
-        "content": "Left Panel Content"
-      },
-      {
-        "type": "inline_richtext",
-        "id": "main_heading",
-        "label": "Main Heading",
-        "default": "Find the nearest Gas Station"
-      },
-      {
-        "type": "textarea",
-        "id": "description",
-        "label": "Description",
-        "default": "The best fuels on the market"
-      },
-      {
-        "type": "text",
-        "id": "button_text",
-        "label": "Button Text",
-        "default": "Gas station locator"
-      }, {
-        "type": "header",
-        "content": "Google Maps Settings"
-      }, {
-        "type": "text",
-        "id": "google_maps_api_key",
-        "label": "Google Maps API Key",
-        "info": "Enter your Google Maps API key to enable map functionality"
-      }, {
-        "type": "header",
-        "content": "t:sections.all.spacing"
-      }, {
-        "type": "range",
-        "id": "margin_top",
-        "min": 0,
-        "max": 100,
-        "step": 4,
-        "unit": "px",
-        "label": "Margin Top",
-        "default": 0
-      }, {
-        "type": "range",
-        "id": "margin_bottom",
-        "min": 0,
-        "max": 100,
-        "step": 4,
-        "unit": "px",
-        "label": "Margin Bottom",
-        "default": 80
-      }
-    ],
-    "blocks": [
-      {
-        "type": "gas_station",
-        "name": "Gas Station",
-        "settings": [
-          {
-            "type": "text",
-            "id": "name",
-            "label": "Station Name",
-            "default": "New Station"
-          },
-          {
-            "type": "text",
-            "id": "brand",
-            "label": "Brand (e.g., Repsol, Galp, EVESA)",
-            "default": "EVESA"
-          },
-          {
-            "type": "text",
-            "id": "address",
-            "label": "Address",
-            "default": "123 Main St, City, Portugal"
-          },
-          {
-            "type": "text",
-            "id": "latitude",
-            "label": "Latitude",
-            "info": "e.g., 38.7223"
-          }, {
-            "type": "text",
-            "id": "longitude",
-            "label": "Longitude",
-            "info": "e.g., -9.1393"
-          }, {
-            "type": "text",
-            "id": "hours",
-            "label": "Opening Hours",
-            "default": "24/7"
-          }, {
-            "type": "text",
-            "id": "phone",
-            "label": "Phone Number",
-            "default": "+351 XXX XXX XXX"
-          }, {
-            "type": "text",
-            "id": "services",
-            "label": "Services (comma-separated)",
-            "default": "Fuel, Gas, Convenience Store"
-          }, {
-            "type": "checkbox",
-            "id": "is_open",
-            "label": "Currently Open",
-            "default": true
-          }
-        ]
-      }
-    ],
-    "presets": [
-      {
-        "name": "Gas Station Locator",
-        "blocks": [
-          {
-            "type": "gas_station",
-            "settings": {
-              "name": "Galp",
-              "brand": "Galp",
-              // "address": "Rua Central, 123, Lisbon, Portugal",
-              // "latitude": "38.7223",
-              // "longitude": "-9.1393",
-              // "hours": "24/7",
-              // "phone": "+351 21 123 4567",
-              // "services": "Fuel, Gas, Convenience Store, Car Wash, Coffee",
-              // "is_open": true
-            }
-          },
-          {
-            "type": "gas_station",
-            "settings": {
-              "name": "Gandarela",
-              "brand": "EVESA",
-              "address": "Avenida Norte, 456, Porto, Portugal",
-              "latitude": "41.1579",
-              "longitude": "-8.6291",
-              "hours": "6:00 AM - 10:00 PM",
-              "phone": "+351 22 987 6543",
-              "services": "Fuel, Gas, Convenience Store",
-              "is_open": true
-            }
-          },
-          {
-            "type": "gas_station",
-            "settings": {
-              "name": "Repsol",
-              "brand": "Repsol",
-            //   "address": "Estrada Sul, 789, Faro, Portugal",
-            //   "latitude": "37.0194",
-            //   "longitude": "-7.9322",
-            //   "hours": "24/7",
-            //   "phone": "+351 289 123 456",
-            //   "services": "Fuel, Gas, Convenience Store, Car Wash",
-            //   "is_open": true
-            }
-          },
-          {
-            "type": "gas_station",
-            "settings": {
-              "name": "Alvor",
-              "brand": "EVESA",
-              "address": "Rua Oeste, 321, Coimbra, Portugal",
-              "latitude": "40.2033",
-              "longitude": "-8.4103",
-              "hours": "7:00 AM - 11:00 PM",
-              "phone": "+351 239 456 789",
-              "services": "Fuel, Gas, Convenience Store, Coffee",
-              "is_open": false
-            }
-          }, {
-            "type": "gas_station",
-            "settings": {
-              "name": "Fall",
-              "brand": "EVESA",
-              "address": "Rua Fall, 456, Braga, Portugal",
-              "latitude": "41.5518",
-              "longitude": "-8.4229",
-              "hours": "24/7",
-              "phone": "+351 253 123 456",
-              "services": "Fuel, Gas, Convenience Store",
-              "is_open": true
-            }
-          }, {
-            "type": "gas_station",
-            "settings": {
-              "name": "Valega",
-              "brand": "EVESA",
-              "address": "Estrada Valega, 789, Aveiro, Portugal",
-              "latitude": "40.6405",
-              "longitude": "-8.6538",
-              "hours": "6:00 AM - 10:00 PM",
-              "phone": "+351 234 567 890",
-              "services": "Fuel, Gas, Convenience Store, Car Wash",
-              "is_open": true
-            }
-          }, {
-            "type": "gas_station",
-            "settings": {
-              "name": "Frazão",
-              "brand": "EVESA",
-              "address": "Rua Frazão, 123, Paredes, Portugal",
-              "latitude": "41.2048",
-              "longitude": "-8.3333",
-              "hours": "24/7",
-              "phone": "+351 255 123 456",
-              "services": "Fuel, Gas, Convenience Store",
-              "is_open": true
-            }
-          }, {
-            "type": "gas_station",
-            "settings": {
-              "name": "Paços de Ferreira",
-              "brand": "EVESA",
-              "address": "Avenida Principal, 456, Paços de Ferreira, Portugal",
-              "latitude": "41.2768",
-              "longitude": "-8.3761",
-              "hours": "6:00 AM - 10:00 PM",
-              "phone": "+351 255 987 654",
-              "services": "Fuel, Gas, Convenience Store, Car Wash",
-              "is_open": true
-            }
-          }, {
-            "type": "gas_station",
-            "settings": {
-              "name": "Marco de Canavezes",
-              "brand": "EVESA",
-              "address": "Rua Central, 789, Marco de Canavezes, Portugal",
-              "latitude": "41.1833",
-              "longitude": "-8.1500",
-              "hours": "24/7",
-              "phone": "+351 255 456 789",
-              "services": "Fuel, Gas, Convenience Store, Coffee",
-              "is_open": true
-            }
-          }, {
-            "type": "gas_station",
-            "settings": {
-              "name": "Between the Rivers",
-              "brand": "EVESA",
-              "address": "Estrada Entre Rios, 321, Portugal",
-              "latitude": "40.6405",
-              "longitude": "-8.6538",
-              "hours": "7:00 AM - 11:00 PM",
-              "phone": "+351 234 789 012",
-              "services": "Fuel, Gas, Convenience Store",
-              "is_open": false
-            }
-          }, {
-            "type": "gas_station",
-            "settings": {
-              "name": "Pedorido",
-              "brand": "EVESA",
-              "address": "Rua Pedorido, 654, Portugal",
-              "latitude": "40.6405",
-              "longitude": "-8.6538",
-              "hours": "24/7",
-              "phone": "+351 234 345 678",
-              "services": "Fuel, Gas, Convenience Store, Car Wash",
-              "is_open": true
-            }
-          }, {
-            "type": "gas_station",
-            "settings": {
-              "name": "Lourosa",
-              "brand": "EVESA",
-              "address": "Avenida Lourosa, 987, Portugal",
-              "latitude": "40.9843",
-              "longitude": "-8.5514",
-              "hours": "6:00 AM - 10:00 PM",
-              "phone": "+351 256 123 456",
-              "services": "Fuel, Gas, Convenience Store, Coffee",
-              "is_open": true
-            }
-          }, {
-            "type": "gas_station",
-            "settings": {
-              "name": "Valongo",
-              "brand": "EVESA",
-              "address": "Rua Valongo, 147, Portugal",
-              "latitude": "41.1947",
-              "longitude": "-8.5000",
-              "hours": "24/7",
-              "phone": "+351 224 567 890",
-              "services": "Fuel, Gas, Convenience Store, Car Wash",
-              "is_open": true
-            }
-          }
-        ]
-      }
-    ]
-  }
+{
+  "name": "Gas Station Locator",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "map_title",
+      "label": "Map Title",
+      "default": "Encontre a estação mais próxima"
+    },
+    {
+      "type": "select",
+      "id": "mode",
+      "label": "Display Mode",
+      "default": "teaser",
+      "options": [
+        {
+          "value": "teaser",
+          "label": "Home Page (Light Search)"
+        },
+        {
+          "value": "map",
+          "label": "/localizacoes Page (Full Map)"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "google_maps_api_key",
+      "label": "Google Maps API Key",
+      "info": "Required for map mode"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Gas Station Locator"
+    }
+  ]
+}
 {% endschema %}
