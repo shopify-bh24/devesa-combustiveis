@@ -11,13 +11,24 @@
   "sections": {
     "main": {
       "type": "main-page",
+      "disabled": true,
       "settings": {
         "padding_top": 28,
         "padding_bottom": 28
       }
+    },
+    "gas_station_locator_rehpQz": {
+      "type": "gas-station-locator",
+      "name": "Gas Station Locator",
+      "settings": {
+        "map_title": "Encontre a estação mais próxima",
+        "mode": "map",
+        "google_maps_api_key": ""
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "gas_station_locator_rehpQz"
   ]
 }
