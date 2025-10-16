@@ -226,7 +226,9 @@
       "settings": {
         "map_title": "Encontre a estação mais próxima",
         "mode": "teaser",
-        "google_maps_api_key": "AIzaSyBC2obUJwfbdLzQpPodAMLSiRfXQRykOe8"
+        "google_maps_api_key": "AIzaSyBC2obUJwfbdLzQpPodAMLSiRfXQRykOe8",
+        "margin_top": 0,
+        "margin_bottom": 0
       }
     },
     "news_blog_LtJY44": {
@@ -316,7 +318,7 @@
         "promotion_button_text": "Promoções",
         "news_button_text": "Notícias",
         "padding_top": 60,
-        "padding_bottom": 60
+        "padding_bottom": 64
       }
     },
     "featured_collection_ydnrpx": {
