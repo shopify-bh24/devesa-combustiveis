@@ -225,7 +225,7 @@
       "type": "gas-station-locator",
       "settings": {
         "map_title": "Encontre a estação mais próxima",
-        "mode": "teaser",
+        "mode": "map",
         "google_maps_api_key": "AIzaSyBC2obUJwfbdLzQpPodAMLSiRfXQRykOe8"
       }
     },
