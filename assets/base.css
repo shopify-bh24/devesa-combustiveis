@@ -760,7 +760,7 @@ summary::-webkit-details-marker {
 .focus-none {
   box-shadow: none !important;
   outline: 0 !important;
-  background-color: var(--color-primary-dark);
+  background-color: #ffffff;
 }
 
 .focus-offset:focus-visible {
