@@ -1,0 +1,127 @@
+<style>
+.quick-links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  background: #273050;
+  width: 100%;
+  /* padding: 2rem 1rem; */
+}
+
+.quick-links__wrapper{
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    padding: 4rem 2rem;
+}
+
+.quick-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #fff;
+  color: #000;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 0 1.25rem;
+  height: 46px;
+  border-radius: 9999px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  transition: all 0.25s ease;
+}
+
+.quick-link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+}
+
+.quick-link__icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+</style>
+
+<section class="quick-links section">
+  {% assign links = section.blocks %}
+  <div class="quick-links__wrapper">
+    {% for block in links %}
+      <a href="{{ block.settings.link }}" class="quick-link">
+        {% if block.settings.icon != blank %}
+          <img src="{{ block.settings.icon | image_url: width: 40 }}" alt="" class="quick-link__icon">
+        {% endif %}
+        <span>{{ block.settings.label }}</span>
+      </a>
+    {% endfor %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Quick Links",
+  "tag": "section",
+  "class": "section quick-links",
+  "max_blocks": 4,
+  "settings": [],
+  "blocks": [
+    {
+      "type": "link",
+      "name": "Quick link",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon (20px recommended)"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Quick Link"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link URL"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Quick Links",
+      "blocks": [
+        {
+          "type": "link",
+          "settings": {
+            "label": "Localizador de Postos",
+            "link": "/localizacoes"
+          }
+        },
+        {
+          "type": "link",
+          "settings": {
+            "label": "Garrafas de Gás",
+            "link": "/loja/garrafas-de-gas"
+          }
+        },
+        {
+          "type": "link",
+          "settings": {
+            "label": "Lavagem Auto",
+            "link": "/localizacoes?servico=lavagem"
+          }
+        },
+        {
+          "type": "link",
+          "settings": {
+            "label": "Contactos",
+            "link": "/contactos#faq"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

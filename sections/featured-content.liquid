@@ -1,198 +1,188 @@
 {{ 'section-featured-content.css' | asset_url | stylesheet_tag }}
 
 <style>
+  .featured-content__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .featured-content__card {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-decoration: none;
+  }
+
+  .featured-content__card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+  }
+
+  .featured-content__card-image img {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    display: block;
+  }
+
   .featured-content__card-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.2));
-    display: flex !important;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.1));
+    z-index: 1;
+  }
+
+  .featured-content__card-content {
+    position: absolute;
+    bottom: 0;
+    /* left: 1.25rem; */
+    /* right: 1.25rem; */
+    z-index: 2;
+    color: #fff;
+    width: 100%;
+  }
+
+  .featured-content__card-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin: 0;
   }
 </style>
 
 <div class="featured-content{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
   <div class="page-width">
-  {%- if section.settings.heading != blank -%}
-    <div class="featured-content__header">
-      <h2 class="featured-content__title {{ section.settings.heading_size }}">
-        {{ section.settings.heading }}
-      </h2>
-    </div>
-  {%- endif -%}
-
-  <div class="featured-content__grid">
-    {%- for block in section.blocks -%}
-      <div class="featured-content__card" {{ block.shopify_attributes }}>
-        {%- if block.settings.image != blank -%}
-          <div class="featured-content__card-image">
-            {%- liquid
-              assign height = block.settings.image.width | divided_by: block.settings.image.aspect_ratio | round
-              assign sizes = '(min-width: 1200px) 25vw, (min-width: 750px) 50vw, 100vw'
-              assign widths = '375, 550, 750, 1100, 1500, 1780, 2000, 3000, 3840'
-            -%}
-            {{
-              block.settings.image
-              | image_url: width: 3840
-              | image_tag: loading: 'lazy', height: height, sizes: sizes, widths: widths
-            }}
-            <div class="featured-content__card-overlay"></div>
-          </div>
-        {%- endif -%}
-        
-        <div class="featured-content__card-content">
-          {%- if block.settings.title != blank -%}
-            <h3 class="featured-content__card-title">
-              {{ block.settings.title }}
-            </h3>
-          {%- endif -%}
-          
-          {%- if block.settings.description != blank -%}
-            <p class="featured-content__card-description">
-              {{ block.settings.description }}
-            </p>
-          {%- endif -%}
-          
-          {%- if block.settings.button_label != blank and block.settings.button_link != blank -%}
-            <a href="{{ block.settings.button_link }}" class="featured-content__card-button">
-              {{ block.settings.button_label }}
-              <span class="featured-content__card-arrow">→</span>
-            </a>
-          {%- endif -%}
-        </div>
+    {% if section.settings.heading != blank %}
+      <div class="featured-content__header">
+        <h2 class="featured-content__title {{ section.settings.heading_size }}">
+          {{ section.settings.heading }}
+        </h2>
       </div>
-    {%- endfor -%}
-  </div>
+    {% endif %}
+
+    <div class="featured-content__grid">
+      {% for block in section.blocks %}
+        {% if block.settings.link != blank %}
+          <a href="{{ block.settings.link }}" class="featured-content__card" {{ block.shopify_attributes }}>
+        {% else %}
+          <div class="featured-content__card" {{ block.shopify_attributes }}>
+        {% endif %}
+
+          {% if block.settings.image != blank %}
+            <div class="featured-content__card-image">
+              {{
+                block.settings.image
+                | image_url: width: 1500
+                | image_tag: loading: 'lazy', alt: block.settings.title
+              }}
+              <div class="featured-content__card-overlay">.</div>
+            </div>
+          {% endif %}
+
+          <div class="featured-content__card-content">
+            {% if block.settings.title != blank %}
+              <h3 class="featured-content__card-title">{{ block.settings.title }}</h3>
+            {% endif %}
+          </div>
+
+        {% if block.settings.link != blank %}
+          </a>
+        {% else %}
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
   </div>
 </div>
 
 {% schema %}
 {
-  "name": "Featured Content",
+  "name": "Services & Facilities",
   "tag": "section",
   "class": "section",
-  "disabled_on": {
-    "groups": ["header", "footer"]
-  },
   "settings": [
-    {
-      "type": "header",
-      "content": "Section Settings"
-    },
     {
       "type": "inline_richtext",
       "id": "heading",
-      "default": "Featured Content",
-      "label": "Section Heading"
+      "default": "Services & Facilities",
+      "label": "Section heading"
     },
     {
       "type": "select",
       "id": "heading_size",
       "options": [
-        {
-          "value": "h2",
-          "label": "Small"
-        },
-        {
-          "value": "h1",
-          "label": "Medium"
-        },
-        {
-          "value": "h0",
-          "label": "Large"
-        },
-        {
-          "value": "hxl",
-          "label": "Extra Large"
-        }
+        { "value": "h2", "label": "Small" },
+        { "value": "h1", "label": "Medium" },
+        { "value": "h0", "label": "Large" }
       ],
       "default": "h1",
-      "label": "Heading Size"
-    },
-    {
-      "type": "color_scheme",
-      "id": "color_scheme",
-      "label": "Color Scheme",
-      "default": "scheme-1"
+      "label": "Heading size"
     }
   ],
   "blocks": [
     {
       "type": "content_card",
-      "name": "Content Card",
-      "limit": 5,
+      "name": "Service",
       "settings": [
         {
           "type": "image_picker",
           "id": "image",
-          "label": "Card Image"
+          "label": "Service image"
         },
         {
           "type": "text",
           "id": "title",
-          "default": "Card Title",
-          "label": "Card Title"
-        },
-        {
-          "type": "textarea",
-          "id": "description",
-          "default": "Card description text goes here.",
-          "label": "Card Description"
-        },
-        {
-          "type": "text",
-          "id": "button_label",
-          "default": "Read more",
-          "label": "Button Label"
+          "label": "Service title",
+          "default": "Service"
         },
         {
           "type": "url",
-          "id": "button_link",
-          "label": "Button Link"
+          "id": "link",
+          "label": "Service link"
         }
       ]
     }
   ],
   "presets": [
     {
-      "name": "Featured Content",
+      "name": "Services & Facilities",
       "blocks": [
         {
           "type": "content_card",
           "settings": {
-            "title": "Fuels",
-            "description": "Our strategy is to deliver more value with less emissions.",
-            "button_label": "Read more →"
+            "title": "Combustíveis",
+            "link": "/localizacoes?servico=combustiveis"
           }
         },
         {
           "type": "content_card",
           "settings": {
-            "title": "Gas",
-            "description": "Shell's target is to become a net-zero emissions energy business by 2050.",
-            "button_label": "Read more →"
+            "title": "Garrafas de Gás",
+            "link": "/localizacoes?servico=gas"
           }
         },
         {
           "type": "content_card",
           "settings": {
-            "title": "Convenience Store",
-            "description": "Explore career opportunities at Shell.",
-            "button_label": "Read more →"
+            "title": "Loja de Conveniência",
+            "link": "/localizacoes?servico=loja"
           }
         },
         {
           "type": "content_card",
           "settings": {
-            "title": "Cafeteria",
-            "description": "The people, ideas, and innovations powering progress at Shell.",
-            "button_label": "Read more →"
+            "title": "Cafetaria",
+            "link": "/localizacoes?servico=cafeteria"
           }
         },
         {
           "type": "content_card",
           "settings": {
-            "title": "Washing",
-            "description": "The people, ideas, and innovations powering progress at Shell.",
-            "button_label": "Read more →"
+            "title": "Lavagem",
+            "link": "/localizacoes?servico=lavagem"
           }
         }
       ]

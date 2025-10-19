@@ -41,11 +41,11 @@
   .featured-collection_nav {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: end;
   }
 
   .featured-collection_nav a {
-    color: #FFF;
+    color: #1e253f;
   }
 {%- endstyle -%}
 
@@ -79,7 +79,7 @@
   class="color-{{ section.settings.color_scheme }} isolate gradient gas-bottle-collection"
 >
   <div
-    class="collection{% if section.settings.quick_add == 'bulk' %} collection-quick-add-bulk{% endif %} section-{{ section.id }}-padding{% if section.settings.full_width %} collection--full-width{% endif %}"
+    class="featured_collection collection{% if section.settings.quick_add == 'bulk' %} collection-quick-add-bulk{% endif %} section-{{ section.id }}-padding{% if section.settings.full_width %} collection--full-width{% endif %}"
     id="collection-{{ section.id }}"
     data-id="{{ section.id }}"
   >
@@ -236,8 +236,8 @@
     {
       "type": "range",
       "id": "products_to_show",
-      "min": 2,
-      "max": 25,
+      "min": 4,
+      "max": 6,
       "step": 1,
       "default": 4,
       "label": "t:sections.featured-collection.settings.products_to_show.label"

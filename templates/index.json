@@ -9,150 +9,67 @@
  */
 {
   "sections": {
-    "image_banner": {
-      "type": "image-banner",
+    "hero_banner_TVD3nN": {
+      "type": "hero-banner",
+      "name": "Hero banner",
+      "settings": {
+        "image": "shopify://shop_images/download_14.jpg",
+        "subheading": "Combustíveis de confiança, atendimento próximo.",
+        "heading": "Encontre o posto mais perto de si.",
+        "text_alignment": "flex-start",
+        "primary_button_label": "Encontrar posto",
+        "primary_button_link": "shopify://pages/localizacoes",
+        "primary_button_style_secondary": false,
+        "secondary_button_label": "Serviços & Facilidades",
+        "secondary_button_link": "#servicos",
+        "secondary_button_style_secondary": true,
+        "hero_height": 520
+      }
+    },
+    "quick_links_QjCP6e": {
+      "type": "quick-links",
       "blocks": {
-        "heading": {
-          "type": "heading",
+        "link_CPJN7n": {
+          "type": "link",
           "settings": {
-            "heading": "Browse our latest products",
-            "heading_size": "h0"
+            "icon": "shopify://shop_images/COMBUSTIVEIS.png",
+            "label": "Localizador de Postos",
+            "link": "/localizacoes"
           }
         },
-        "button": {
-          "type": "buttons",
+        "link_bmrtH4": {
+          "type": "link",
           "settings": {
-            "button_label_1": "Shop all",
-            "button_link_1": "shopify://collections/all",
-            "button_style_secondary_1": true,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
+            "icon": "shopify://shop_images/GAS.png",
+            "label": "Garrafas de Gás",
+            "link": "/loja/garrafas-de-gas"
+          }
+        },
+        "link_hJ7698": {
+          "type": "link",
+          "settings": {
+            "icon": "shopify://shop_images/LAVAGEM.png",
+            "label": "Lavagem Auto",
+            "link": "/localizacoes?servico=lavagem"
+          }
+        },
+        "link_DQL6c6": {
+          "type": "link",
+          "settings": {
+            "icon": "shopify://shop_images/CAFE.png",
+            "label": "Contactos",
+            "link": "/contactos#faq"
           }
         }
       },
       "block_order": [
-        "heading",
-        "button"
+        "link_CPJN7n",
+        "link_bmrtH4",
+        "link_hJ7698",
+        "link_DQL6c6"
       ],
-      "disabled": true,
-      "settings": {
-        "image_overlay_opacity": 40,
-        "image_height": "large",
-        "image_behavior": "none",
-        "desktop_content_position": "bottom-center",
-        "desktop_content_alignment": "center",
-        "show_text_box": false,
-        "color_scheme": "scheme-3",
-        "stack_images_on_mobile": false,
-        "mobile_content_alignment": "center",
-        "show_text_below": false
-      }
-    },
-    "slideshow_J9jf8W": {
-      "type": "slideshow",
-      "blocks": {
-        "slide_GGcccR": {
-          "type": "slide",
-          "settings": {
-            "image": "shopify://shop_images/download_14.jpg",
-            "image_overlay_opacity": 20,
-            "heading": "Encontre o posto mais perto de si.",
-            "heading_size": "h1",
-            "subheading": "Combustíveis de confiança, atendimento próximo.",
-            "primary_button_label": "Encontrar posto",
-            "primary_button_link": "/localizacoes",
-            "secondary_button_label": "Serviços & Facilidades",
-            "secondary_button_link": "#servicos",
-            "primary_button_style_secondary": false,
-            "secondary_button_style_secondary": false,
-            "show_text_box": true,
-            "box_align": "middle-center",
-            "text_alignment": "center",
-            "text_alignment_mobile": "center",
-            "color_scheme": ""
-          }
-        }
-      },
-      "block_order": [
-        "slide_GGcccR"
-      ],
-      "name": "t:sections.slideshow.presets.name",
-      "settings": {
-        "layout": "full_bleed",
-        "slide_logo_img": "shopify://shop_images/download_1.png",
-        "text_alignment": "start",
-        "slide_height": "medium",
-        "slider_visual": "counter",
-        "auto_rotate": true,
-        "change_slides_speed": 3,
-        "image_behavior": "none",
-        "show_text_below": true,
-        "accessibility_info": "Slideshow about our brand"
-      }
-    },
-    "featured_collection": {
-      "type": "featured-collection",
-      "disabled": true,
-      "settings": {
-        "collection": "all",
-        "products_to_show": 8,
-        "title": "Featured products",
-        "heading_size": "h1",
-        "description": "",
-        "show_description": false,
-        "description_style": "body",
-        "columns_desktop": 4,
-        "enable_desktop_slider": false,
-        "full_width": false,
-        "show_view_all": true,
-        "view_all_style": "solid",
-        "color_scheme": "",
-        "link_text": "",
-        "link": "",
-        "image_ratio": "adapt",
-        "image_shape": "default",
-        "show_secondary_image": false,
-        "show_vendor": false,
-        "show_rating": false,
-        "quick_add": "none",
-        "columns_mobile": "2",
-        "swipe_on_mobile": false,
-        "padding_top": 44,
-        "padding_bottom": 36
-      }
-    },
-    "process_banner": {
-      "type": "process-banner",
-      "blocks": {
-        "step_1": {
-          "type": "process_step",
-          "settings": {
-            "step_text": "𝓦𝓐𝓢𝓗"
-          }
-        },
-        "step_2": {
-          "type": "process_step",
-          "settings": {
-            "step_text": "𝓒𝓛𝓔𝓐𝓝"
-          }
-        },
-        "step_3": {
-          "type": "process_step",
-          "settings": {
-            "step_text": "𝓢𝓔𝓐𝓛"
-          }
-        }
-      },
-      "block_order": [
-        "step_1",
-        "step_2",
-        "step_3"
-      ],
-      "disabled": true,
-      "settings": {
-        "color_scheme": "scheme-1"
-      }
+      "name": "Quick Links",
+      "settings": {}
     },
     "featured_content": {
       "type": "featured-content",
@@ -162,9 +79,7 @@
           "settings": {
             "image": "shopify://shop_images/download1.jpg",
             "title": "Combustíveis",
-            "description": "",
-            "button_label": "Read more",
-            "button_link": "/localizacoes?servico=combustiveis"
+            "link": "shopify://pages/localizacoes"
           }
         },
         "content_card_2": {
@@ -172,9 +87,7 @@
           "settings": {
             "image": "shopify://shop_images/download2.jpg",
             "title": "Garrafas de Gás",
-            "description": "",
-            "button_label": "Read more",
-            "button_link": "/localizacoes?servico=gas"
+            "link": ""
           }
         },
         "content_card_3": {
@@ -182,9 +95,7 @@
           "settings": {
             "image": "shopify://shop_images/download3.jpg",
             "title": "Loja de Conveniência",
-            "description": "",
-            "button_label": "Read more",
-            "button_link": "/localizacoes?servico=loja"
+            "link": ""
           }
         },
         "content_card_4": {
@@ -192,9 +103,7 @@
           "settings": {
             "image": "shopify://shop_images/download4.jpg",
             "title": "Cafetaria",
-            "description": "",
-            "button_label": "Read more",
-            "button_link": "/localizacoes?servico=cafeteria"
+            "link": ""
           }
         },
         "content_card_5": {
@@ -202,9 +111,7 @@
           "settings": {
             "image": "shopify://shop_images/download5.jpg",
             "title": "Lavagem",
-            "description": "",
-            "button_label": "Read more",
-            "button_link": "/localizacoes?servico=lavagem"
+            "link": ""
           }
         }
       },
@@ -217,97 +124,18 @@
       ],
       "settings": {
         "heading": "SERVIÇOS & FACILIDADES",
-        "heading_size": "h1",
-        "color_scheme": "scheme-1"
+        "heading_size": "h1"
       }
     },
     "gas_station_locator": {
       "type": "gas-station-locator",
+      "disabled": true,
       "settings": {
         "map_title": "Encontre a estação mais próxima",
         "mode": "teaser",
         "google_maps_api_key": "AIzaSyBC2obUJwfbdLzQpPodAMLSiRfXQRykOe8",
         "margin_top": 0,
         "margin_bottom": 0
-      }
-    },
-    "news_blog_LtJY44": {
-      "type": "news-blog",
-      "blocks": {
-        "blog_post_dkRGMQ": {
-          "type": "blog_post",
-          "settings": {
-            "image": "shopify://shop_images/download_2.jpg",
-            "title": "Charging vehicles without contracts",
-            "description": "What changes in the way you charge your vehicle at public charging stations.",
-            "button_text": "Learn more",
-            "button_link": ""
-          }
-        },
-        "blog_post_pHnKrc": {
-          "type": "blog_post",
-          "settings": {
-            "image": "shopify://shop_images/download_11.jpg",
-            "title": "Blog Post Title",
-            "description": "Brief description of the blog post content.",
-            "button_text": "Learn more",
-            "button_link": ""
-          }
-        },
-        "blog_post_jdqYFb": {
-          "type": "blog_post",
-          "settings": {
-            "image": "shopify://shop_images/download_8.jpg",
-            "title": "Contracted power: complete guide",
-            "description": "Choose the ideal power for your electricity supply contract.",
-            "button_text": "Learn more",
-            "button_link": ""
-          }
-        },
-        "blog_post_eaL9N7": {
-          "type": "blog_post",
-          "settings": {
-            "image": "shopify://shop_images/download_3.jpg",
-            "title": "Support and incentives for renewable energy",
-            "description": "See if you can take advantage of these supports and improve your comfort.",
-            "button_text": "Learn more",
-            "button_link": ""
-          }
-        }
-      },
-      "block_order": [
-        "blog_post_dkRGMQ",
-        "blog_post_pHnKrc",
-        "blog_post_jdqYFb",
-        "blog_post_eaL9N7"
-      ],
-      "disabled": true,
-      "custom_css": [],
-      "name": "News from our blog",
-      "settings": {
-        "heading": "News from our blog",
-        "color_scheme": "background-1",
-        "padding_top": 60,
-        "padding_bottom": 60
-      }
-    },
-    "featured_blog_tPRjDy": {
-      "type": "featured-blog",
-      "disabled": true,
-      "name": "t:sections.featured-blog.presets.name",
-      "settings": {
-        "blog": "news",
-        "post_limit": 4,
-        "heading": "Blogs",
-        "heading_size": "h1",
-        "columns_desktop": 4,
-        "show_view_all": true,
-        "show_image": true,
-        "show_date": true,
-        "show_author": false,
-        "color_scheme": "scheme-2",
-        "padding_top": 36,
-        "padding_bottom": 36
       }
     },
     "another_blog_hEeg9i": {
@@ -327,7 +155,7 @@
       "settings": {
         "collection": "garrafas-de-gas",
         "products_to_show": 4,
-        "title": "Loja — Garrafas de Gás”",
+        "title": "Loja — Garrafas de Gás",
         "heading_size": "h1",
         "description": "",
         "show_description": false,
@@ -339,7 +167,7 @@
         "view_all_style": "solid",
         "color_scheme": "",
         "link_text": "Ver tudo",
-        "link": "/loja/garrafas-de-gas",
+        "link": "shopify://collections/garrafas-de-gas",
         "image_ratio": "adapt",
         "image_shape": "default",
         "show_secondary_image": false,
@@ -527,7 +355,6 @@
         "checkbox_label": "Concordo em receber comunicações.",
         "success_message": "Obrigado! Confirme no email.",
         "color_scheme": "background-1",
-        "background_image": "shopify://shop_images/istockphoto-1441262452-612x612.jpg",
         "background_opacity": 20,
         "enable_grid_effect": true,
         "grid_style": "dots",
@@ -542,14 +369,10 @@
     }
   },
   "order": [
-    "image_banner",
-    "slideshow_J9jf8W",
-    "featured_collection",
-    "process_banner",
+    "hero_banner_TVD3nN",
+    "quick_links_QjCP6e",
     "featured_content",
     "gas_station_locator",
-    "news_blog_LtJY44",
-    "featured_blog_tPRjDy",
     "another_blog_hEeg9i",
     "featured_collection_ydnrpx",
     "featured_blog_zbkNNg",

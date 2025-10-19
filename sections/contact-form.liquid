@@ -16,9 +16,6 @@
 
 <div
   class="contact-form color-{{ section.settings.color_scheme }} section-{{ section.id }}-padding{% if section.settings.background_image != blank %} contact-form--has-bg{% endif %}{% if section.settings.enable_grid_effect %} contact-form--grid-effect{% endif %}{% if section.settings.enable_animation %} contact-form--animated{% endif %}"
-  {% if section.settings.background_image != blank %}
-    style="background-image: url('{{ section.settings.background_image | image_url: width: 1920 }}'); background-size: cover; background-position: center; background-repeat: no-repeat;"
-  {% endif %}
 >
   <div class="page-width">
     <div class="contact-form__container">
@@ -110,11 +107,11 @@ document.addEventListener('DOMContentLoaded', function() {
     contactForm.style.setProperty('--grid-size', `${gridSize}px`);
   }
 
-  // Background Opacity
-  const backgroundOpacity = '{{ section.settings.background_opacity | default: 20 }}';
-  if (contactForm && contactForm.classList.contains('contact-form--has-bg')) {
-    contactForm.style.setProperty('--bg-opacity', backgroundOpacity / 100);
-  }
+  // // Background Opacity
+  // const backgroundOpacity = '{{ section.settings.background_opacity | default: 20 }}';
+  // if (contactForm && contactForm.classList.contains('contact-form--has-bg')) {
+  //   contactForm.style.setProperty('--bg-opacity', backgroundOpacity / 100);
+  // }
 });
 </script>
 
@@ -160,21 +157,6 @@ document.addEventListener('DOMContentLoaded', function() {
         { "value": "accent-2", "label": "Accent 2" }
       ],
       "default": "background-1"
-    },
-    {
-      "type": "image_picker",
-      "id": "background_image",
-      "label": "Background Image"
-    },
-    {
-      "type": "range",
-      "id": "background_opacity",
-      "min": 0,
-      "max": 100,
-      "step": 5,
-      "unit": "%",
-      "label": "Background Image Opacity",
-      "default": 20
     },
     {
       "type": "checkbox",

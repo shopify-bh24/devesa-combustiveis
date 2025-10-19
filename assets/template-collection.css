@@ -1,3 +1,11 @@
+.featured_collection{
+  background: white;
+}
+
+.view-all_link{
+  color: #1e253f;
+}
+
 @media screen and (max-width: 749px) {
   .collection .grid__item:only-child {
     flex: 0 0 100%;
@@ -78,7 +86,7 @@
   margin-top: 25px;
   font-size: 4rem !important;
   font-weight: 700;
-  color: #FFF;
+  color: black;
 }
 
 @media screen and (min-width: 990px) {
