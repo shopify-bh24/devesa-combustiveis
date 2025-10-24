@@ -12,68 +12,114 @@
       padding-bottom: {{ section.settings.padding_bottom }}px;
     }
   }
+
+  /* --- Added image layout --- */
+  .contact-form__outer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  @media (min-width: 750px) {
+    .contact-form__outer {
+      flex-direction: row;
+    }
+
+    .contact-form__outer.image-left {
+      flex-direction: row-reverse;
+    }
+  }
+
+  .contact-form__image {
+    flex: 1;
+    text-align: center;
+  }
+
+  .contact-form__image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+    display: block;
+  }
+
+  .contact-form__main {
+    flex: 1;
+    width: 100%;
+  }
+
 {%- endstyle -%}
 
 <div
-  class="contact-form color-{{ section.settings.color_scheme }} section-{{ section.id }}-padding{% if section.settings.background_image != blank %} contact-form--has-bg{% endif %}{% if section.settings.enable_grid_effect %} contact-form--grid-effect{% endif %}{% if section.settings.enable_animation %} contact-form--animated{% endif %}"
+  class="contact-form color-{{ section.settings.color_scheme }} section-{{ section.id }}-padding{% if section.settings.enable_grid_effect %} contact-form--grid-effect{% endif %}{% if section.settings.enable_animation %} contact-form--animated{% endif %}"
 >
   <div class="page-width">
-    <div class="contact-form__container">
-      <div class="contact-form__info">
-        <div class="contact-form__title">{{ section.settings.title }}</div>
-      </div>
+    <div class="contact-form__outer {% if section.settings.image_position == 'left' %}image-left{% endif %}">
+      {% if section.settings.side_image != blank %}
+        <div class="contact-form__image">
+          <img src="{{ section.settings.side_image | img_url: 'master' }}" alt="Newsletter image">
+        </div>
+      {% endif %}
 
-      <div class="contact-form__form-panel">
-        <div class="contact-form__form-content">
-          {%- form 'customer', id: 'NewsletterForm', class: 'contact-form__form' -%}
-            {%- if form.posted_successfully? -%}
-              <div class="contact-form__message contact-form__message--success">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                  <polyline points="22,4 12,14.01 9,11.01"></polyline>
-                </svg>
-                {{ section.settings.success_message }}
-              </div>
-            {%- elsif form.errors -%}
-              <div class="contact-form__message contact-form__message--error">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <circle cx="12" cy="12" r="10"></circle>
-                  <line x1="15" y1="9" x2="9" y2="15"></line>
-                  <line x1="9" y1="9" x2="15" y2="15"></line>
-                </svg>
-                {{ form.errors.messages.email }}
-              </div>
-            {%- endif -%}
+      <div class="contact-form__main">
+        <div class="contact-form__container">
+          <div class="contact-form__info">
+            <div class="contact-form__title">{{ section.settings.title }}</div>
+          </div>
 
-            <div class="contact-form__field contact-form__field--inline">
-              <input
-                type="email"
-                id="NewsletterForm-email"
-                name="contact[email]"
-                class="contact-form__input"
-                placeholder="Email"
-                value="{{ form.email | escape }}"
-                required
-                aria-required="true"
-              >
-              <button type="submit" class="contact-form__submit-btn">
-                {{ section.settings.button_label }}
-              </button>
+          <div class="contact-form__form-panel">
+            <div class="contact-form__form-content">
+              {%- form 'customer', id: 'NewsletterForm', class: 'contact-form__form' -%}
+                {%- if form.posted_successfully? -%}
+                  <div class="contact-form__message contact-form__message--success">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                      <polyline points="22,4 12,14.01 9,11.01"></polyline>
+                    </svg>
+                    {{ section.settings.success_message }}
+                  </div>
+                {%- elsif form.errors -%}
+                  <div class="contact-form__message contact-form__message--error">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <circle cx="12" cy="12" r="10"></circle>
+                      <line x1="15" y1="9" x2="9" y2="15"></line>
+                      <line x1="9" y1="9" x2="15" y2="15"></line>
+                    </svg>
+                    {{ form.errors.messages.email }}
+                  </div>
+                {%- endif -%}
+
+                <div class="contact-form__field contact-form__field--inline">
+                  <input
+                    type="email"
+                    id="NewsletterForm-email"
+                    name="contact[email]"
+                    class="contact-form__input"
+                    placeholder="Email"
+                    value="{{ form.email | escape }}"
+                    required
+                    aria-required="true"
+                  >
+                  <button type="submit" class="contact-form__submit-btn">
+                    {{ section.settings.button_label }}
+                  </button>
+                </div>
+
+                <div class="contact-form__checkbox">
+                  <input
+                    type="checkbox"
+                    id="NewsletterForm-consent"
+                    name="consent"
+                    class="contact-form__checkbox-input"
+                    required
+                  >
+                  <label for="NewsletterForm-consent" class="contact-form__checkbox-label">
+                    {{ section.settings.checkbox_label }}
+                  </label>
+                </div>
+              {%- endform -%}
             </div>
-
-            <div class="contact-form__checkbox">
-              <input
-                type="checkbox"
-                id="NewsletterForm-consent"
-                name="consent"
-                class="contact-form__checkbox-input"
-                required
-              >
-              <label for="NewsletterForm-consent" class="contact-form__checkbox-label">
-                {{ section.settings.checkbox_label }}
-              </label>
-            </div>
-          {%- endform -%}
+          </div>
         </div>
       </div>
     </div>
@@ -106,12 +152,6 @@ document.addEventListener('DOMContentLoaded', function() {
     contactForm.classList.add(`contact-form--grid-${gridStyle}`);
     contactForm.style.setProperty('--grid-size', `${gridSize}px`);
   }
-
-  // // Background Opacity
-  // const backgroundOpacity = '{{ section.settings.background_opacity | default: 20 }}';
-  // if (contactForm && contactForm.classList.contains('contact-form--has-bg')) {
-  //   contactForm.style.setProperty('--bg-opacity', backgroundOpacity / 100);
-  // }
 });
 </script>
 
@@ -121,6 +161,21 @@ document.addEventListener('DOMContentLoaded', function() {
   "tag": "section",
   "class": "section",
   "settings": [
+    {
+      "type": "image_picker",
+      "id": "side_image",
+      "label": "Side Image"
+    },
+    {
+      "type": "select",
+      "id": "image_position",
+      "label": "Image Position",
+      "options": [
+        { "value": "right", "label": "Right" },
+        { "value": "left", "label": "Left" }
+      ],
+      "default": "right"
+    },
     {
       "type": "text",
       "id": "title",
