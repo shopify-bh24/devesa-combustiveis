@@ -351,7 +351,7 @@
       "name": "Contact Form",
       "settings": {
         "side_image": "shopify://shop_images/istockphoto-1441262452-612x612.jpg",
-        "image_position": "right",
+        "image_position": "left",
         "title": "Receber novidades & promoções",
         "content": "<p>Utilize e obtenha saldo em combustível, compras, faturas e muito mais.</p>",
         "button_label": "Subscrever",
