@@ -3707,3 +3707,8 @@ details-disclosure>details {
 }
 
 /* //////////////////////////////////////////////////// */
+
+/* product description font color */
+ul.usage-type-list li {
+  color: #656565;
+}

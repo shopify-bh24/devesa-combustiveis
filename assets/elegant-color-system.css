@@ -210,7 +210,7 @@ p {
 }
 
 .contact-form__form-panel {
-  background-color: var(--color-secondary-medium);
+  /* background-color: var(--color-secondary-medium); */
 }
 
 /* Blog Section */

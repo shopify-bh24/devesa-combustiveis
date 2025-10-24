@@ -16,44 +16,90 @@
   /* --- Added image layout --- */
   .contact-form__outer {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    gap: 20px;
+    border-radius: 30px;
+    border: 1px solid #27315447;
+    gap: 25px;
   }
 
   @media (min-width: 750px) {
     .contact-form__outer {
       flex-direction: row;
+      height: 600px;
     }
 
     .contact-form__outer.image-left {
       flex-direction: row-reverse;
     }
   }
+  
+  .contact-form__outer.image-left .contact-form__image img{
+    border-radius: 0px 28px 28px 0px;
+  }
 
-  .contact-form__image {
-    flex: 1;
-    text-align: center;
+  @media screen and (max-width: 749px) {
+    .contact-form__image img {
+      border-radius: 28px 28px 0px 0px !important;
+    }
+
+    .contact-form__outer {
+      flex-direction: column;
+    }
+  }
+
+  @media screen and (min-width: 750px) {
+    .contact-form__image {
+      text-align: center;
+      width: 50%;
+      height: 100%;
+    }
   }
 
   .contact-form__image img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 12px;
+    width: 100%;
+    height: 100%;
+    max-height: 600px;
+    object-fit: cover;
+    border-radius: 28px 0px 0px 28px;
     display: block;
   }
 
   .contact-form__main {
-    flex: 1;
     width: 100%;
+    padding: 20px 0px;
+    height: 100%;
+    display: flex;
+    align-items: center;
   }
 
+  @media screen and (min-width: 750px) {
+    .contact-form__main {
+      width: 50%;
+    }
+  }
+ 
+  @media screen and (max-width: 750px) {
+    .contact-form__main {
+      padding: 0px;
+    }
+
+    .contact-form__image img {
+      height: 400px;
+    }
+  }
+
+  @media screen and (max-width: 500px) {
+    .contact-form__image img {
+      height: 300px;
+    }
+  }
 {%- endstyle -%}
 
 <div
   class="contact-form color-{{ section.settings.color_scheme }} section-{{ section.id }}-padding{% if section.settings.enable_grid_effect %} contact-form--grid-effect{% endif %}{% if section.settings.enable_animation %} contact-form--animated{% endif %}"
 >
-  <div class="page-width">
+  <div class="page-width" style="padding: 20px;">
     <div class="contact-form__outer {% if section.settings.image_position == 'left' %}image-left{% endif %}">
       {% if section.settings.side_image != blank %}
         <div class="contact-form__image">
@@ -65,6 +111,7 @@
         <div class="contact-form__container">
           <div class="contact-form__info">
             <div class="contact-form__title">{{ section.settings.title }}</div>
+            <div class="contact-form__content">{{ section.settings.content }}</div>
           </div>
 
           <div class="contact-form__form-panel">
@@ -100,22 +147,9 @@
                     required
                     aria-required="true"
                   >
-                  <button type="submit" class="contact-form__submit-btn">
+                  <a href="" type="submit" class="contact-form__submit-btn">
                     {{ section.settings.button_label }}
-                  </button>
-                </div>
-
-                <div class="contact-form__checkbox">
-                  <input
-                    type="checkbox"
-                    id="NewsletterForm-consent"
-                    name="consent"
-                    class="contact-form__checkbox-input"
-                    required
-                  >
-                  <label for="NewsletterForm-consent" class="contact-form__checkbox-label">
-                    {{ section.settings.checkbox_label }}
-                  </label>
+                  </a>
                 </div>
               {%- endform -%}
             </div>
@@ -130,7 +164,6 @@
 document.addEventListener('DOMContentLoaded', function() {
   const contactForm = document.querySelector('.contact-form');
   
-  // Animation
   if (contactForm && contactForm.classList.contains('contact-form--animated')) {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -145,7 +178,6 @@ document.addEventListener('DOMContentLoaded', function() {
     observer.observe(contactForm);
   }
 
-  // Grid Effect
   if (contactForm && contactForm.classList.contains('contact-form--grid-effect')) {
     const gridStyle = '{{ section.settings.grid_style | default: "dots" }}';
     const gridSize = '{{ section.settings.grid_size | default: 20 }}';
@@ -183,62 +215,21 @@ document.addEventListener('DOMContentLoaded', function() {
       "default": "Receber novidades & promoções"
     },
     {
+      "type": "richtext",
+      "id": "content",
+      "label": "Content"
+    },
+    {
       "type": "text",
       "id": "button_label",
       "label": "Button Label",
       "default": "Subscrever"
     },
     {
-      "type": "text",
-      "id": "checkbox_label",
-      "label": "Checkbox Label",
-      "default": "Concordo em receber comunicações."
-    },
-    {
-      "type": "text",
-      "id": "success_message",
-      "label": "Success Message",
-      "default": "Obrigado! Confirme no email."
-    },
-    {
-      "type": "select",
-      "id": "color_scheme",
-      "label": "Color Scheme",
-      "options": [
-        { "value": "background-1", "label": "Background 1" },
-        { "value": "background-2", "label": "Background 2" },
-        { "value": "inverse", "label": "Inverse" },
-        { "value": "accent-1", "label": "Accent 1" },
-        { "value": "accent-2", "label": "Accent 2" }
-      ],
-      "default": "background-1"
-    },
-    {
       "type": "checkbox",
       "id": "enable_grid_effect",
       "default": false,
       "label": "Enable Grid Effect"
-    },
-    {
-      "type": "select",
-      "id": "grid_style",
-      "options": [
-        { "value": "dots", "label": "Dots" },
-        { "value": "lines", "label": "Lines" },
-        { "value": "squares", "label": "Squares" }
-      ],
-      "default": "dots",
-      "label": "Grid Style"
-    },
-    {
-      "type": "range",
-      "id": "grid_size",
-      "min": 10,
-      "max": 50,
-      "step": 5,
-      "unit": "px",
-      "label": "Grid Size",
-      "default": 20
     },
     {
       "type": "checkbox",

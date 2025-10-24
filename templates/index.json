@@ -145,8 +145,8 @@
         "title": "Notícias & Promoções",
         "promotion_button_text": "Promoções",
         "news_button_text": "Notícias",
-        "padding_top": 20,
-        "padding_bottom": 56
+        "padding_top": 0,
+        "padding_bottom": 0
       }
     },
     "featured_collection_ydnrpx": {
@@ -350,15 +350,12 @@
       "type": "contact-form",
       "name": "Contact Form",
       "settings": {
+        "side_image": "shopify://shop_images/istockphoto-1441262452-612x612.jpg",
+        "image_position": "right",
         "title": "Receber novidades & promoções",
+        "content": "<p>Utilize e obtenha saldo em combustível, compras, faturas e muito mais.</p>",
         "button_label": "Subscrever",
-        "checkbox_label": "Concordo em receber comunicações.",
-        "success_message": "Obrigado! Confirme no email.",
-        "color_scheme": "background-1",
-        "background_opacity": 20,
         "enable_grid_effect": true,
-        "grid_style": "dots",
-        "grid_size": 20,
         "enable_animation": true,
         "animation_type": "slide-up",
         "animation_duration": 0.6,
