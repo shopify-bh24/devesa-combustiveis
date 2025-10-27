@@ -18,7 +18,7 @@
         "heading": "Encontre o posto mais perto de si.",
         "text_alignment": "flex-start",
         "primary_button_label": "Encontrar posto",
-        "primary_button_link": "shopify://pages/localizacoes",
+        "primary_button_link": "shopify://pages/asdkloadslkjsad",
         "primary_button_style_secondary": false,
         "secondary_button_label": "Serviços & Facilidades",
         "secondary_button_link": "#servicos",
@@ -79,7 +79,7 @@
           "settings": {
             "image": "shopify://shop_images/download1.jpg",
             "title": "Combustíveis",
-            "link": "shopify://pages/localizacoes"
+            "link": "shopify://pages/asdkloadslkjsad"
           }
         },
         "content_card_2": {
