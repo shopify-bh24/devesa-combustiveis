@@ -52,9 +52,14 @@
     font-weight: 700;
     margin: 0;
   }
+
+
+  .services_links {
+    padding-top: 15rem;
+  }
 </style>
 
-<div class="featured-content{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
+<div class="featured-content services_links {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
   <div class="page-width">
     {% if section.settings.heading != blank %}
       <div class="featured-content__header">

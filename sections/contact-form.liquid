@@ -19,8 +19,9 @@
     flex-direction: row;
     align-items: center;
     border-radius: 30px;
-    border: 1px solid #27315447;
+    /* border: 1px solid #27315447; */
     gap: 25px;
+    background-color: #273154;
   }
 
   @media (min-width: 750px) {
@@ -99,7 +100,7 @@
 <div
   class="contact-form color-{{ section.settings.color_scheme }} section-{{ section.id }}-padding{% if section.settings.enable_grid_effect %} contact-form--grid-effect{% endif %}{% if section.settings.enable_animation %} contact-form--animated{% endif %}"
 >
-  <div class="page-width" style="padding: 20px;">
+  <div class="page-width">
     <div class="contact-form__outer {% if section.settings.image_position == 'left' %}image-left{% endif %}">
       {% if section.settings.side_image != blank %}
         <div class="contact-form__image">
