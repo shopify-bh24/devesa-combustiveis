@@ -25,7 +25,7 @@
         "link_privacidade_label": "Privacidade",
         "link_termos": "shopify://policies/privacy-policy",
         "link_termos_label": "Termos",
-        "link_livro": "#",
+        "link_livro": "shopify://policies/terms-of-service",
         "link_livro_label": "Livro de Reclamações",
         "color_scheme": "scheme-2",
         "enable_animation": true,
