@@ -79,6 +79,14 @@
 .page-width {
   max-width: var(--page-width);
   margin: 0 auto;
+  max-width: 1300px;
+  padding: 0px 40px;
+}
+
+@media screen and (max-width: 750px) {
+  .page-width {
+    padding: 0px 20px;
+  }
 }
 
 body:has(.section-header .drawer-menu) .announcement-bar-section .page-width {
@@ -122,9 +130,8 @@ body:has(.section-header .drawer-menu) .announcement-bar-section .page-width {
 
 @media screen and (min-width: 990px) {
   .header:not(.drawer-menu).page-width {
-    padding-left: 3rem;
-    padding-right: 3rem;
-    max-width: 145rem;
+    padding: 0px 40px;
+    max-width: 1300px;
   }
 
   .page-width--narrow {
@@ -181,7 +188,7 @@ body:has(.section-header .drawer-menu) .announcement-bar-section .page-width {
 .rte-width {
   max-width: 82rem;
   margin: 0 auto 0;
-  font-size: 13px;  
+  font-size: 13px;
   line-height: 1.5
 }
 
@@ -864,7 +871,8 @@ summary::-webkit-details-marker {
   font-weight: 700;
   justify-content: center;
 }
-.title-wrapper--no-top-margin h2{
+
+.title-wrapper--no-top-margin h2 {
   font-weight: 700;
 }
 
@@ -1371,7 +1379,7 @@ shopify-accelerated-checkout-cart {
   opacity: 0.5;
 }
 
-.button--full-width  {
+.button--full-width {
   display: flex;
   width: 100%;
   padding: 1rem;
@@ -1598,7 +1606,7 @@ details[open]>.share-button__fallback {
 .customer select {
   -webkit-appearance: none;
   appearance: none;
-  background-color:rgb(39 49 84);
+  /* background-color:rgb(39 49 84); */
   color: rgb(var(--color-foreground));
   font-family: var(--font-body-family);
   font-style: var(--font-body-style);
@@ -3711,4 +3719,34 @@ details-disclosure>details {
 /* product description font color */
 ul.usage-type-list li {
   color: #656565;
+}
+
+/* policy style */
+
+.shopify-policy__container {
+  max-width: 1300px;
+  padding: 0px 40px;
+}
+
+.shopify-policy__title h1{
+  display: none;
+}
+
+.shopify-policy__body h1{
+  font-size: 64px;
+  font-weight: bold;
+  text-align: left;
+  margin: 64px 0px;
+  color: #111827;
+}
+
+.shopify-policy__body {
+  margin: 64px 0px;
+  color: #6B7280;
+}
+
+.shopify-policy__body h4 {
+  color: #111827;
+  font-size: 25px;
+  font-weight: 600;
 }

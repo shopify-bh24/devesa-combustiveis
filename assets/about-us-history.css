@@ -116,7 +116,7 @@
 }
 
 /* Responsive */
-@media (max-width: 1024px) {
+@media (max-width: 992px) {
   .about-us__history-grid {
     grid-template-columns: 1fr;
     gap: 40px;
@@ -127,5 +127,10 @@
   .about-us__history-quote-inner {
     flex-direction: column;
     text-align: center;
+  }
+  .about-us__history-badge {
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 15px;
   }
 }

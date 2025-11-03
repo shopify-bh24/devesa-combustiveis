@@ -3,6 +3,7 @@
   overflow: hidden;
   text-align: center;
   color: #ffffff;
+  padding: 120px 20px;
 }
 
 .about-us__banner-bg {
@@ -100,12 +101,16 @@
 
 /* Responsive design */
 @media (max-width: 768px) {
+  .about-us__banner {
+    padding: 80px 15px;
+  }
+
   .about-us__banner-title {
     font-size: 22px;
   }
 
   .about-us__banner-subtitle {
-    font-size: 13px;
+    font-size: 14px;
   }
 
   .about-us__banner-text {

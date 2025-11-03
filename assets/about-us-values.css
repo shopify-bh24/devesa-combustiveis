@@ -37,18 +37,6 @@
   margin-top: 40px;
 }
 
-@media screen and (max-width: 1024px) {
-  .about-us__values-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media screen and (max-width: 750px) {
-  .about-us__values-grid {
-    grid-template-columns: repeat(1, 1fr);
-  }
-}
-
 .about-us__values-item {
   background: #fff;
   border: 1px solid #e6ebf5;
