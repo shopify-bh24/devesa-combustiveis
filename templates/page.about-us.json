@@ -11,13 +11,203 @@
   "sections": {
     "main": {
       "type": "main-page",
+      "disabled": true,
       "settings": {
         "padding_top": 28,
         "padding_bottom": 28
       }
+    },
+    "about_us_banner_cq6yCx": {
+      "type": "about-us-banner",
+      "name": "About Us Banner",
+      "settings": {
+        "title": "A Energizar Comunidades com Energia Fiável",
+        "subtitle": "A Impulsionar a Sua Viagem Desde 1998",
+        "content": "<p>Somos uma empresa de distribuição de combustível de confiança com 13 postos de abastecimento modernos em toda a região, empenhados em oferecer excelência no serviço e na qualidade do combustível.</p>",
+        "bg_image": "shopify://shop_images/download_a25f4f02-7275-4179-8aff-06c57015b6ab.jpg",
+        "bg_background_color": "#273154",
+        "primary_btn_txt": "As Nossas Localizações",
+        "primary_btn_link": "",
+        "secondary_btn_txt": "Contacte-nos",
+        "secondary_btn_link": ""
+      }
+    },
+    "service_menu_RRDgLb": {
+      "type": "service-menu",
+      "blocks": {
+        "stat_tdije7": {
+          "type": "stat",
+          "settings": {
+            "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"30\" height=\"30\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-map-pin w-8 h-8 text-blue-600\" aria-hidden=\"true\"><path d=\"M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0\"></path><circle cx=\"12\" cy=\"10\" r=\"3\"></circle></svg>",
+            "number": "13",
+            "label": "Postos de Abastecimento"
+          }
+        },
+        "stat_JjrgXj": {
+          "type": "stat",
+          "settings": {
+            "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"30\" height=\"30\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-users w-8 h-8 text-blue-600\" aria-hidden=\"true\"><path d=\"M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2\"></path><path d=\"M16 3.128a4 4 0 0 1 0 7.744\"></path><path d=\"M22 21v-2a4 4 0 0 0-3-3.87\"></path><circle cx=\"9\" cy=\"7\" r=\"4\"></circle></svg>",
+            "number": "500+",
+            "label": "Clientes Diários"
+          }
+        },
+        "stat_E7Ubgm": {
+          "type": "stat",
+          "settings": {
+            "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"30\" height=\"30\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-clock w-8 h-8 text-blue-600\" aria-hidden=\"true\"><path d=\"M12 6v6l4 2\"></path><circle cx=\"12\" cy=\"12\" r=\"10\"></circle></svg>",
+            "number": "24/7",
+            "label": "Serviço Disponível"
+          }
+        },
+        "stat_Lbfygt": {
+          "type": "stat",
+          "settings": {
+            "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"30\" height=\"30\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-award w-8 h-8 text-blue-600\" aria-hidden=\"true\"><path d=\"m15.477 12.89 1.515 8.526a.5.5 0 0 1-.81.47l-3.58-2.687a1 1 0 0 0-1.197 0l-3.586 2.686a.5.5 0 0 1-.81-.469l1.514-8.526\"></path><circle cx=\"12\" cy=\"8\" r=\"6\"></circle></svg>",
+            "number": "25+",
+            "label": "Anos de Excelência"
+          }
+        }
+      },
+      "block_order": [
+        "stat_tdije7",
+        "stat_JjrgXj",
+        "stat_E7Ubgm",
+        "stat_Lbfygt"
+      ],
+      "name": "Service Menu",
+      "settings": {
+        "background_color": "#ffffff",
+        "padding_top": 50,
+        "padding_bottom": 40
+      }
+    },
+    "about_us_history_B8VdbD": {
+      "type": "about-us-history",
+      "name": "About Us History",
+      "settings": {
+        "subtitle": "A Nossa História",
+        "title": "A Construir um Legado de Confiança e Qualidade",
+        "text": "<p>Fundada em 1998, começámos com uma visão simples: fornecer às comunidades combustível fiável e de alta qualidade com um serviço excecional. Desde o nosso primeiro posto até à atual rede de 13 localizações, permanecemos fiéis a esse princípio fundador.</p><p>Ao longo dos últimos 25 anos, crescemos lado a lado com as comunidades que servimos, adaptando-nos às suas necessidades em constante mudança, mantendo sempre os nossos valores fundamentais de integridade, segurança e satisfação do cliente.</p><p>Hoje, orgulhamo-nos de ser uma empresa líder na distribuição de combustível na região, reconhecida pelas nossas instalações modernas, preços competitivos e compromisso inabalável com a responsabilidade ambiental.</p>",
+        "main_image": "shopify://shop_images/download_2_f127cf3e-3919-4d89-9e71-38a81bc92ffb.jpg",
+        "badge_text": "98% Satisfação dos Clientes",
+        "badge_subtext": "Avaliado pela nossa comunidade",
+        "ceo_image": "shopify://shop_images/download_1_6bf7e38b-7693-4b62-94de-662d6863ce1c.jpg",
+        "ceo_quote": "A nossa missão sempre foi mais do que simplesmente vender combustível. Queremos ser parceiros de confiança nas jornadas diárias das pessoas, fornecendo não apenas energia para os seus veículos, mas também tranquilidade e serviço de excelência.",
+        "ceo_name": "João Silva",
+        "ceo_title": "CEO & Fundador",
+        "background_color": "#f8fafb",
+        "padding_top": 50,
+        "padding_bottom": 50
+      }
+    },
+    "about_us_values_JCkTAg": {
+      "type": "about-us-values",
+      "blocks": {
+        "value_YifeWP": {
+          "type": "value",
+          "settings": {
+            "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-shield w-6 h-6 text-white\" aria-hidden=\"true\"><path d=\"M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z\"></path></svg>",
+            "title": "Segurança em Primeiro Lugar",
+            "desc": "Mantemos os mais elevados padrões de segurança em todos os nossos postos, garantindo operações seguras para os nossos clientes e membros da equipa."
+          }
+        },
+        "value_VNyFhw": {
+          "type": "value",
+          "settings": {
+            "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-award w-6 h-6 text-white\" aria-hidden=\"true\"><path d=\"m15.477 12.89 1.515 8.526a.5.5 0 0 1-.81.47l-3.58-2.687a1 1 0 0 0-1.197 0l-3.586 2.686a.5.5 0 0 1-.81-.469l1.514-8.526\"></path><circle cx=\"12\" cy=\"8\" r=\"6\"></circle></svg>",
+            "title": "Garantia de Qualidade",
+            "desc": "Qualidade premium de combustível garantida em cada bomba, rigorosamente testado para cumprir e superar os padrões da indústria."
+          }
+        },
+        "value_iLUHiA": {
+          "type": "value",
+          "settings": {
+            "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-heart w-6 h-6 text-white\" aria-hidden=\"true\"><path d=\"M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5\"></path></svg>",
+            "title": "Foco no Cliente",
+            "desc": "A sua satisfação é a nossa prioridade. Dedicamo-nos a fornecer um serviço amigável e uma experiência perfeita."
+          }
+        },
+        "value_3pyp9g": {
+          "type": "value",
+          "settings": {
+            "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-sparkles w-6 h-6 text-white\" aria-hidden=\"true\"><path d=\"M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z\"></path><path d=\"M20 2v4\"></path><path d=\"M22 4h-4\"></path><circle cx=\"4\" cy=\"20\" r=\"2\"></circle></svg>",
+            "title": "Inovação",
+            "desc": "Atualizamos continuamente as nossas instalações com a mais recente tecnologia para servi-lo melhor e de forma mais eficiente."
+          }
+        },
+        "value_cdJdi4": {
+          "type": "value",
+          "settings": {
+            "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-zap w-6 h-6 text-white\" aria-hidden=\"true\"><path d=\"M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z\"></path></svg>",
+            "title": "Sustentabilidade",
+            "desc": "Comprometidos com a responsabilidade ambiental através de práticas ecológicas e iniciativas de melhoria contínua."
+          }
+        },
+        "value_xQJHJe": {
+          "type": "value",
+          "settings": {
+            "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-users w-6 h-6 text-white\" aria-hidden=\"true\"><path d=\"M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2\"></path><path d=\"M16 3.128a4 4 0 0 1 0 7.744\"></path><path d=\"M22 21v-2a4 4 0 0 0-3-3.87\"></path><circle cx=\"9\" cy=\"7\" r=\"4\"></circle></svg>",
+            "title": "Parceiro da Comunidade",
+            "desc": "Orgulhosos de apoiar as comunidades locais e contribuir para o crescimento e desenvolvimento económico regional."
+          }
+        }
+      },
+      "block_order": [
+        "value_YifeWP",
+        "value_VNyFhw",
+        "value_iLUHiA",
+        "value_3pyp9g",
+        "value_cdJdi4",
+        "value_xQJHJe"
+      ],
+      "name": "About Us Values",
+      "settings": {
+        "subtitle": "Os Nossos Valores",
+        "title": "O Que Nos Impulsiona",
+        "text": "<p>O nosso compromisso com a excelência é construído sobre estes princípios fundamentais que orientam tudo o que fazemos.</p>",
+        "background_color": "#ffffff",
+        "padding_top": 50,
+        "padding_bottom": 50
+      }
+    },
+    "about_us_team_p8maJm": {
+      "type": "about-us-team",
+      "name": "About Us Team",
+      "settings": {
+        "team_image": "shopify://shop_images/download_3_51a8caff-7eff-4610-acf4-6b0d8c230bf8.jpg",
+        "subtitle": "A Nossa Equipa",
+        "title": "Profissionais Dedicados ao Seu Serviço",
+        "text": "<p>O nosso sucesso é construído sobre a dedicação e experiência dos membros da nossa equipa. Desde os nossos gerentes de posto até aos representantes de atendimento ao cliente, cada pessoa desempenha um papel vital na entrega da experiência excecional que os nossos clientes esperam.</p><p>Investimos em formação e desenvolvimento contínuos, garantindo que a nossa equipa se mantém atualizada com os mais recentes padrões da indústria e as melhores práticas em atendimento ao cliente e protocolos de segurança.</p>",
+        "point_one": "Mais de 150 Colaboradores Formados",
+        "point_two": "Profissionais Certificados",
+        "background_color": "#f8fafb",
+        "padding_top": 50,
+        "padding_bottom": 50
+      }
+    },
+    "about_us_cta_ne74BM": {
+      "type": "about-us-cta",
+      "name": "About Us CTA",
+      "settings": {
+        "title": "Visite-nos Hoje",
+        "text": "Experimente a diferença em qualquer uma das nossas 13 localizações. Estamos aqui para servi-lo com combustível de qualidade e serviço excecional, sempre.",
+        "primary_btn_text": "Encontre um Posto",
+        "primary_btn_link": "",
+        "secondary_btn_text": "Saiba Mais",
+        "secondary_btn_link": "",
+        "bg_color": "#f97316",
+        "padding_top": 50,
+        "padding_bottom": 50
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "about_us_banner_cq6yCx",
+    "service_menu_RRDgLb",
+    "about_us_history_B8VdbD",
+    "about_us_values_JCkTAg",
+    "about_us_team_p8maJm",
+    "about_us_cta_ne74BM"
   ]
 }
