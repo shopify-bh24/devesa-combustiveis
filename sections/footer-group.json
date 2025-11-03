@@ -23,7 +23,7 @@
         "success_message": "Mensagem enviada com sucesso!",
         "link_privacidade": "#",
         "link_privacidade_label": "Privacidade",
-        "link_termos": "#",
+        "link_termos": "shopify://policies/privacy-policy",
         "link_termos_label": "Termos",
         "link_livro": "#",
         "link_livro_label": "Livro de Reclamações",
