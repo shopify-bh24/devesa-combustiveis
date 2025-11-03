@@ -5,6 +5,11 @@
     background: {{ section.settings.bg_background_color }};
     opacity: 0.8;
   }
+
+  .about-us__banner.section-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
 </style>
 
 <section class="about-us__banner section-{{ section.id }}">
