@@ -128,9 +128,4 @@
     flex-direction: column;
     text-align: center;
   }
-  .about-us__history-badge {
-    left: 50%;
-    transform: translateX(-50%);
-    bottom: 15px;
-  }
 }
