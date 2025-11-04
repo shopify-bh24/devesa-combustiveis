@@ -13,9 +13,9 @@
       "type": "hero-banner",
       "name": "Hero banner",
       "settings": {
-        "image": "shopify://shop_images/05.webp",
-        "subheading": "Mais do que Combustível. Devesa é Inclusão",
-        "heading": "Escolhe o melhor",
+        "image": "shopify://shop_images/devesa_hero_21x9_a3413ab1-9a1d-4fde-b654-78518fb243b2.webp",
+        "subheading": "Mais do que combustível",
+        "heading": "Somos Energia",
         "text_alignment": "flex-start",
         "primary_button_label": "Encontrar posto",
         "primary_button_link": "shopify://collections",
