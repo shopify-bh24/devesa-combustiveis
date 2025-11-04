@@ -13,12 +13,14 @@
       "type": "hero-banner",
       "name": "Hero banner",
       "settings": {
-        "image": "shopify://shop_images/download_14.jpg",
+        "image": "shopify://shop_images/05.webp",
         "subheading": "Combustíveis de confiança, atendimento próximo.",
         "heading": "Encontre o posto mais perto de si.",
         "text_alignment": "flex-start",
         "primary_button_label": "Encontrar posto",
         "primary_button_link": "shopify://collections",
+        "secondary_button_label": "Ver serviços & horários",
+        "secondary_button_link": "",
         "secondary_button_style_secondary": true,
         "hero_height": 520
       }
