@@ -166,6 +166,7 @@
     },
     "featured_collection_ydnrpx": {
       "type": "featured-collection",
+      "disabled": true,
       "name": "t:sections.featured-collection.presets.name",
       "settings": {
         "collection": "garrafas-de-gas",
