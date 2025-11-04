@@ -34,7 +34,7 @@
       "name": "Template Banner",
       "settings": {
         "banner_link_text": "Voltar ao mapa",
-        "banner_link": "#",
+        "banner_link": "shopify://collections/frontpage",
         "background_color": "#273050",
         "font_color": "#ffffff",
         "desktop_alignment": "left",
