@@ -1,0 +1,198 @@
+{{ 'section-featured-content.css' | asset_url | stylesheet_tag }}
+
+<style>
+  .featured-content__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .featured-content__card {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-decoration: none;
+  }
+
+  .featured-content__card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+  }
+
+  .featured-content__card-image img {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    display: block;
+  }
+
+  .featured-content__card-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.1));
+    z-index: 1;
+    color: #00000093;
+  }
+
+  .featured-content__card-content {
+    position: absolute;
+    bottom: 0;
+    /* left: 1.25rem; */
+    /* right: 1.25rem; */
+    z-index: 2;
+    color: #fff;
+    width: 100%;
+  }
+
+  .featured-content__card-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin: 0;
+  }
+
+
+  .services_links {
+    padding-top: 15rem;
+  }
+</style>
+
+<div class="featured-content services_links {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
+  <div class="page-width">
+    {% if section.settings.heading != blank %}
+      <div class="featured-content__header">
+        <h2 class="featured-content__title {{ section.settings.heading_size }}">
+          {{ section.settings.heading }}
+        </h2>
+      </div>
+    {% endif %}
+
+    <div class="featured-content__grid">
+      {% for block in section.blocks %}
+        {% if block.settings.link != blank %}
+          <a href="{{ block.settings.link }}" class="featured-content__card" {{ block.shopify_attributes }}>
+        {% else %}
+          <div class="featured-content__card" {{ block.shopify_attributes }}>
+        {% endif %}
+
+          {% if block.settings.image != blank %}
+            <div class="featured-content__card-image">
+              {{
+                block.settings.image
+                | image_url: width: 1500
+                | image_tag: loading: 'lazy', alt: block.settings.title
+              }}
+              <div class="featured-content__card-overlay">.</div>
+            </div>
+          {% endif %}
+
+          <div class="featured-content__card-content">
+            {% if block.settings.title != blank %}
+              <h3 class="featured-content__card-title">{{ block.settings.title }}</h3>
+            {% endif %}
+          </div>
+
+        {% if block.settings.link != blank %}
+          </a>
+        {% else %}
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Services & Facilities",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "default": "Services & Facilities",
+      "label": "Section heading"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "options": [
+        { "value": "h2", "label": "Small" },
+        { "value": "h1", "label": "Medium" },
+        { "value": "h0", "label": "Large" }
+      ],
+      "default": "h1",
+      "label": "Heading size"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "content_card",
+      "name": "Service",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Service image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Service title",
+          "default": "Service"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Service link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Services & Facilities",
+      "blocks": [
+        {
+          "type": "content_card",
+          "settings": {
+            "title": "Combustíveis",
+            "link": "/localizacoes?servico=combustiveis"
+          }
+        },
+        {
+          "type": "content_card",
+          "settings": {
+            "title": "Garrafas de Gás",
+            "link": "/localizacoes?servico=gas"
+          }
+        },
+        {
+          "type": "content_card",
+          "settings": {
+            "title": "Loja de Conveniência",
+            "link": "/localizacoes?servico=loja"
+          }
+        },
+        {
+          "type": "content_card",
+          "settings": {
+            "title": "Cafetaria",
+            "link": "/localizacoes?servico=cafeteria"
+          }
+        },
+        {
+          "type": "content_card",
+          "settings": {
+            "title": "Lavagem",
+            "link": "/localizacoes?servico=lavagem"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

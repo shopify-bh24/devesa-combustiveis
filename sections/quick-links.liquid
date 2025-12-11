@@ -1,0 +1,184 @@
+<style>
+  .shopify-section.section.quick-links {
+    background-color: transparent;
+    position: absolute;
+    margin-top: -70px;
+    z-index: 10;
+    width: 100%;
+  }
+
+  .quick-links {
+    {% comment %} display: flex;
+    justify-content: center;
+    flex-wrap: wrap; {% endcomment %}
+    gap: 16px;
+    background: #FFF;
+    border-radius: 16px;
+    {% comment %} width: 100%; {% endcomment %}
+    /* padding: 2rem 1rem; */
+  }
+
+  .quick-links__wrapper{
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      gap: 16px;
+      padding: 2rem 2rem;
+  }
+
+  .quick-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    background: #fff;
+    color: #000;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 0 1.25rem;
+    height: 46px;
+    border-radius: 9999px;
+    {% comment %} box-shadow: 0 2px 6px rgba(0,0,0,0.08); {% endcomment %}
+    transition: all 0.25s ease;
+    height: 100%;
+  }
+
+  .quick-link:hover {
+    transform: translateY(-2px);
+    text-decoration: none;
+    color: #000;
+    {% comment %} box-shadow: 0 4px 12px rgba(0,0,0,0.12); {% endcomment %}
+  }
+
+  .quick-link__icon {
+    width: 75px;
+    height: 75px;
+    flex-shrink: 0;
+  }
+
+  .icon-svg__textarea svg {
+    width: 60px;
+    height: 60px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .quick-links__container {
+      padding: 0px 12rem;
+    }
+  }
+
+  @media screen and (max-width: 750px) {
+    .quick-links__container {
+      padding: 0px 20px;
+    }
+
+    .icon-svg__textarea svg {
+      width: 25px;
+      height: 25px;
+    }
+
+    .shopify-section.section.quick-links {
+      position: relative;
+      margin-top: 0px;
+    }
+
+    .services_links {
+      padding-top: 5rem !important;
+    }
+  }
+
+  .service-name {
+    font-size: 17px;
+  }
+</style>
+
+<div class="page-width quick-links__container">
+<section class="quick-links section">
+  {% assign services = shop.metaobjects['service'].values %}
+  <div class="quick-links__wrapper">
+    {% for service in services %}
+      <a href="#" class="quick-link">
+        {% if service.icon %}
+          <img 
+            src="{{ service.icon | image_url: width: 80 }}"
+            width="auto"
+            height="auto"
+            alt="{{ service.name }}" 
+            class="quick-link__icon"
+          >
+        {% endif %}
+        <span class="service-name">{{ service.name }}</span>
+      </a>
+    {% endfor %}
+  </div>
+</section>
+</div>
+
+{% schema %}
+{
+  "name": "Quick Links",
+  "tag": "section",
+  "class": "section quick-links",
+  "max_blocks": 4,
+  "settings": [],
+  "blocks": [
+    {
+      "type": "link",
+      "name": "Quick link",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Quick Link"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link URL"
+        },
+        {
+          "type": "textarea",
+          "id": "icon_svg",
+          "label": "Icon Svg (20px recommended)"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Quick Links",
+      "blocks": [
+        {
+          "type": "link",
+          "settings": {
+            "label": "Localizador de Postos",
+            "link": "/localizacoes"
+          }
+        },
+        {
+          "type": "link",
+          "settings": {
+            "label": "Garrafas de Gás",
+            "link": "/loja/garrafas-de-gas"
+          }
+        },
+        {
+          "type": "link",
+          "settings": {
+            "label": "Lavagem Auto",
+            "link": "/localizacoes?servico=lavagem"
+          }
+        },
+        {
+          "type": "link",
+          "settings": {
+            "label": "Contactos",
+            "link": "/contactos#faq"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

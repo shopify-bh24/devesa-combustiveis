@@ -1,0 +1,215 @@
+/* Modern Product Card Styling - Matching Image Design */
+
+/* Card Container */
+.card-wrapper.product-card-wrapper {
+  margin-bottom: 0;
+}
+
+.card {
+  background-color: #ffffff !important;
+  border-radius: 12px !important;
+  overflow: hidden !important;
+  transition: all 0.3s ease !important;
+  border: none !important; /* Remove border */
+}
+
+.card:hover {
+  transform: translateY(-2px) !important;
+}
+
+/* Card Media (Product Image) - Fixed Display */
+
+
+
+.card__media .media img {
+  /* object-fit: contain !important; */
+  border-radius: 8px !important;
+  display: block !important;
+}
+
+
+
+/* Card Content */
+
+
+
+/* Default Star Rating - Always Show */
+.card__information::before {
+  /* content: "★★★★★" !important;
+  display: block !important;
+  font-size: 30px !important;
+  margin-bottom: 8px !important;
+  line-height: 1 !important;
+  color: #ffc107 !important; */
+}
+
+/* Fallback for systems that don't display emoji stars */
+.card__information .star-rating-default {
+  display: flex !important;
+  gap: 2px !important;
+  margin-bottom: 8px !important;
+  align-items: center !important;
+}
+
+.card__information .star-rating-default .star {
+  width: 16px !important;
+  height: 16px !important;
+  background-color: #ffc107 !important;
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%) !important;
+}
+
+
+/* Product Rating - Direct HTML Styling */
+.product-rating {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.product-rating .stars {
+  color: #ffc107;
+  font-size: 18px;
+  line-height: 1;
+  letter-spacing: 4px;
+  font-size: 23px;
+}
+
+.product-rating .review-count {
+  color: #999;
+  font-size: 12px;
+  font-family: 'Heebo', sans-serif;
+}
+
+
+/* Product Title - Enhanced */
+.card__heading {
+  font-size: 1.4rem !important;
+  font-weight: 600 !important;
+  color: #2c2c2c !important;
+  line-height: 1.4 !important;
+  /* margin: 0 0 10px 0 !important; */
+  font-family: 'Heebo', sans-serif !important;
+  display: block !important;
+  min-height: 2.8em !important;
+}
+
+.card__heading a {
+  color: #2c2c2c !important;
+  text-decoration: none !important;
+  display: block !important;
+}
+
+.card__heading a:hover {
+  color: #1a1a1a !important;
+}
+
+/* Title truncation */
+.card__heading a {
+  display: -webkit-box !important;
+  -webkit-line-clamp: 2 !important;
+  -webkit-box-orient: vertical !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  font-size: 16px;
+}
+
+/* Price - Enhanced Display */
+.card-information .price {
+  font-size: 1.8rem !important;
+  font-weight: 700 !important;
+  color: #2c2c2c !important;
+  margin: 0 0 12px 0 !important;
+  font-family: 'Heebo', sans-serif !important;
+  display: block !important;
+}
+
+.card-information .price-item--regular,
+.card-information .price-item--sale {
+  color: #2c2c2c !important;
+  font-size: 1.8rem !important;
+  font-weight: 700 !important;
+  display: inline !important;
+}
+
+.card-information .price-item--compare {
+  color: #999 !important;
+  text-decoration: line-through !important;
+  font-size: 1.4rem !important;
+  margin-left: 8px !important;
+  display: inline !important;
+}
+
+/* SKU Field - Enhanced */
+.card__information-sku {
+  font-size: 1.2rem !important;
+  color: #666 !important;
+  margin: 8px 0 0 0 !important;
+  font-family: 'Heebo', sans-serif !important;
+  display: block !important;
+  opacity: 0.8 !important;
+}
+
+/* Vendor */
+.card__information .caption-with-letter-spacing {
+  font-size: 1.2rem !important;
+  color: #666 !important;
+  margin-bottom: 0.5rem !important;
+  font-family: 'Heebo', sans-serif !important;
+}
+
+/* Hide badges by default */
+.card__badge {
+  display: none !important;
+}
+
+/* Complementary products container */
+.complementary-products__container {
+  margin-top: 0 !important;
+}
+
+.complementary-slider.grid {
+  gap: 2rem !important;
+}
+
+.complementary-slide {
+  padding: 0 !important;
+}
+
+.complementary-slide ul.list-unstyled {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)) !important;
+  gap: 1.5rem !important;
+  padding: 0 !important;
+}
+
+.complementary-slide li {
+  list-style: none !important;
+  margin: 0 !important;
+}
+
+/* Responsive adjustments */
+@media screen and (min-width: 750px) {
+  .complementary-slide ul.list-unstyled {
+    grid-template-columns: repeat(4, 1fr) !important;
+  }
+}
+
+@media screen and (max-width: 749px) {
+  .complementary-slide ul.list-unstyled {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 1rem !important;
+  }
+  
+  .card__content {
+    padding: 1rem !important;
+  }
+  
+  .card__heading {
+    font-size: 1.2rem !important;
+  }
+  
+  .card-information .price {
+    font-size: 1.6rem !important;
+  }
+}

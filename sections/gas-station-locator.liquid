@@ -1,0 +1,258 @@
+{{ 'section-gas-station-locator.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+    .gas-station-locator {
+      padding: 25px;
+      gap: 2.5rem;
+      text-align: center;
+      flex-direction: column;
+      padding-top: {{ section.settings.margin_top }}px !important;
+      padding-bottom: {{ section.settings.margin_bottom }}px !important;
+    }
+
+    .gas-station-locator__description {
+      color: #555;
+      margin-bottom: 1.5rem;
+    }
+
+    .gas-station-locator__form {
+      display: flex;
+      justify-content: center;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+    }
+
+    .gas-station-locator__input {
+      flex: 1 1 250px;
+      padding: 1.5rem 2rem;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      font-size: 1.5rem;
+    }
+
+    .map-placeholder {
+      text-align: center;
+      padding: 80px 20px;
+      background-color: #ededed;
+      border-radius: 20px;
+    }
+
+    .activate-map-btn,
+    .gas-station-locator__button {
+      padding: 1.5rem 4rem;
+      font-size: 1.5rem;
+      border-radius: 10rem;
+      background: linear-gradient(135deg, #ff6b35, #ff8533, #ff9500, #ff8533, #ff6b35);
+      background-size: 250% 250%;
+      animation: gradient-shift 4s ease-in-out infinite;
+      font-weight: 600;
+      opacity: 1 !important;
+      cursor: pointer !important;
+      border: none;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      box-shadow: inset 0 2px 4px #fff3, 0 8px 25px #ff6b354d, 0 0 0 1px #ff6b3533;
+      position: relative;
+      overflow: hidden;
+      transform: perspective(1px) translateZ(0);
+      backface-visibility: hidden;
+      color: #fff;
+    }
+
+    .activate-map-btn:hover,
+    .gas-station-locator__button:hover {
+      background: linear-gradient(45deg, #e55a2b, #ff6b35 15%, #ff8533 35%, #ff9500, #ff8533 65%, #ff6b35 85%, #e55a2b);
+      background-size: 300% 300%;
+      background-position: 100% 100%;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      transform: translateY(-8px) scale(1.05);
+      box-shadow: inset 0 2px 4px #ffffff4d, 0 30px 60px #ff6b3599, 0 15px 35px #e55a2b66;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      filter: brightness(1.1) saturate(1.2);
+      animation: gradient-flow 2s ease-in-out infinite, subtle-pulse 3s ease-in-out infinite;
+    }
+
+    .gas-station-locator__map {
+      width: 100%;
+      height: 550px;
+      border-radius: 20px;
+      display: none;
+    }
+
+    .station-list__container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 40px 0;
+    }
+    .station-card {
+      display: block;
+      background: #fff;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      text-decoration: none;
+      color: inherit;
+      transition: transform 0.2s ease;
+      height: 100px;
+    }
+    .station-card:hover {
+      transform: translateY(-3px);
+    }
+    .station-card__title {
+      font-weight: 400;
+      margin: 0px;
+    }
+{%- endstyle -%}
+
+<div class="gas-station-locator">
+  {% if section.settings.mode == 'teaser' %}
+    <!-- Lightweight home version -->
+    <h2 class="gas-station-locator__heading h1">{{ section.settings.map_title }}</h2>
+    <form action="/pages/localizacoes" method="get" class="gas-station-locator__form">
+      <input
+        type="text"
+        name="q"
+        placeholder="Pesquisar por local…"
+        class="gas-station-locator__input"
+        required
+      >
+      <button type="submit" class="gas-station-locator__button button">Ver mapa</button>
+    </form>
+
+  {% elsif section.settings.mode == 'map' %}
+    <!-- Full locator page version -->
+    <h2 class="gas-station-locator__heading h1">{{ section.settings.map_title }}</h2>
+    <div class="map-container">
+      <p class="gas-station-locator__description">Os melhores combustíveis do mercado.</p>
+
+      <div class="map-placeholder" id="map-placeholder">
+        <button id="activateMapButton" class="activate-map-btn button">Ativar mapa</button>
+      </div>
+      <div id="gas-station-map" class="gas-station-locator__map"></div>
+    </div>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const activateBtn = document.getElementById('activateMapButton');
+        const placeholder = document.getElementById('map-placeholder');
+        const mapContainer = document.getElementById('gas-station-map');
+
+        activateBtn.addEventListener('click', () => {
+          placeholder.style.display = 'none';
+          mapContainer.style.display = 'block';
+
+          // load Google Maps dynamically
+          const script = document.createElement('script');
+          script.src =
+            'https://maps.googleapis.com/maps/api/js?key={{ section.settings.google_maps_api_key }}&callback=initMap';
+          script.async = true;
+          document.head.appendChild(script);
+        });
+      });
+
+      function initMap() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const query = urlParams.get('q') || '';
+
+        const map = new google.maps.Map(document.getElementById('gas-station-map'), {
+          center: { lat: 40.0, lng: -8.0 },
+          zoom: 7,
+        });
+
+        if (query) {
+          const geocoder = new google.maps.Geocoder();
+          geocoder.geocode({ address: query }, (results, status) => {
+            if (status === 'OK' && results[0]) {
+              map.setCenter(results[0].geometry.location);
+              new google.maps.Marker({
+                map: map,
+                position: results[0].geometry.location,
+                title: query,
+              });
+            } else {
+              console.warn('Geocode failed: ' + status);
+            }
+          });
+        }
+      }
+    </script>
+  {% endif %}
+
+  {% assign stations_list = shop.metaobjects['station'].values %}
+
+  
+
+  <div class="station-list__container">
+    {%- for station in stations_list -%}
+      <a href="/pages/{{ station.slug }}" class="station-card">
+        <h3 class="station-card__title">{{ station.name }}</h3>
+      </a>
+    {%- endfor -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Gas Station Locator",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "map_title",
+      "label": "Map Title",
+      "default": "Encontre a estação mais próxima"
+    },
+    {
+      "type": "select",
+      "id": "mode",
+      "label": "Display Mode",
+      "default": "teaser",
+      "options": [
+        {
+          "value": "teaser",
+          "label": "Home Page (Light Search)"
+        },
+        {
+          "value": "map",
+          "label": "/localizacoes Page (Full Map)"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "google_maps_api_key",
+      "label": "Google Maps API Key",
+      "info": "Required for map mode"
+    },
+    {
+      "type": "range",
+      "id": "margin_top",
+      "label": "Margin Top",
+      "min": 0,
+      "max": 100,
+      "unit": "px",
+      "step": 1,
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "label": "Margin Bottom",
+      "min": 0,
+      "max": 100,
+      "unit": "px",
+      "step": 1,
+      "default": 40
+    }
+  ],
+  "presets": [
+    {
+      "name": "Gas Station Locator"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,357 @@
+{{ 'section-contact-form.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+      padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+    }
+
+    @media screen and (min-width: 750px) {
+      .section-{{ section.id }}-padding {
+        padding-top: {{ section.settings.padding_top }}px;
+        padding-bottom: {{ section.settings.padding_bottom }}px;
+      }
+    }
+
+    .footer-band__grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+
+    @media screen and (min-width: 750px) {
+      .footer-band__grid {
+        grid-template-columns: repeat(2, 1fr);
+        align-items: start;
+        gap: 48px;
+      }
+    }
+
+    .footer-band__heading {
+      font-size: 28px;
+      font-weight: 600;
+      color: #111827;
+      margin-bottom: 16px;
+    }
+
+    .footer-band__text {
+      font-size: 16px;
+      line-height: 1.6;
+      margin-bottom: 8px;
+      color: #6B7280;
+    }
+
+    .footer-band__links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 24px;
+      margin-top: 25px;
+      padding: 15px 0px;
+      background-color: #273154;
+      font-size: 14px;
+      position: relative;
+    }
+
+    .footer-band__links a {
+      color: #FFF;
+      text-decoration: none;
+      transition: opacity 0.2s ease;
+    }
+
+    .footer-band__links a:hover {
+      opacity: 0.8;
+    }
+
+    .footer-band__info {
+      color: #28304a !important;
+    }
+
+    .contact-form {
+      background-color: #FFF;
+    }
+
+    footer .contact-form__field input {
+      border: 1px solid #d1d5db;
+      color: #374151;
+    }
+
+    footer .contact-form__field textarea {
+      color: #374151;
+      border: 1px solid #d1d5db;
+    }
+
+    footer .contact-form__input:focus,
+  .contact-form__textarea:focus {
+    outline: none;
+    border-color: #ff7a3b;
+    box-shadow: 0 0 0 3px #ff773a30;
+  }
+
+  footer.contact-form {
+    padding: 60px 0px 0px 0px !important;
+  }
+{%- endstyle -%}
+
+<footer
+  class="contact-form color-{{ section.settings.color_scheme }} section-{{ section.id }}-padding{% if section.settings.enable_animation %} contact-form--animated{% endif %}"
+>
+  <div class="page-width">
+    <div class="footer-band__grid">
+      <div class="footer-band__info">
+        <h2 class="footer-band__heading">{{ section.settings.contact_title }}</h2>
+        {% if section.settings.address != blank %}
+          <p class="footer-band__text">{{ section.settings.address }}</p>
+        {% endif %}
+        {% if section.settings.phone != blank %}
+          <p class="footer-band__text">{{ section.settings.phone }}</p>
+        {% endif %} 
+        {% if section.settings.email != blank %}
+          <p class="footer-band__text">{{ section.settings.email }}</p>
+        {% endif %}
+      </div>
+
+      <!-- Right column: contact form -->
+      <div class="footer-band__form">
+        {%- form 'contact', id: 'FooterContactForm', class: 'contact-form__form' -%}
+          {%- if form.posted_successfully? -%}
+            <div class="contact-form__message contact-form__message--success">
+              {{ section.settings.success_message }}
+            </div>
+          {%- elsif form.errors -%}
+            <div class="contact-form__message contact-form__message--error">
+              Ocorreu um erro. Verifique os campos e tente novamente.
+            </div>
+          {%- endif -%}
+
+          <div class="contact-form__field">
+            <input
+              type="text"
+              name="contact[name]"
+              class="contact-form__input"
+              placeholder="Nome"
+              required
+            >
+          </div>
+
+          <div class="contact-form__field">
+            <input
+              type="email"
+              name="contact[email]"
+              class="contact-form__input"
+              placeholder="Email"
+              required
+            >
+          </div>
+
+          <div class="contact-form__field">
+            <input
+              type="tel"
+              name="contact[phone]"
+              class="contact-form__input"
+              placeholder="Telefone"
+            >
+          </div>
+
+          <div class="contact-form__field">
+            <textarea
+              name="contact[message]"
+              class="contact-form__textarea"
+              rows="3"
+              placeholder="Mensagem"
+              required
+            ></textarea>
+          </div>
+
+          <div class="contact-form__checkbox">
+            <input
+              type="checkbox"
+              id="FooterForm-consent"
+              class="contact-form__checkbox-input"
+              required
+            >
+            <label for="FooterForm-consent" class="contact-form__checkbox-label">
+              {{ section.settings.checkbox_label }}
+            </label>
+          </div>
+
+          <button type="submit" class="contact-form__submit-btn">
+            {{ section.settings.button_label }}
+          </button>
+        {%- endform -%}
+      </div>
+    </div>
+
+    <!-- Bottom legal links -->
+  </div>
+  <div class="footer-band__links">
+    {% if section.settings.link_privacidade %}
+      <a href="{{ section.settings.link_privacidade }}">{{ section.settings.link_privacidade_label }}</a>
+    {% endif %}
+    {% if section.settings.link_termos %}
+      <a href="{{ section.settings.link_termos }}">{{ section.settings.link_termos_label }}</a>
+    {% endif %}
+    {% if section.settings.link_livro %}
+      <a href="{{ section.settings.link_livro }}">{{ section.settings.link_livro_label }}</a>
+    {% endif %}
+  </div>
+</footer>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const footer = document.querySelector('.contact-form--animated');
+    if (!footer) return;
+
+    const animationType = '{{ section.settings.animation_type | default: "fade-in" }}';
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            footer.classList.add('contact-form--animate-in', `contact-form--animate-${animationType}`);
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+    observer.observe(footer);
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": [
+    {
+      "type": "text",
+      "id": "contact_title",
+      "label": "Título",
+      "default": "Contactos"
+    },
+    {
+      "type": "textarea",
+      "id": "address",
+      "label": "Morada",
+      "default": "Rua da Recta de Gomil 152, 4595-144 Paços de Ferreira"
+    },
+    {
+      "type": "text",
+      "id": "phone",
+      "label": "Telefone",
+      "default": "+351 923 080 048"
+    },
+    {
+      "type": "text",
+      "id": "email",
+      "label": "Email",
+      "default": "info@exemplo.pt"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Texto do botão",
+      "default": "Enviar"
+    },
+    {
+      "type": "text",
+      "id": "checkbox_label",
+      "label": "Texto de consentimento",
+      "default": "Concordo com o tratamento dos meus dados pessoais."
+    },
+    {
+      "type": "text",
+      "id": "success_message",
+      "label": "Mensagem de sucesso",
+      "default": "Mensagem enviada com sucesso!"
+    },
+    {
+      "type": "url",
+      "id": "link_privacidade",
+      "label": "Link - Política de Privacidade"
+    },
+    {
+      "type": "text",
+      "id": "link_privacidade_label",
+      "label": "Texto - Política de Privacidade",
+      "default": "Privacidade"
+    },
+    {
+      "type": "url",
+      "id": "link_termos",
+      "label": "Link - Termos e Condições"
+    },
+    {
+      "type": "text",
+      "id": "link_termos_label",
+      "label": "Texto - Termos e Condições",
+      "default": "Termos"
+    },
+    {
+      "type": "url",
+      "id": "link_livro",
+      "label": "Link - Livro de Reclamações"
+    },
+    {
+      "type": "text",
+      "id": "link_livro_label",
+      "label": "Texto - Livro de Reclamações",
+      "default": "Livro de Reclamações"
+    },
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "label": "Esquema de cores",
+      "options": [
+        { "value": "background-1", "label": "Background 1" },
+        { "value": "background-2", "label": "Background 2" },
+        { "value": "inverse", "label": "Inverso" }
+      ],
+      "default": "background-1"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_animation",
+      "label": "Ativar animação de entrada",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "animation_type",
+      "label": "Tipo de animação",
+      "options": [
+        { "value": "fade-in", "label": "Fade In" },
+        { "value": "slide-up", "label": "Slide Up" },
+        { "value": "slide-left", "label": "Slide Left" },
+        { "value": "slide-right", "label": "Slide Right" },
+        { "value": "zoom-in", "label": "Zoom In" }
+      ],
+      "default": "slide-up"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Espaçamento superior",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Espaçamento inferior",
+      "default": 48
+    }
+  ],
+  "presets": [
+    {
+      "name": "Footer"
+    }
+  ]
+}
+{% endschema %}

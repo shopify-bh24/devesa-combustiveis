@@ -1,0 +1,124 @@
+.about-us__banner {
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  color: #ffffff;
+  padding: 120px 20px;
+}
+
+.about-us__banner-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+}
+
+.about-us__banner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.about-us__banner-content {
+  position: relative;
+  z-index: 2;
+  max-width: 850px;
+  margin: 0 auto;
+}
+
+/* Subtitle (small rounded capsule) */
+.about-us__banner-subtitle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #ffffff14;
+  border-radius: 9999px;
+  padding: 10px 25px;
+  font-size: 15px;
+  font-weight: 500;
+  margin-bottom: 25px;
+}
+
+/* Title (main heading) */
+.about-us__banner-title {
+  font-size: 26px;
+  font-weight: 600;
+  line-height: 1.3;
+  margin-bottom: 20px;
+  color: #ffffff;
+}
+
+/* Description text */
+.about-us__banner-text {
+  font-size: 16px;
+  line-height: 1.7;
+  opacity: 0.9;
+  margin: 0 auto 35px;
+  max-width: 700px;
+}
+
+/* Buttons container */
+.about-us__banner-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+/* Primary button (white background) */
+.about-us__banner-buttons .btn--primary {
+  background: #F97316;
+  color: #ffffff;
+  padding: 10px 30px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.about-us__banner-buttons .btn--primary:hover {
+  background: #EA580C;
+}
+
+/* Secondary button (transparent outline) */
+.about-us__banner-buttons .btn--secondary {
+  background: transparent;
+  border: 1px solid #ffffff;
+  color: #ffffff;
+  padding: 12px 28px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.about-us__banner-buttons .btn--secondary:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .about-us__banner {
+    padding: 80px 15px;
+  }
+
+  .about-us__banner-title {
+    font-size: 22px;
+  }
+
+  .about-us__banner-subtitle {
+    font-size: 14px;
+  }
+
+  .about-us__banner-text {
+    font-size: 15px;
+  }
+}
+
+.icon {
+    display: flex;
+    margin-bottom: 3px;
+}

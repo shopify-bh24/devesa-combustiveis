@@ -1,0 +1,211 @@
+{{ 'section-contact-section.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="contact-section color-{{ section.settings.color_scheme }} section-{{ section.id }}-padding">
+  <div class="page-width">
+    <div class="contact-section__container">
+      <!-- Left Panel - Contact Form (White Box) -->
+      <div class="contact-section__form-panel">
+        {%- form 'contact', id: 'ContactForm', class: 'contact-section__form' -%}
+          {%- if form.posted_successfully? -%}
+            <div class="contact-section__message contact-section__message--success">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                <polyline points="22,4 12,14.01 9,11.01"></polyline>
+              </svg>
+              {{ 'templates.contact.form.post_success' | t }}
+            </div>
+          {%- elsif form.errors -%}
+            <div class="contact-section__message contact-section__message--error">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="15" y1="9" x2="9" y2="15"></line>
+                <line x1="9" y1="9" x2="15" y2="15"></line>
+              </svg>
+              {{ 'templates.contact.form.error_heading' | t }}
+              <ul class="contact-section__error-list">
+                {%- for field in form.errors -%}
+                  <li>{{ form.errors.translated_fields[field] | capitalize }} {{ form.errors.messages[field] }}</li>
+                {%- endfor -%}
+              </ul>
+            </div>
+          {%- endif -%}
+
+          <div class="contact-section__field">
+            <input
+              type="text"
+              id="ContactForm-name"
+              name="contact[name]"
+              class="contact-section__input"
+              placeholder="Name *"
+              value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}"
+              autocomplete="name"
+            >
+          </div>
+
+          <div class="contact-section__field">
+            <input
+              type="email"
+              id="ContactForm-email"
+              name="contact[email]"
+              class="contact-section__input"
+              placeholder="Email *"
+              value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+              autocomplete="email"
+              required
+              aria-required="true"
+              {% if form.errors contains 'email' %}aria-invalid="true"{% endif %}
+            >
+          </div>
+
+          <div class="contact-section__field">
+            <input
+              type="tel"
+              id="ContactForm-phone"
+              name="contact[phone]"
+              class="contact-section__input"
+              placeholder="Telephone *"
+              value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}"
+              autocomplete="tel"
+              pattern="[0-9\-]*"
+              required
+              aria-required="true"
+            >
+          </div>
+
+          <div class="contact-section__field">
+            <textarea
+              id="ContactForm-message"
+              name="contact[message]"
+              class="contact-section__textarea"
+              placeholder="Your message..."
+              rows="4"
+            >{{ form.message }}</textarea>
+          </div>
+
+          <button type="submit" class="contact-section__submit-btn">
+            Send
+          </button>
+        {%- endform -%}
+      </div>
+
+      <!-- Right Panel - Information (Direct on Background) -->
+      <div class="contact-section__info">
+        <h2 class="contact-section__title">{{ section.settings.heading | default: 'We are here for you!' }}</h2>
+        <p class="contact-section__subtitle">{{ section.settings.subtitle | default: 'Do you have any questions about the product?' }}</p>
+        
+        <div class="contact-section__service-info">
+          <h3 class="contact-section__service-title">{{ section.settings.service_title | default: 'DocMed customer service' }}</h3>
+          <p class="contact-section__phone">{{ section.settings.phone | default: '+351 923 080 048, +351 255 405 289' }}</p>
+          <p class="contact-section__chat-text">{{ section.settings.chat_text | default: 'Our team is also available via chat.' }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Contact Section",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "default": "We are here for you!",
+      "label": "Heading"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "default": "Do you have any questions about the product?",
+      "label": "Subtitle"
+    },
+    {
+      "type": "text",
+      "id": "service_title",
+      "default": "Devesa customer service",
+      "label": "Service Title"
+    },
+    {
+      "type": "text",
+      "id": "phone",
+      "default": "0234 - 357 905 59",
+      "label": "Phone Number"
+    },
+    {
+      "type": "text",
+      "id": "chat_text",
+      "default": "Our team is also available via chat.",
+      "label": "Chat Text"
+    },
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "options": [
+        {
+          "value": "background-1",
+          "label": "Background 1"
+        },
+        {
+          "value": "background-2",
+          "label": "Background 2"
+        },
+        {
+          "value": "inverse",
+          "label": "Inverse"
+        },
+        {
+          "value": "accent-1",
+          "label": "Accent 1"
+        },
+        {
+          "value": "accent-2",
+          "label": "Accent 2"
+        }
+      ],
+      "default": "background-1",
+      "label": "Color scheme"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 60
+    }
+  ],
+  "presets": [
+    {
+      "name": "Contact Section"
+    }
+  ]
+}
+{% endschema %}

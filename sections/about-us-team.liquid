@@ -1,0 +1,109 @@
+{{ 'about-us-team.css' | asset_url | stylesheet_tag }}
+
+<style>
+  .about-us__team.section-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    background-color: {{ section.settings.background_color }};
+  }
+</style>
+
+<section class="about-us__team section-{{ section.id }}">
+  <div class="page-width about-us__team-grid">
+    <div class="about-us__team-image">
+      {% if section.settings.team_image != blank %}
+        <img src="{{ section.settings.team_image | image_url: width: 900 }}" alt="Our Team" loading="lazy">
+      {% endif %}
+    </div>
+
+    <div class="about-us__team-content">
+      {% if section.settings.subtitle != blank %}
+        <p class="about-us__team-subtitle">
+          <span class="icon">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-users w-5 h-5"
+              aria-hidden="true"
+            >
+              <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><path d="M16 3.128a4 4 0 0 1 0 7.744"></path><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><circle cx="9" cy="7" r="4"></circle>
+            </svg>
+          </span>
+          {{ section.settings.subtitle }}
+        </p>
+      {% endif %}
+
+      {% if section.settings.title != blank %}
+        <h2 class="about-us__team-title">{{ section.settings.title }}</h2>
+      {% endif %}
+
+      {% if section.settings.text != blank %}
+        <div class="about-us__team-text">{{ section.settings.text }}</div>
+      {% endif %}
+
+      <ul class="about-us__team-list">
+        {% if section.settings.point_one != blank %}
+          <li>{{ section.settings.point_one }}</li>
+        {% endif %}
+        {% if section.settings.point_two != blank %}
+          <li>{{ section.settings.point_two }}</li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "About Us Team",
+  "tag": "section",
+  "class": "about-us-team",
+  "settings": [
+    { "type": "image_picker", "id": "team_image", "label": "Team Image" },
+    { "type": "text", "id": "subtitle", "label": "Subtitle", "default": "A Nossa Equipa" },
+    { "type": "text", "id": "title", "label": "Title", "default": "Profissionais Dedicados ao Seu Serviço" },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Description",
+      "default": "<p>O nosso sucesso é construído sobre a dedicação e experiência dos membros da nossa equipa. Desde os nossos gerentes de posto até aos representantes de atendimento ao cliente, cada pessoa desempenha um papel vital na entrega da experiência excecional que os nossos clientes esperam.</p><p>Investimos em formação e desenvolvimento contínuos, garantindo que a nossa equipa se mantém atualizada com os mais recentes padrões da indústria e as melhores práticas em atendimento ao cliente e protocolos de segurança.</p>"
+    },
+    { "type": "text", "id": "point_one", "label": "Bullet Point One", "default": "Mais de 150 Colaboradores Formados" },
+    { "type": "text", "id": "point_two", "label": "Bullet Point Two", "default": "Profissionais Certificados" },
+        {
+        "type": "color",
+        "id": "background_color",
+        "label": "Background Color",
+        "default": "#FFF"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding Top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding Bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    }
+  ],
+  "presets": [{ "name": "About Us Team", "settings": {} }]
+}
+{% endschema %}

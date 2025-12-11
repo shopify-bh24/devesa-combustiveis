@@ -1,0 +1,145 @@
+{{ 'about-us-history.css' | asset_url | stylesheet_tag }}
+
+<style>
+  .about-us__history.section-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    background-color: {{ section.settings.background_color }};
+  }
+</style>
+
+<section class="about-us__history section-{{ section.id }}">
+  <div class="page-width about-us__history-grid">
+    <div class="about-us__history-content">
+      {% if section.settings.subtitle != blank %}
+        <p class="about-us__history-subtitle"><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sparkles w-5 h-5" aria-hidden="true"><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"></path><path d="M20 2v4"></path><path d="M22 4h-4"></path><circle cx="4" cy="20" r="2"></circle></svg></span> {{ section.settings.subtitle }}</p>
+      {% endif %}
+
+      {% if section.settings.title != blank %}
+        <h2 class="about-us__history-title">{{ section.settings.title }}</h2>
+      {% endif %}
+
+      {% if section.settings.text != blank %}
+        <div class="about-us__history-text">{{ section.settings.text }}</div>
+      {% endif %}
+
+      <div class="about-us__history-quote">
+        <div class="about-us__history-quote-inner">
+          {% if section.settings.ceo_image != blank %}
+            <div class="ceo-photo">
+              <img src="{{ section.settings.ceo_image | image_url: width: 160 }}" alt="CEO">
+            </div>
+          {% endif %}
+          <div class="ceo-quote-text">
+            {% if section.settings.ceo_quote != blank %}
+              <p class="quote-text">“{{ section.settings.ceo_quote }}”</p>
+            {% endif %}
+            {% if section.settings.ceo_name != blank %}
+              <p class="quote-author">{{ section.settings.ceo_name }}</p>
+            {% endif %}
+            {% if section.settings.ceo_title != blank %}
+              <p class="quote-role">{{ section.settings.ceo_title }}</p>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="about-us__history-image">
+      {% if section.settings.main_image != blank %}
+        <img src="{{ section.settings.main_image | image_url: width: 900 }}" alt="About Image" loading="lazy">
+      {% endif %}
+
+      {% if section.settings.badge_text != blank %}
+        <div class="about-us__history-badge">
+          <span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-trending-up w-8 h-8"
+              aria-hidden="true"
+            >
+              <path d="M16 7h6v6"></path><path d="m22 7-8.5 8.5-5-5L2 17"></path>
+            </svg>
+          </span>
+          <div class="badge-content">
+            <p>{{ section.settings.badge_text }}</p>
+            <span>{{ section.settings.badge_subtext }}</span>
+          </div>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "About Us History",
+  "tag": "section",
+  "class": "about-us-history",
+  "settings": [
+    { "type": "text", "id": "subtitle", "label": "Subtitle", "default": "A Nossa História" },
+    { "type": "text", "id": "title", "label": "Title", "default": "A Construir um Legado de Confiança e Qualidade" },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Description",
+      "default": "<p>Fundada em 1998, começámos com uma visão simples: fornecer às comunidades combustível fiável e de alta qualidade com um serviço excecional...</p>"
+    },
+
+    { "type": "image_picker", "id": "main_image", "label": "Main Image" },
+
+    { "type": "text", "id": "badge_text", "label": "Badge Title", "default": "98% Satisfação dos Clientes" },
+    { "type": "text", "id": "badge_subtext", "label": "Badge Subtitle", "default": "Avaliado pela nossa comunidade" },
+
+    { "type": "image_picker", "id": "ceo_image", "label": "CEO Image" },
+    {
+      "type": "textarea",
+      "id": "ceo_quote",
+      "label": "CEO Quote",
+      "default": "A nossa missão sempre foi mais do que simplesmente vender combustível..."
+    },
+    { "type": "text", "id": "ceo_name", "label": "CEO Name", "default": "João Silva" },
+    { "type": "text", "id": "ceo_title", "label": "CEO Title", "default": "CEO & Fundador" },
+    {
+        "type": "color",
+        "id": "background_color",
+        "label": "Background Color",
+        "default": "#FFF"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding Top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding Bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    }
+  ],
+  "presets": [
+    {
+      "name": "About Us History",
+      "settings": {}
+    }
+  ]
+}
+{% endschema %}
